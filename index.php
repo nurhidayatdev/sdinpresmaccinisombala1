@@ -72,21 +72,32 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Beranda</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item dropdown">
                             <a
-                                class="nav-link"
-                                href="pages/info-akademik.php">Info Akademik</a>
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="infoAkademikDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Akademik
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                                <li><a class="dropdown-item" href="pages/kegiatan_akademik.php">Kegiatan Akademik</a></li>
+                                <li><a class="dropdown-item" href="pages/info_akademik.php">Info Akademik</a></li>
+                            </ul>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="pages/fasilitas.php">Fasilitas Sekolah</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/berita.html">Berita & Pengumuman</a>
+                            <a class="nav-link" href="pages/berita.php">Berita & Pengumuman</a>
                         </li>
                         <li class="nav-item">
                             <a
                                 class="nav-link"
-                                href="pages/tentang-kami.html">Tentang Kami</a>
+                                href="pages/tentang-kami.php">Tentang Kami</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="backend/login.php">Login</a>
@@ -394,7 +405,7 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
         </div>
     </footer>
 
-    
+
 </body>
 
 </html>

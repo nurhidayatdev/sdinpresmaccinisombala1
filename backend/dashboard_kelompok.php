@@ -11,7 +11,7 @@ if (!isset($_SESSION['email'])) {
 // Ambil dari session
 $nama = $_SESSION['nama']; // dari database (bukan input login)
 $email = $_SESSION['email'];
-$query = "SELECT * FROM fasilitas_sekolah";
+$query = "SELECT * FROM kelompok";
 $result = mysqli_query($koneksi, $query);
 ?>
 
@@ -43,10 +43,9 @@ $result = mysqli_query($koneksi, $query);
     </div>
     <ul class="nav flex-column mt-3">
       <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
-     <li><a class="nav-link active" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+     <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
-      
-      <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
+      <li><a class="nav-link active" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
       <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
@@ -73,8 +72,9 @@ $result = mysqli_query($koneksi, $query);
               <thead class="table-success text-center">
                 <tr>
                   <th>Gambar</th>
-                  <th>Nama Fasilitas Sekolah</th>
-                  <th>Deskripsi</th>
+                  <th>Nama</th>
+                  <th>NIM</th>
+                  <th>Link Artikel</th>
                   <th width="150px">Aksi</th>
                 </tr>
               </thead>
@@ -84,19 +84,20 @@ $result = mysqli_query($koneksi, $query);
 
                     <td>
                       <?php if (!empty($row['gambar'])): ?>
-                        <img src="../img/fasilitas/<?php echo htmlspecialchars($row['gambar']); ?>"
-                          alt="<?php echo htmlspecialchars($row['fasilitas']); ?>"
+                        <img src="../img/kelompok/<?php echo htmlspecialchars($row['gambar']); ?>"
+                          alt="<?php echo htmlspecialchars($row['nama']); ?>"
                           class="img-fluid rounded"
                           style="max-width:150px; height:auto;" />
                       <?php else: ?>
                         <span class="text-muted">Belum ada gambar</span>
                       <?php endif; ?>
                     </td>
-                    <td><?= $row['fasilitas']; ?></td>
-                    <td><?= $row['deskripsi']; ?></td>
+                    <td><?= $row['nama']; ?></td>
+                    <td><?= $row['nim']; ?></td>
+                    <td><?= $row['link_artikel']; ?></td>
                     <td class="text-center">
-                      <a href="edit.php?file=fasilitas&tabel=fasilitas_sekolah&id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                      <a href="hapus.php?tabel=fasilitas_sekolah&id=<?= $row['id']; ?>"
+                      <a href="edit.php?file=kelompok&tabel=kelompok&id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                      <a href="hapus.php?tabel=kelompok&id=<?= $row['id']; ?>"
                         onclick="return confirm('Yakin ingin menghapus fasilitas ini?')"
                         class="btn btn-danger btn-sm">Hapus</a>
                     </td>

@@ -11,7 +11,8 @@ if (!isset($_SESSION['email'])) {
 // Ambil dari session
 $nama = $_SESSION['nama']; // dari database (bukan input login)
 $email = $_SESSION['email'];
-$query = "SELECT * FROM fasilitas_sekolah";
+
+$query = "SELECT * FROM form_futsal";
 $result = mysqli_query($koneksi, $query);
 ?>
 
@@ -43,9 +44,8 @@ $result = mysqli_query($koneksi, $query);
     </div>
     <ul class="nav flex-column mt-3">
       <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
-     <li><a class="nav-link active" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
-      <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
-      
+     <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+      <li><a class="nav-link active" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
       <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
       <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
@@ -63,48 +63,47 @@ $result = mysqli_query($koneksi, $query);
 
     <div class="container-fluid mt-4">
       <div class="container mb-5">
-        <h2 class="fw-bold mb-3 text-success">Data Fasilitas Sekolah</h2>
+        <h2 class="fw-bold mb-3 text-success">Data Login Siswa</h2>
 
-        <?php mysqli_data_seek($result, 0); ?>
-        <div class="fasilitas-sekolah">
-          <a href="tambah.php?tabel=fasilitas_sekolah" class="btn btn-success mb-3">+ Tambah Data</a>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle">
-              <thead class="table-success text-center">
+
+        <a href="tambah.php?tabel=login" class="btn btn-success mb-3">+ Tambah Data</a>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped align-middle">
+            <thead class="table-success text-center">
+              <tr>
+                <th>ID</th>
+                <th>NISN</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Jenis Kelamin</th>
+                <th>NO HP</th>
+                <th>Alasan Daftar</th>
+                <th>Tanggal Daftar</th>
+                <th width="150px">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                 <tr>
-                  <th>Gambar</th>
-                  <th>Nama Fasilitas Sekolah</th>
-                  <th>Deskripsi</th>
-                  <th width="150px">Aksi</th>
+                  <td><?= $row['id']; ?></td>
+                  <td><?= $row['nisn']; ?></td>
+                  <td><?= $row['nama']; ?></td>
+                  <td><?= $row['kelas']; ?></td>
+                  <td><?= $row['jk']; ?></td>
+                  <td><?= $row['nohp']; ?></td>
+                  <td><?= $row['alasan']; ?></td>
+                  <td><?= $row['tanggal_daftar']; ?></td>
+                  <td class="text-center">
+                    <a href="edit.php?file=login&tabel=login&id=<?= $row['id']; ?>"
+                      class="btn btn-warning btn-sm">Edit</a>
+                    <a href="hapus.php?tabel=login&id=<?= $row['id']; ?>"
+                      onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
+                      class="btn btn-danger btn-sm">Hapus</a>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                  <tr>
-
-                    <td>
-                      <?php if (!empty($row['gambar'])): ?>
-                        <img src="../img/fasilitas/<?php echo htmlspecialchars($row['gambar']); ?>"
-                          alt="<?php echo htmlspecialchars($row['fasilitas']); ?>"
-                          class="img-fluid rounded"
-                          style="max-width:150px; height:auto;" />
-                      <?php else: ?>
-                        <span class="text-muted">Belum ada gambar</span>
-                      <?php endif; ?>
-                    </td>
-                    <td><?= $row['fasilitas']; ?></td>
-                    <td><?= $row['deskripsi']; ?></td>
-                    <td class="text-center">
-                      <a href="edit.php?file=fasilitas&tabel=fasilitas_sekolah&id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                      <a href="hapus.php?tabel=fasilitas_sekolah&id=<?= $row['id']; ?>"
-                        onclick="return confirm('Yakin ingin menghapus fasilitas ini?')"
-                        class="btn btn-danger btn-sm">Hapus</a>
-                    </td>
-                  </tr>
-                <?php endwhile; ?>
-              </tbody>
-            </table>
-          </div>
+              <?php endwhile; ?>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

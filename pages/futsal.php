@@ -1,3 +1,23 @@
+<?php
+include '../koneksi.php'; // sesuaikan dengan file koneksi kamu
+
+if (isset($_POST['tambah'])) {
+    
+            $nisn = $_POST['nisn'];
+            $nama = $_POST['nama'];
+            $kelas = $_POST['kelas'];
+            $jk = $_POST['jk'];
+            $nohp = $_POST['nohp'];
+            $alasan = $_POST['alasan'];
+        
+            mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
+                VALUES ('$nisn', '$nama', '$kelas', '$jk', '$nohp', '$alasan')");
+            header("Location: ../backend/dashboard_futsal.php");
+        
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
     <head>
@@ -19,7 +39,8 @@
                     <strong>SD Negeri Maccini Sombala 1</strong>
                 </p>
 
-                <form id="futsalForm" novalidate>
+                <form method="POST" enctype="multipart/form-data">
+
                     <div class="mb-3">
                         <label for="nisn" class="form-label">NISN</label>
                         <input
@@ -78,7 +99,7 @@
                             >Nomor HP Orang Tua</label
                         >
                         <input
-                            type="text"
+                            type="number"
                             class="form-control"
                             id="nohp"
                             name="nohp"
@@ -103,19 +124,19 @@
                         <div class="invalid-feedback">Alasan wajib diisi.</div>
                     </div>
 
-                    <button type="submit" class="btn btn-submit">Daftar</button>
+                    <button type="submit" name="tambah" class="btn btn-submit">Daftar</button>
                 </form>
 
                 <div class="footer">© 2025 SD Negeri Maccini Sombala 1</div>
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      
 
         <script>
             $(function () {
                 $("#futsalForm").on("submit", function (e) {
-                    e.preventDefault();
+                   
                     let valid = true;
 
                     const nisn = $("#nisn").val().trim();

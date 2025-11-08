@@ -1,3 +1,9 @@
+<?php
+include '../koneksi.php';
+
+$query = "SELECT * FROM kelompok";
+$result = mysqli_query($koneksi, $query);
+?>
 <!DOCTYPE html>
 <html lang="id">
     <head>
@@ -28,7 +34,7 @@
             content="https://iili.io/Kcm85Ov.md.png"
         />
         <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-        <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="../style.css" />
     </head>
     <body>
@@ -57,18 +63,28 @@
                                     >Beranda</a
                                 >
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="info-akademik.html"
-                                    >Info Akademik</a
-                                >
-                            </li>
+                            <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="infoAkademikDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Akademik
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                                <li><a class="dropdown-item" href="kegiatan_akademik.php">Kegiatan Akademik</a></li>
+                                <li><a class="dropdown-item" href="info_akademik.php">Info Akademik</a></li>
+                            </ul>
+                        </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="fasilitas.php"
                                     >Fasilitas Sekolah</a
                                 >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="berita.html"
+                                <a class="nav-link" href="berita.php"
                                     >Berita & Pengumuman</a
                                 >
                             </li>
@@ -103,113 +119,26 @@
                 </h3>
 
                 <div class="row justify-content-center g-4">
+                     <?php while ($data = mysqli_fetch_assoc($result)) { ?>
                     <div class="col-6 col-md-4 col-lg-2">
                         <img
-                            src="../img/kelompok/dila.jpg"
-                            alt="St. Fhadila Sayyidina Putri"
+                            src="../img/kelompok/<?= htmlspecialchars($data['gambar']); ?>"
+                            alt="<?= htmlspecialchars($data['nama'] ?? 'Gambar'); ?>"
                             class="img-fluid rounded shadow-sm mb-2"
                         />
                         <p>
                             <a
-                                href="https://fhadilasayyidina-cpu.github.io/Tugas/artikel.html"
+                                href="<?= $data['link_artikel']; ?>"
                                 class="text-decoration-none fw-semibold"
                                 style="color: #f8ae84"
                             >
-                                St. Fhadila Sayyidina Putri </a
+                                <?= $data['nama']; ?> </a
                             ><br />
-                            240209500067
+                            <?= $data['nim']; ?>
                         </p>
                     </div>
-
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <img
-                            src="../img/kelompok/adel.jpg"
-                            alt="Adelia Maqfira Hapati"
-                            class="img-fluid rounded shadow-sm mb-2"
-                        />
-                        <p>
-                            <a
-                                href="https://adeliamaqfirahapati-lgtm.github.io/Tugas-5-Pemrograman-Web/latihan4/menu.html"
-                                class="text-decoration-none fw-semibold"
-                                style="color: #f8ae84"
-                            >
-                                Adelia Maqfira Hapati </a
-                            ><br />
-                            240209500070
-                        </p>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <img
-                            src="../img/kelompok/yaya.jpg"
-                            alt="Nur Hidayat"
-                            class="img-fluid rounded shadow-sm mb-2"
-                        />
-                        <p>
-                            <a
-                                href="https://nurhidayatdev.github.io/praktikum-4/praktikum-4/tugas/artikel.html"
-                                class="text-decoration-none fw-semibold"
-                                style="color: #f8ae84"
-                            >
-                                Nur Hidayat </a
-                            ><br />
-                            240209501052
-                        </p>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <img
-                            src="../img/kelompok/adit.jpg"
-                            alt="A. Adithya Dwi Permadi Hakim"
-                            class="img-fluid rounded shadow-sm mb-2"
-                        />
-                        <p>
-                            <a
-                                href="https://aadithyadwipermadihakim.github.io/Praktikum-2/Tugas/artikel.html"
-                                class="text-decoration-none fw-semibold"
-                                style="color: #f8ae84"
-                            >
-                                A. Adithya Dwi Permadi Hakim </a
-                            ><br />
-                            240209501046
-                        </p>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <img
-                            src="../img/kelompok/ekii.jpg"
-                            alt="Baso Rezki Ramadhan Mallanti"
-                            class="img-fluid rounded shadow-sm mb-2"
-                        />
-                        <p>
-                            <a
-                                href="https://basorezkiramadhanmallanti.github.io/Tugas-5/artikel.html"
-                                class="text-decoration-none fw-semibold"
-                                style="color: #f8ae84"
-                            >
-                                Baso Rezki Ramadhan Mallanti </a
-                            ><br />
-                            240209501058
-                        </p>
-                    </div>
-
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <img
-                            src="../img/kelompok/tegar.jpg"
-                            alt="Tegar Angbirah Parerungan"
-                            class="img-fluid rounded shadow-sm mb-2"
-                        />
-                        <p>
-                            <a
-                                href="https://tegaraparerungan.github.io/Tugas-5.2/artikel.html"
-                                class="text-decoration-none fw-semibold"
-                                style="color: #f8ae84"
-                            >
-                                Tegar Angbirah Parerungan </a
-                            ><br />
-                            240209501059
-                        </p>
-                    </div>
+ <?php } ?>
+                   
                 </div>
             </section>
         </main>

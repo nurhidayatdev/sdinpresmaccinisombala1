@@ -1,8 +1,14 @@
 <?php
 include '../koneksi.php';
 
-$query = "SELECT * FROM fasilitas_sekolah";
-$result = mysqli_query($koneksi, $query);
+$query_ptk = "SELECT * FROM ptk_pd";
+$result_ptk = mysqli_query($koneksi, $query_ptk);
+
+$query_sarpras = "SELECT * FROM sarpras";
+$result_sarpras = mysqli_query($koneksi, $query_sarpras);
+
+$query_rombongan = "SELECT * FROM rombongan_mengajar";
+$result_rombongan = mysqli_query($koneksi, $query_rombongan);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -10,7 +16,7 @@ $result = mysqli_query($koneksi, $query);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fasilitas Sekolah - SD Inpres Maccini Sombala 1</title>
+    <title>Info Akademik - SD Inpres Maccini Sombala 1</title>
     <link rel="icon" href="../img/main/icon.png" />
     <meta name="title" content="SD Inpres Maccini Sombala 1" />
     <meta name="description" content="© 2025 Kelompok 5" />
@@ -21,7 +27,6 @@ $result = mysqli_query($koneksi, $query);
     <meta property="og:title" content="SD Inpres Maccini Sombala 1" />
     <meta property="og:description" content="© 2025 Kelompok 5" />
     <meta property="og:image" content="https://iili.io/Kcm85Ov.md.png" />
-
     <meta property="twitter:card" content="summary_large_image" />
     <meta
         property="twitter:url"
@@ -69,17 +74,17 @@ $result = mysqli_query($koneksi, $query);
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
                                 <li><a class="dropdown-item" href="kegiatan_akademik.php">Kegiatan Akademik</a></li>
-                                <li><a class="dropdown-item" href="info_akademik.php">Info Akademik</a></li>
+                                <li><a class="dropdown-item" href="#">Info Akademik</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Fasilitas Sekolah</a>
+                            <a class="nav-link" href="fasilitas.php">Fasilitas Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="berita.php">Berita & Pengumuman</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="info-akademik.php">Tentang Kami</a>
+                            <a class="nav-link" href="tentang-kami.php">Tentang Kami</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../backend/login.php">Login</a>
@@ -90,34 +95,105 @@ $result = mysqli_query($koneksi, $query);
         </nav>
     </header>
 
-    <main class="container my-5">
-        <section id="fasilitas">
-            <h2 class="text-center mb-5 fw-bold" style="color: #446b42">
-                Fasilitas Sekolah
-            </h2>
+    <main class="container text-center my-5">
+        <div class="row justify-content-center g-4">
 
-            <div class="row g-4">
-                <?php while ($data = mysqli_fetch_assoc($result)) { ?>
-                    <div class="col-12">
-                        <figure
-                            class="text-center p-4 rounded shadow-sm"
-                            style="background-color: #fffccf">
-                            <img src="../img/fasilitas/<?= htmlspecialchars($data['gambar']); ?>"
-                                alt="<?= htmlspecialchars($data['fasilitas'] ?? 'Gambar Fasilitas'); ?>"
-                                class="img-fluid rounded mb-3" />
+            <div class="col-12 col-md-6">
+                <section id="dataPTKPD" class="section-box">
+                    <h2>Data PTK dan PD</h2>
+                    <div class="table-responsive">
+                        <table
+                            class="table table-bordered table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Uraian</th>
+                                    <th>Guru</th>
+                                    <th>Tendik</th>
+                                    <th>PTK</th>
+                                    <th>PD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_ptk = mysqli_fetch_assoc($result_ptk)) : ?>
+                                    <tr>
+                                        <td><?= $data_ptk['id']; ?></td>
+                                        <td><?= $data_ptk['uraian']; ?></td>
+                                        <td><?= $data_ptk['guru']; ?></td>
+                                        <td><?= $data_ptk['tendik']; ?></td>
+                                        <td><?= $data_ptk['ptk']; ?></td>
+                                        <td><?= $data_ptk['pd']; ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
 
-                            <figcaption class="text-justify">
-                                <b style="color: #f8ae84"><?= $data['fasilitas']; ?>:</b>
-                                <?= $data['deskripsi']; ?>
-                            </figcaption>
-                        </figure>
+                            </tbody>
+                        </table>
                     </div>
-                <?php } ?>
+                </section>
             </div>
-        </section>
+
+            <div class="col-12 col-md-6">
+                <section id="dataSarpras" class="section-box">
+                    <h2>Data Sarpras</h2>
+                    <div class="table-responsive">
+                        <table
+                            class="table table-bordered table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Uraian</th>
+                                    <th>Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_sarpras = mysqli_fetch_assoc($result_sarpras)) : ?>
+                                    <tr>
+                                        <td><?= $data_sarpras['id']; ?></td>
+                                        <td><?= $data_sarpras['uraian']; ?></td>
+                                        <td><?= $data_sarpras['jumlah']; ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-12 col-lg-10">
+                <section id="dataRombongan" class="section-box">
+                    <h2>Data Rombongan Mengajar</h2>
+                    <div class="table-responsive">
+                        <table
+                            class="table table-bordered table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Uraian</th>
+                                    <th>Detail</th>
+                                    <th>Jumlah</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_rombongan = mysqli_fetch_assoc($result_rombongan)) : ?>
+                                    <tr>
+                                        <td><?= $data_rombongan['id']; ?></td>
+                                        <td><?= $data_rombongan['kelas']; ?></td>
+                                        <td><?= $data_rombongan['detail']; ?></td>
+                                        <td><?= $data_rombongan['jumlah']; ?></td>
+                                        <td><?= $data_rombongan['total']; ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
     </main>
 
-    <br />
     <footer
         class="text-center py-4 mt-5"
         style="background-color: #446b42; color: #fffccf">

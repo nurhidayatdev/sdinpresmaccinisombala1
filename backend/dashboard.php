@@ -60,10 +60,9 @@ if ($result->num_rows > 0) {
     </div>
     <ul class="nav flex-column mt-3">
       <li><a class="nav-link active" href="#"><i data-lucide="grid"></i> Dashboard</a></li>
-      <li><a class="nav-link" href="dashboard_profil_sekolah.php"><i data-lucide="school"></i> Profil Sekolah</a></li>
-      <li><a class="nav-link" href="dashboard_info_akademik.php"><i data-lucide="graduation-cap"></i> Info Akademik</a></li>
-      <li><a class="nav-link" href="dashboard_fasilitas.php"><i data-lucide="building-2"></i> Fasilitas Sekolah</a></li>
-      <li><a class="nav-link" href="dashboard_login.php"><i data-lucide="users"></i> Data Login</a></li>
+      <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+      <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
+      <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
       <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
@@ -85,34 +84,31 @@ if ($result->num_rows > 0) {
         <a href="dashboard_profil_sekolah.php">
 <div class="card card-custom p-3 text-center">
           <i data-lucide="school" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Profil Sekolah</h5>
+          <h5>Profil</h5>
           <p class="text-muted mb-0">Lihat dan kelola informasi sekolah</p>
         </div>
         </a>
+
         
-<a href="dashboard_info_akademik.php">
+
+        <a href="dashboard_akademik.php">
  <div class="card card-custom p-3 text-center">
-          <i data-lucide="graduation-cap" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Info Akademik</h5>
+          <i data-lucide="book-open-text" class="mb-2" style="width: 32px; height: 32px;"></i>
+          <h5>Akademik</h5>
           <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
         </div>
         </a>
-
-        <a href="dashboard_fasilitas.php">
- <div class="card card-custom p-3 text-center">
-          <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Fasilitas</h5>
-          <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
-        </div>
-        </a>
-
-        <a href="dashboard_login.php">
+    
+<a href="dashboard_user.php">
  <div class="card card-custom p-3 text-center">
           <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Data Login</h5>
-          <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
+          <h5>User</h5>
+          <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
         </div>
         </a>
+        
+
+    
       </div>
       <br>
       <div class="chart-container card card-custom p-3 text-center" style="width: 75%; margin: auto;">
@@ -146,22 +142,22 @@ const ctx = document.getElementById('ptkPdChart').getContext('2d');
                 {
                     label: 'Jumlah Guru',
                     data: dataGuru,
-                    backgroundColor: 'rgba(54, 162, 235, 0.8)', // Biru
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: '#446b42', // Biru
+                    borderColor: '#446b42',
                     borderWidth: 1
                 },
                 {
                     label: 'Jumlah Tendik',
                     data: dataTendik,
-                    backgroundColor: 'rgba(255, 99, 132, 0.8)', // Merah
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: '#f8ae84', // Merah
+                    borderColor: '#f8ae84',
                     borderWidth: 1
                 },
                 {
                     label: 'Total PTK',
                     data: dataPTK,
-                    backgroundColor: 'rgba(75, 192, 192, 0.8)', // Hijau
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: '#fffccf', // Hijau
+                    borderColor: '#fffccf',
                     borderWidth: 1
                 }
             ]

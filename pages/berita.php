@@ -1,3 +1,9 @@
+<?php
+include '../koneksi.php';
+
+$query = "SELECT * FROM berita";
+$result = mysqli_query($koneksi, $query);
+?>
 <!DOCTYPE html>
 <html lang="id">
     <head>
@@ -28,7 +34,7 @@
             content="https://iili.io/Kcm85Ov.md.png"
         />
         <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-        <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="../style.css" />
     </head>
     <body>
@@ -57,11 +63,21 @@
                                     >Beranda</a
                                 >
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="info-akademik.html"
-                                    >Info Akademik</a
-                                >
-                            </li>
+                            <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="infoAkademikDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Akademik
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                                <li><a class="dropdown-item" href="kegiatan_akademik.php">Kegiatan Akademik</a></li>
+                                <li><a class="dropdown-item" href="info_akademik.php">Info Akademik</a></li>
+                            </ul>
+                        </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="fasilitas.php"
                                     >Fasilitas Sekolah</a
@@ -73,7 +89,7 @@
                                 >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="tentang-kami.html"
+                                <a class="nav-link" href="tentang-kami.php"
                                     >Tentang Kami</a
                                 >
                             </li>
@@ -92,103 +108,32 @@
                     Berita & Pengumuman
                 </h2>
 
-                <article
-                    class="mb-5 p-4 rounded shadow-sm"
-                    style="background-color: #fffccf"
-                >
-                    <h4 class="fw-bold" style="color: #f8ae84">
-                        Ekstrakurikuler
-                    </h4>
-                    <p class="text-justify">
-                        Ekstrakulikuler yang ada di SPF SD Inpres Maccini
-                        Sombala 1 saat ini hanya ekstrakulikuler futsal. Dulu,
-                        terdapat ektrakulikuler lain yaitu Drum Band. Namun,
-                        sekarang ekstrakulikuler itu sudah tidak aktif karena
-                        kurangnya minat siswa untuk ikut menjadi anggota.
-
-                        <p>Untuk informasi lebih lanjut mengenai pendaftaran
-                        ekstrakulikuler futsal, silakan klik link berikut ini</p>
-                        <nav>
-                         <a href="futsal.html">Daftar Ekskul Futsal</a>
-                    </nav>
-                    </p>
-                </article>
-
+                <?php while ($data = mysqli_fetch_assoc($result)) { ?>
                 <article
                     class="mb-5 p-4 rounded shadow-sm"
                     style="background-color: #fffccf"
                 >
                     <h4 class="fw-bold" style="color: #f8ae84">
                         <i
-                            >SDI Maccini Sombala I @ Field Trip Industri &
-                            Sejarah</i
+                            ><?= $data['judul']; ?></i
                         >
                     </h4>
 
                     <div class="ratio ratio-16x9 mb-3">
                         <iframe
-                            src="https://www.youtube.com/embed/E6Hlq_X4wvM?si=JN_PS3GJjoClK4Zw"
+                            src="<?= $data['link_youtube']; ?>"
                             title="YouTube video player"
                             allowfullscreen
                         ></iframe>
                     </div>
 
                     <p class="text-justify">
-                        Video ini merupakan perjalanan yang merekam
-                        langkah-langkah kecil penuh semangat dari siswa-siswi
-                        SDI Maccini Sombala 1 saat mengikuti Field Trip Industri
-                        dan Sejarah bersama Pandawa Organizer. Mereka diajak
-                        keluar dari ruang kelas untuk menyentuh langsung dunia
-                        nyata, melihat bagaimana sebuah industri bekerja, serta
-                        mengenal jejak sejarah yang membentuk bangsa.
+                        <?= $data['deskripsi']; ?>
                     </p>
-                    <p class="text-justify">
-                        Di setiap tawa, keceriaan, dan rasa ingin tahu,
-                        tersimpan pengalaman berharga yang bukan hanya
-                        memperluas wawasan, tetapi juga menumbuhkan kebersamaan
-                        serta kemandirian. Inilah potret sederhana tentang
-                        bagaimana belajar bisa terasa hidup ketika pengetahuan
-                        bertemu dengan pengalaman.
-                    </p>
+            
                 </article>
-
-                <article
-                    class="mb-5 p-4 rounded shadow-sm"
-                    style="background-color: #fffccf"
-                >
-                    <h4 class="fw-bold" style="color: #f8ae84">
-                        <i
-                            >Gambaran Kegiatan PLP 1 di UPT SPF SD Inpres
-                            Maccini Sombala 1</i
-                        >
-                    </h4>
-
-                    <div class="ratio ratio-16x9 mb-3">
-                        <iframe
-                            src="https://www.youtube.com/embed/16IwrAbf67o?si=q_DSthh85PPBhUpl"
-                            title="YouTube video player"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-
-                    <p class="text-justify">
-                        Video ini merekam jejak awal perjalanan seorang calon
-                        pendidik melalui kegiatan PLP 1 di UPT SPF SD Inpres
-                        Maccini Sombala 1. Bukan sekadar observasi, tetapi
-                        sebuah pengalaman yang mempertemukan teori dengan
-                        kenyataan di lapangan. Di sana, mahasiswa berkenalan
-                        dengan suasana sekolah, menyaksikan dinamika
-                        pembelajaran, dan merasakan interaksi hangat antara guru
-                        dan siswa.
-                    </p>
-                    <p class="text-justify">
-                        Momen-momen sederhana itu menjadi pijakan penting untuk
-                        menapaki jalan menuju dunia pendidikan yang
-                        sesungguhnya, membentuk pemahaman bahwa menjadi pendidik
-                        bukan hanya soal mengajar, tetapi juga tentang
-                        merangkul, memahami, dan mendampingi.
-                    </p>
-                </article>
+ <?php } ?>
+              
             </section>
         </main>
 

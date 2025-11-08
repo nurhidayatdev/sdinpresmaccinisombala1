@@ -1,16 +1,18 @@
 <?php
 session_start();
-include '../koneksi.php';
+include '../../koneksi.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
-  header("Location: ../index.php");
+  header("Location: ../../index.php");
   exit();
 }
 
 // Ambil dari session
 $nama = $_SESSION['nama']; // dari database (bukan input login)
 $email = $_SESSION['email'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +21,11 @@ $email = $_SESSION['email'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
-  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
+    <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
- 
+
 </head>
 <body>
 
@@ -39,11 +41,11 @@ $email = $_SESSION['email'];
 
     </div>
     <ul class="nav flex-column mt-3">
-     <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
-     <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
-      <li><a class="nav-link active" href="#"><i data-lucide="graduation-cap"></i> Akademik</a></li>
-      <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
-      <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
+      <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
+      <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+      <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
+      <li><a class="nav-link active" href="#"><i data-lucide="users"></i> User</a></li>
+      <li><a class="nav-link text-warning" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 
@@ -60,36 +62,20 @@ $email = $_SESSION['email'];
     <div class="container-fluid mt-4">
       <h3 class="fw-bold mb-3">Dashboard Utama</h3>
 
-      <div class="dashboard-cards">
-
-        <a href="dashboard_kegiatan_akademik.php">
- <div class="card card-custom p-3 text-center">
-          <i data-lucide="book-open-text" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Kegiatan Akademik</h5>
-          <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
-        </div>
-        </a>
-        
-<a href="dashboard_info_akademik.php">
- <div class="card card-custom p-3 text-center">
-          <i data-lucide="graduation-cap" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Info Akademik</h5>
-          <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
-        </div>
-        </a>
-
-        <a href="dashboard_berita.php">
+      
+<div class="dashboard-cards">
+        <a href="dashboard_kelompok.php">
  <div class="card card-custom p-3 text-center">
           <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Berita & Pengumuman</h5>
+          <h5>Anggota Kelompok</h5>
           <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
         </div>
         </a>
 
-        <a href="dashboard_futsal.php">
+        <a href="dashboard_login.php">
  <div class="card card-custom p-3 text-center">
           <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
-          <h5>Form Futsal</h5>
+          <h5>Data Login</h5>
           <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
         </div>
         </a>
@@ -107,6 +93,8 @@ $email = $_SESSION['email'];
       const sidebar = document.getElementById('sidebarMenu');
       sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
     });
+
+   
   </script>
 
 </body>

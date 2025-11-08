@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../koneksi.php';
+include '../../koneksi.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
-  header("Location: ../index.php");
+  header("Location: ../../index.php");
   exit();
 }
 
@@ -12,7 +12,7 @@ if (!isset($_SESSION['email'])) {
 $nama = $_SESSION['nama']; // dari database (bukan input login)
 $email = $_SESSION['email'];
 
-$query = "SELECT * FROM login";
+$query = "SELECT * FROM form_futsal";
 $result = mysqli_query($koneksi, $query);
 ?>
 
@@ -23,9 +23,9 @@ $result = mysqli_query($koneksi, $query);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
-  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-  <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
+  <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="../../style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
@@ -44,10 +44,10 @@ $result = mysqli_query($koneksi, $query);
     </div>
     <ul class="nav flex-column mt-3">
       <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
-      <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
-      <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
-      <li><a class="nav-link active" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
-      <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
+     <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+      <li><a class="nav-link active" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
+      <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
+      <li><a class="nav-link text-warning" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 
@@ -66,27 +66,37 @@ $result = mysqli_query($koneksi, $query);
         <h2 class="fw-bold mb-3 text-success">Data Login Siswa</h2>
 
 
-        <a href="tambah.php?tabel=login" class="btn btn-success mb-3">+ Tambah Data</a>
+        <a href="../crud/tambah.php?tabel=login" class="btn btn-success mb-3">+ Tambah Data</a>
         <div class="table-responsive">
           <table class="table table-bordered table-striped align-middle">
             <thead class="table-success text-center">
               <tr>
-                <th>Email</th>
-                <th>Password</th>
+                <th>ID</th>
+                <th>NISN</th>
                 <th>Nama</th>
+                <th>Kelas</th>
+                <th>Jenis Kelamin</th>
+                <th>NO HP</th>
+                <th>Alasan Daftar</th>
+                <th>Tanggal Daftar</th>
                 <th width="150px">Aksi</th>
               </tr>
             </thead>
             <tbody>
               <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                 <tr>
-                  <td><?= $row['email']; ?></td>
-                  <td><?= md5($row['password']); ?></td>
+                  <td><?= $row['id']; ?></td>
+                  <td><?= $row['nisn']; ?></td>
                   <td><?= $row['nama']; ?></td>
+                  <td><?= $row['kelas']; ?></td>
+                  <td><?= $row['jk']; ?></td>
+                  <td><?= $row['nohp']; ?></td>
+                  <td><?= $row['alasan']; ?></td>
+                  <td><?= $row['tanggal_daftar']; ?></td>
                   <td class="text-center">
-                    <a href="edit.php?file=login&tabel=login&id=<?= $row['id']; ?>"
+                    <a href="../crud/edit.php?file=login&tabel=login&id=<?= $row['id']; ?>"
                       class="btn btn-warning btn-sm">Edit</a>
-                    <a href="hapus.php?tabel=login&id=<?= $row['id']; ?>"
+                    <a href="../crud/hapus.php?tabel=login&id=<?= $row['id']; ?>"
                       onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
                       class="btn btn-danger btn-sm">Hapus</a>
                   </td>

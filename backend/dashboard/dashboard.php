@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../koneksi.php';
+include '../../koneksi.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
-  header("Location: ../index.php");
+  header("Location: ../../index.php");
   exit();
 }
 
@@ -39,9 +39,9 @@ if ($result->num_rows > 0) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
-  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
+    <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -63,7 +63,7 @@ if ($result->num_rows > 0) {
       <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
       <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
-      <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
+      <li><a class="nav-link text-warning" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 

@@ -17,7 +17,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Info Akademik - SD Inpres Maccini Sombala 1</title>
-    <link rel="icon" href="../img/main/icon.png" />
+    <link rel="icon" href="../backend/img/main/icon.png" />
     <meta name="title" content="SD Inpres Maccini Sombala 1" />
     <meta name="description" content="© 2025 Kelompok 5" />
     <meta property="og:type" content="website" />
@@ -87,7 +87,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             <a class="nav-link" href="tentang-kami.php">Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../backend/login.php">Login</a>
+                            <a class="nav-link" href="../backend/login/login.php">Login</a>
                         </li>
                     </ul>
                 </div>

@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../koneksi.php';
+include '../../koneksi.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -30,9 +30,9 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - SD Inpres Maccini Sombala 1</title>
-    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
+    <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
@@ -54,7 +54,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link active" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
       <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
-      <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
+      <li><a class="nav-link text-warning" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
         </ul>
     </nav>
 
@@ -101,7 +101,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_ptk['ptk']; ?></td>
                                         <td><?= $data_ptk['pd']; ?></td>
                                         <td class="text-center">
-                                            <a href="edit.php?file=info-akademik&tabel=ptk_pd&id=<?= $data_ptk['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info-akademik&tabel=ptk_pd&id=<?= $data_ptk['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                             
                                         </td>
@@ -135,7 +135,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_sarpras['jumlah']; ?></td>
                                        
                                         <td class="text-center">
-                                            <a href="edit.php?file=info-akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info-akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                            
                                         </td>
@@ -173,7 +173,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_rombongan['total']; ?></td>
                                        
                                         <td class="text-center">
-                                            <a href="edit.php?file=info-akademik&tabel=rombongan&id=<?= $data_rombongan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info-akademik&tabel=rombongan&id=<?= $data_rombongan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                            
                                         </td>

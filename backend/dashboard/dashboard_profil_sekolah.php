@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../koneksi.php';
+include '../../koneksi.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
-  header("Location: ../index.php");
+  header("Location: ../../index.php");
   exit();
 }
 
@@ -33,9 +33,9 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
-  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
+    <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -56,7 +56,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
       <li><a class="nav-link active" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
       <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
-      <li><a class="nav-link text-warning" href="../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
+      <li><a class="nav-link text-warning" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 
@@ -105,7 +105,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                             <td><?= $data_profil['provinsi']; ?></td>
                             <td><?= $data_profil['negara']; ?></td>
                             <td class="text-center">
-                                <a href="edit.php?file=profil_sekolah&tabel=profil_sekolah&id=1&bagian=identitas" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="../crud/edit.php?file=profil_sekolah&tabel=profil_sekolah&id=1&bagian=identitas" class="btn btn-warning btn-sm">Edit</a>
                             </td>
                         </tr>
 
@@ -144,7 +144,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                             <td><?= $data_profil['rekening_atas_nama']; ?></td>
                             <td><?= $data_profil['npwp']; ?></td>
                             <td class="text-center">
-                                <a href="edit.php?file=profil_sekolah&tabel=profil_sekolah&id=1&bagian=pelengkap" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="../crud/edit.php?file=profil_sekolah&tabel=profil_sekolah&id=1&bagian=pelengkap" class="btn btn-warning btn-sm">Edit</a>
                             </td>
                         </tr>
 
@@ -175,7 +175,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                             <td><?= $data_profil['akreditasi']; ?></td>
                             <td><?= $data_profil['kurikulum']; ?></td>
                             <td class="text-center">
-                                <a href="edit.php?file=profil_sekolah&tabel=profil_sekolah&id=1&bagian=lainnya" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="../crud/edit.php?file=profil_sekolah&tabel=profil_sekolah&id=1&bagian=lainnya" class="btn btn-warning btn-sm">Edit</a>
                             </td>
                         </tr>
 
@@ -199,7 +199,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                         <tr>
                             <td><?= $data_visi['pernyataan_visi']; ?></td>
                             <td class="text-center">
-                                <a href="edit.php?file=profil_sekolah&tabel=visi&id=<?= $data_visi['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="../crud/edit.php?file=profil_sekolah&tabel=visi&id=<?= $data_visi['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                             </td>
                         </tr>
 
@@ -223,7 +223,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                             <tr>
                                 <td><?= $data_misi['pernyataan_misi']; ?></td>
                                 <td class="text-center">
-                                    <a href="edit.php?file=profil_sekolah&tabel=misi&id=<?= $data_misi['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="../crud/edit.php?file=profil_sekolah&tabel=misi&id=<?= $data_misi['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
@@ -248,7 +248,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                             <tr>
                                 <td><?= $data_tujuan['pernyataan_tujuan']; ?></td>
                                 <td class="text-center">
-                                    <a href="edit.php?file=profil_sekolah&tabel=tujuan&id=<?= $data_tujuan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="../crud/edit.php?file=profil_sekolah&tabel=tujuan&id=<?= $data_tujuan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
 
 $login_error = '';
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['email'] = $data['email'];
     $_SESSION['nama'] = $data['nama'];
 
-    header("Location: dashboard.php");
+    header("Location: ../dashboard/dashboard.php");
     exit;
   } else {
     $login_error = "NISN atau Password salah!";
@@ -33,8 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login Siswa - SD Inpres Maccini Sombala 1</title>
-  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
+  <script src="../../jquery/dist/jquery.bundle.min.js"></script>
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 
 <body>
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 
-  <script src="../jquery/dist/jquery.min.js"></script>
+  
   <script>
     $("#togglePassword").on("click", function() {
       const pass = $("#password");

@@ -1,0 +1,300 @@
+/* =========================
+   THEME VARIABLES
+   ========================= */
+:root {
+  --hijau: #446b42;
+  --jingga: #f8ae84;
+  --kuning: #fffccf;
+  --green: #446B42;
+  --orange: #F8AE84;
+  --yellow: #FFFCCF;
+  --white-rgba: rgba(255,255,255,0.15);
+}
+
+a {
+  text-decoration: none;
+}
+.navbar-custom {
+    background-color: var(--hijau);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: var(--kuning);
+    transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--jingga);
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: var(--kuning);
+}
+
+.navbar-custom .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+h2 {
+        color: #446b42;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    table {
+        background-color: white;
+        border: 1px solid #446b42 !important;
+    }
+    th {
+        background-color: #446b42 !important;
+        color: white !important;
+    }
+    tr:nth-child(even) {
+        background-color: #f8ae84 !important;
+    }
+    tr:hover {
+        background-color: #ffe8d0 !important;
+    }
+    .section-box {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+     .form-card {
+      background-color: var(--orange);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 600px;
+      margin: 60px auto;
+    }
+
+    h2 {
+      color: var(--green);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .form-control, .form-select {
+      border: 2px solid var(--green);
+      background-color: var(--yellow);
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--orange);
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(68,107,66,0.3);
+    }
+
+    .btn-submit {
+      background-color: var(--green);
+      color: #fff;
+      width: 100%;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .btn-submit:hover {
+      background-color: #355633;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--green);
+      margin-top: 25px;
+    }
+     .login-card {
+      background-color: var(--orange);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 400px;
+      margin: 80px auto;
+    }
+
+    h2 {
+      color: var(--green);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .form-control {
+      border: 2px solid var(--green);
+      background-color: var(--yellow);
+    }
+
+    .form-control:focus {
+      border-color: var(--orange);
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(68,107,66,0.3);
+    }
+
+    .btn-login {
+      background-color: var(--green);
+      color: #fff;
+      width: 100%;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .btn-login:hover {
+      background-color: #355633;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 38px;
+      background: none;
+      border: none;
+      color: var(--green);
+      cursor: pointer;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--green);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--green);
+      margin-top: 20px;
+    }
+
+ /* Sidebar */
+    .sidebar {
+      height: 100vh;
+      width: 260px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: var(--green);
+      color: white;
+      transition: all 0.3s ease;
+      z-index: 2000;
+    }
+
+    .sidebar .brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem;
+    }
+
+    .sidebar .user-info {
+      text-align: center;
+      padding: 0.5rem 0 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sidebar .user-info img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 2px solid #fff;
+    }
+
+    .sidebar .nav-link {
+      color: #fff;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      background-color: var(--green);
+      border-left: 4px solid #ffc107;
+    }
+
+    /* Main content */
+    #mainContent {
+      margin-left: 260px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    /* Topbar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 10px 20px;
+      border-bottom: 1px solid #dee2e6;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--green);
+      color: white;
+    }
+
+    .welcome-text {
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    /* Dashboard cards */
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 20px;
+    }
+
+    .card-custom {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+    }
+
+    /* 📱 Saat layar kecil */
+    @media (max-width: 992px) {
+      .sidebar {
+        display: none;
+      }
+
+      #mainContent {
+        margin-left: 0;
+      }
+
+      .toggle-sidebar-btn {
+        display: inline-block;
+        background: none;
+        border: none;
+        color: white;
+      }
+    }

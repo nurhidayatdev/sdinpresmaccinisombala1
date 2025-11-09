@@ -66,15 +66,16 @@ $result = mysqli_query($koneksi, $query);
 
         <?php mysqli_data_seek($result, 0); ?>
         <div class="fasilitas-sekolah">
-          <a href="../crud/tambah.php?tabel=fasilitas_sekolah" class="btn btn-success mb-3">+ Tambah Data</a>
+          <a href="../crud/tambah.php?file=kelompok&tabel=kelompok&" class="btn btn-success mb-3">+ Tambah Data</a>
           <div class="table-responsive">
             <table class="table table-bordered table-striped align-middle">
               <thead class="table-success text-center">
                 <tr>
-                  <th>Gambar</th>
+                  
                   <th>Nama</th>
                   <th>NIM</th>
                   <th>Link Artikel</th>
+                  <th>Gambar</th>
                   <th width="150px">Aksi</th>
                 </tr>
               </thead>
@@ -82,7 +83,11 @@ $result = mysqli_query($koneksi, $query);
                 <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                   <tr>
 
-                    <td>
+                   
+                    <td><?= $row['nama']; ?></td>
+                    <td><?= $row['nim']; ?></td>
+                    <td><?= $row['link_artikel']; ?></td>
+                     <td>
                       <?php if (!empty($row['gambar'])): ?>
                         <img src="../img/kelompok/<?php echo htmlspecialchars($row['gambar']); ?>"
                           alt="<?php echo htmlspecialchars($row['nama']); ?>"
@@ -92,9 +97,6 @@ $result = mysqli_query($koneksi, $query);
                         <span class="text-muted">Belum ada gambar</span>
                       <?php endif; ?>
                     </td>
-                    <td><?= $row['nama']; ?></td>
-                    <td><?= $row['nim']; ?></td>
-                    <td><?= $row['link_artikel']; ?></td>
                     <td class="text-center">
                       <a href="../crud/edit.php?file=kelompok&tabel=kelompok&id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                       <a href="../crud/hapus.php?tabel=kelompok&id=<?= $row['id']; ?>"
@@ -113,8 +115,6 @@ $result = mysqli_query($koneksi, $query);
 
   <script>
     lucide.createIcons();
-
-    // ✅ tombol sidebar di layar kecil
     document.getElementById('toggleSidebar').addEventListener('click', function() {
       const sidebar = document.getElementById('sidebarMenu');
       sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';

@@ -116,7 +116,7 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                 <div class="col-lg-8">
                     <h1 class="fw-bold">SD Inpres Maccini Sombala 1</h1>
                     <img
-                        src="img/main/icon.png"
+                        src="backend/img/main/icon.png"
                         alt="Logo SD Inpres Maccini Sombala 1"
                         class="img-fluid my-3"
                         style="width: 150px" />

@@ -80,7 +80,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                 <div class="pembagian-tugas-mengajar mb-3">
 
                     <h4 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Mengajar</h4>
-                    <a href="../crud/tambah.php?tabel=pembina_kegiatan" class="btn btn-success mb-3">+ Tambah Data</a>
+                    <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=mengajar" class="btn btn-success mb-3">+ Tambah Data</a>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
                             <thead class="table-success text-center">
@@ -106,9 +106,9 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_mengajar['kelas_mapel']; ?></td>
                                         <td><?= $data_mengajar['jtm_per_minggu']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan-akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
-                                            <a href="../crud/hapus.php?tabel=mengajar&id=<?= $row['id']; ?>"
+                                            <a href="../crud/hapus.php?tabel=mengajar&id=<?= $data_mengajar['id']; ?>"
                                                 onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
                                                 class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
@@ -123,7 +123,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                 <div class="pembagian-tugas-pembina-kegiatan mb-3">
 
                     <h4 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Pembina Kegiatan</h4>
-                    <a href="../crud/tambah.php?tabel=pembina_kegiatan" class="btn btn-success mb-3">+ Tambah Data</a>
+                    <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=pembina_kegiatan" class="btn btn-success mb-3">+ Tambah Data</a>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
                             <thead class="table-success text-center">
@@ -145,9 +145,9 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_pembina['pangkat_gol']; ?></td>
                                         <td><?= $data_pembina['tugas_pembinaan']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan-akademik&tabel=pembina_kegiatan&id=<?= $data_mengajar['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
-                                            <a href="../crud/hapus.php?tabel=pembina_kegiatan&id=<?= $row['id']; ?>"
+                                            <a href="../crud/hapus.php?tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>"
                                                 onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
                                                 class="btn btn-danger btn-sm">Hapus</a>
                                         </td>

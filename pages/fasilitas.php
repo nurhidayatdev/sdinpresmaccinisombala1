@@ -102,7 +102,7 @@ $result = mysqli_query($koneksi, $query);
                         <figure
                             class="text-center p-4 rounded shadow-sm"
                             style="background-color: #fffccf">
-                            <img src="../img/fasilitas/<?= htmlspecialchars($data['gambar']); ?>"
+                            <img src="../backend/img/fasilitas/<?= htmlspecialchars($data['gambar']); ?>"
                                 alt="<?= htmlspecialchars($data['fasilitas'] ?? 'Gambar Fasilitas'); ?>"
                                 class="img-fluid rounded mb-3" />
 

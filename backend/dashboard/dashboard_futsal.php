@@ -66,7 +66,7 @@ $result = mysqli_query($koneksi, $query);
         <h2 class="fw-bold mb-3 text-success">Data Login Siswa</h2>
 
 
-        <a href="../crud/tambah.php?tabel=login" class="btn btn-success mb-3">+ Tambah Data</a>
+        <a href="../crud/tambah.php?file=form_futsal&tabel=form_futsal" class="btn btn-success mb-3">+ Tambah Data</a>
         <div class="table-responsive">
           <table class="table table-bordered table-striped align-middle">
             <thead class="table-success text-center">
@@ -94,9 +94,9 @@ $result = mysqli_query($koneksi, $query);
                   <td><?= $row['alasan']; ?></td>
                   <td><?= $row['tanggal_daftar']; ?></td>
                   <td class="text-center">
-                    <a href="../crud/edit.php?file=login&tabel=login&id=<?= $row['id']; ?>"
+                    <a href="../crud/edit.php?file=form_futsal&tabel=form_futsal&id=<?= $row['id']; ?>"
                       class="btn btn-warning btn-sm">Edit</a>
-                    <a href="../crud/hapus.php?tabel=login&id=<?= $row['id']; ?>"
+                    <a href="../crud/hapus.php?tabel=form_futsal&id=<?= $row['id']; ?>"
                       onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
                       class="btn btn-danger btn-sm">Hapus</a>
                   </td>

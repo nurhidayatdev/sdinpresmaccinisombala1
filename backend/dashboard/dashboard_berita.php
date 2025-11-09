@@ -66,7 +66,7 @@ $result = mysqli_query($koneksi, $query);
         <h2 class="fw-bold mb-3 text-success">Data Login Siswa</h2>
 
 
-        <a href="../crud/tambah.php?tabel=login" class="btn btn-success mb-3">+ Tambah Data</a>
+        <a href="../crud/tambah.php?file=berita&tabel=berita" class="btn btn-success mb-3">+ Tambah Data</a>
         <div class="table-responsive">
           <table class="table table-bordered table-striped align-middle">
             <thead class="table-success text-center">

@@ -2,9 +2,6 @@
    THEME VARIABLES
    ========================= */
 :root {
-  --hijau: #446b42;
-  --jingga: #f8ae84;
-  --kuning: #fffccf;
   --green: #446B42;
   --orange: #F8AE84;
   --yellow: #FFFCCF;
@@ -15,7 +12,7 @@ a {
   text-decoration: none;
 }
 .navbar-custom {
-    background-color: var(--hijau);
+    background-color: var(--green);
 }
 
 .navbar-custom .navbar-brand,
@@ -25,11 +22,11 @@ a {
 }
 
 .navbar-custom .nav-link:hover {
-    color: var(--jingga);
+    color: var(--orange);
 }
 
 .navbar-custom .navbar-toggler {
-    border-color: var(--kuning);
+    border-color: var(--yellow);
 }
 
 .navbar-custom .navbar-toggler-icon {

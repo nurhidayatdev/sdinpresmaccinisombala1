@@ -21,10 +21,6 @@ if (!in_array($tabel, $tabel_diizinkan)) {
   die("Tabel tidak diizinkan!");
 }
 
-
-
-
-
 if (isset($_POST['tambah'])) {
   switch ($tabel) {
     case 'guru':

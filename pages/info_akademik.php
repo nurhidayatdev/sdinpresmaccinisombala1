@@ -72,7 +72,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                 aria-expanded="false">
                                 Akademik
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                            <ul class="dropdown-menu custom-dropdown" aria-labelledby="infoAkademikDropdown">
                                 <li><a class="dropdown-item" href="kegiatan_akademik.php">Kegiatan Akademik</a></li>
                                 <li><a class="dropdown-item" href="#">Info Akademik</a></li>
                             </ul>

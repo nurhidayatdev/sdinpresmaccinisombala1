@@ -84,7 +84,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                 aria-expanded="false">
                                 Akademik
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                            <ul class="dropdown-menu custom-dropdown" aria-labelledby="infoAkademikDropdown">
                                 <li><a class="dropdown-item" href="#">Kegiatan Akademik</a></li>
                                 <li><a class="dropdown-item" href="info_akademik.php">Info Akademik</a></li>
                             </ul>

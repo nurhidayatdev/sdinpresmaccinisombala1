@@ -73,7 +73,7 @@ $result = mysqli_query($koneksi, $query);
                                 aria-expanded="false">
                                 Akademik
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                            <ul class="dropdown-menu custom-dropdown" aria-labelledby="infoAkademikDropdown">
                                 <li><a class="dropdown-item" href="kegiatan_akademik.php">Kegiatan Akademik</a></li>
                                 <li><a class="dropdown-item" href="info_akademik.php">Info Akademik</a></li>
                             </ul>
@@ -108,7 +108,7 @@ $result = mysqli_query($koneksi, $query);
 
                 <figure>
                     <img
-                        src="../img/kelompok/pictkelompok.jpg"
+                        src="../backend/img/kelompok/pictkelompok.jpg"
                         alt="Foto Kelompok"
                         class="img-fluid rounded shadow"
                     />
@@ -122,7 +122,7 @@ $result = mysqli_query($koneksi, $query);
                      <?php while ($data = mysqli_fetch_assoc($result)) { ?>
                     <div class="col-6 col-md-4 col-lg-2">
                         <img
-                            src="../img/kelompok/<?= htmlspecialchars($data['gambar']); ?>"
+                            src="../backend/img/kelompok/<?= htmlspecialchars($data['gambar']); ?>"
                             alt="<?= htmlspecialchars($data['nama'] ?? 'Gambar'); ?>"
                             class="img-fluid rounded shadow-sm mb-2"
                         />

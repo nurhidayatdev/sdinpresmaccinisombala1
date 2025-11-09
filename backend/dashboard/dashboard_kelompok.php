@@ -72,7 +72,7 @@ $result = mysqli_query($koneksi, $query);
               <thead class="table-success text-center">
                 <tr>
                   
-                  <th>Nama</th>
+                  <th>Nama Lengkap</th>
                   <th>NIM</th>
                   <th>Link Artikel</th>
                   <th>Gambar</th>

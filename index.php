@@ -59,8 +59,8 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                 <button
                     class="navbar-toggler"
                     type="button"
-                    data$data_profil-bs-toggle="collapse"
-                    data$data_profil-bs-target="#navbarNav"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
                     aria-controls="navbarNav"
                     aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -82,10 +82,11 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                                 aria-expanded="false">
                                 Akademik
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="infoAkademikDropdown">
+                            <ul class="dropdown-menu custom-dropdown" aria-labelledby="infoAkademikDropdown">
                                 <li><a class="dropdown-item" href="pages/kegiatan_akademik.php">Kegiatan Akademik</a></li>
                                 <li><a class="dropdown-item" href="pages/info_akademik.php">Info Akademik</a></li>
                             </ul>
+
                         </li>
 
                         <li class="nav-item">
@@ -404,8 +405,6 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
             </p>
         </div>
     </footer>
-
-
 </body>
 
 </html>

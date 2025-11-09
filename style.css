@@ -17,8 +17,9 @@ a {
 
 .navbar-custom .navbar-brand,
 .navbar-custom .nav-link {
-    color: var(--kuning);
+    color: var(--yellow);
     transition: color 0.3s ease;
+    
 }
 
 .navbar-custom .nav-link:hover {
@@ -32,6 +33,37 @@ a {
 .navbar-custom .navbar-toggler-icon {
     filter: brightness(0) invert(1);
 }
+
+/* === Dropdown dengan tema SD Maccini Sombala 1 === */
+.custom-dropdown {
+  background-color: var(--green);
+  border: 1px solid var(--orange);
+  border-radius: 8px;
+  padding: 0.3rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Item dropdown */
+.custom-dropdown .dropdown-item {
+  color: var(--yellow);
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.custom-dropdown .dropdown-item:hover {
+  background-color: var(--orange);
+  color: var(--green);
+  transform: translateX(3px);
+}
+
+/* Divider (jika ada) */
+.custom-dropdown .dropdown-divider {
+  border-color: var(--yellow);
+  opacity: 0.4;
+}
+
 
 h2 {
         color: #446b42;

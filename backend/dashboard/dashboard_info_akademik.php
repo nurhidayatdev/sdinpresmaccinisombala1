@@ -101,7 +101,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_ptk['ptk']; ?></td>
                                         <td><?= $data_ptk['pd']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=info-akademik&tabel=ptk_pd&id=<?= $data_ptk['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=ptk_pd&id=<?= $data_ptk['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                             
                                         </td>
@@ -135,7 +135,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_sarpras['jumlah']; ?></td>
                                        
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=info-akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                            
                                         </td>
@@ -173,7 +173,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_rombongan['total']; ?></td>
                                        
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=info-akademik&tabel=rombongan&id=<?= $data_rombongan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=rombongan_mengajar&id=<?= $data_rombongan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                            
                                         </td>
@@ -193,7 +193,6 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <script>
         lucide.createIcons();
 
-        // ✅ tombol sidebar di layar kecil
         document.getElementById('toggleSidebar').addEventListener('click', function() {
             const sidebar = document.getElementById('sidebarMenu');
             sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';

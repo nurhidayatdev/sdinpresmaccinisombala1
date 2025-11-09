@@ -73,7 +73,7 @@ $result = mysqli_query($koneksi, $query);
               <tr>
                 <th>Email</th>
                 <th>Password</th>
-                <th>Nama</th>
+                <th>Nama Lengkap</th>
                 <th width="150px">Aksi</th>
               </tr>
             </thead>

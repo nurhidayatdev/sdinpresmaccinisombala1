@@ -43,7 +43,7 @@ $email = $_SESSION['email'];
      <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link active" href="#"><i data-lucide="graduation-cap"></i> Akademik</a></li>
       <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
-      <li><a class="nav-link text-warning" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
+      <li><a class="nav-link text-danger" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 

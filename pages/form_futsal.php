@@ -12,7 +12,7 @@ if (isset($_POST['tambah'])) {
         
             mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
                 VALUES ('$nisn', '$nama', '$kelas', '$jk', '$nohp', '$alasan')");
-            header("Location: ../backend/dashboard/dashboard_futsal.php");
+            header("Location: form_futsal.php");
         
 }
 ?>

@@ -49,6 +49,7 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" />
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -70,7 +71,7 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Beranda</a>
+                            <a class="nav-link active" href="#"><i data-lucide="home"></i> Beranda</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a
@@ -80,28 +81,28 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Akademik
+                                <i data-lucide="graduation-cap"></i> Akademik
                             </a>
                             <ul class="dropdown-menu custom-dropdown" aria-labelledby="infoAkademikDropdown">
-                                <li><a class="dropdown-item" href="pages/kegiatan_akademik.php">Kegiatan Akademik</a></li>
-                                <li><a class="dropdown-item" href="pages/info_akademik.php">Info Akademik</a></li>
+                                <li><a class="dropdown-item" href="pages/kegiatan_akademik.php"><i data-lucide="calendar-check"></i> Kegiatan Akademik</a></li>
+                                <li><a class="dropdown-item" href="pages/info_akademik.php"><i data-lucide="clipboard-check"></i> Info Akademik</a></li>
                             </ul>
 
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/fasilitas.php">Fasilitas Sekolah</a>
+                            <a class="nav-link" href="pages/fasilitas.php"><i data-lucide="building"></i> Fasilitas Sekolah</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/berita.php">Berita & Pengumuman</a>
+                            <a class="nav-link" href="pages/berita.php"><i data-lucide="megaphone"></i> Berita & Pengumuman</a>
                         </li>
                         <li class="nav-item">
                             <a
                                 class="nav-link"
-                                href="pages/tentang-kami.php">Tentang Kami</a>
+                                href="pages/tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="backend/login/login.php">Login</a>
+                            <a class="nav-link" href="backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -405,6 +406,9 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
             </p>
         </div>
     </footer>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

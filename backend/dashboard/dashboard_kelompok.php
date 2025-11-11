@@ -2,14 +2,12 @@
 session_start();
 include '../../koneksi.php';
 
-// Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
   header("Location: ../../index.php");
   exit();
 }
 
-// Ambil dari session
-$nama = $_SESSION['nama']; // dari database (bukan input login)
+$nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 $query = "SELECT * FROM kelompok";
 $result = mysqli_query($koneksi, $query);
@@ -30,7 +28,6 @@ $result = mysqli_query($koneksi, $query);
 
 <body>
 
-  <!-- Sidebar -->
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
     <div class="user-info">
@@ -43,14 +40,13 @@ $result = mysqli_query($koneksi, $query);
     </div>
     <ul class="nav flex-column mt-3">
       <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
-     <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+      <li><a class="nav-link" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
       <li><a class="nav-link active" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
       <li><a class="nav-link text-danger" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <main id="mainContent">
     <div class="topbar shadow-sm">
 
@@ -71,7 +67,7 @@ $result = mysqli_query($koneksi, $query);
             <table class="table table-bordered table-striped align-middle">
               <thead class="table-success text-center">
                 <tr>
-                  
+
                   <th>Nama Lengkap</th>
                   <th>NIM</th>
                   <th>Link Artikel</th>
@@ -83,11 +79,11 @@ $result = mysqli_query($koneksi, $query);
                 <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                   <tr>
 
-                   
+
                     <td><?= $row['nama']; ?></td>
                     <td><?= $row['nim']; ?></td>
                     <td><?= $row['link_artikel']; ?></td>
-                     <td>
+                    <td>
                       <?php if (!empty($row['gambar'])): ?>
                         <img src="../img/kelompok/<?php echo htmlspecialchars($row['gambar']); ?>"
                           alt="<?php echo htmlspecialchars($row['nama']); ?>"

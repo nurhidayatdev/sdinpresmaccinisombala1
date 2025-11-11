@@ -1,196 +1,185 @@
 <?php
-include '../koneksi.php'; // sesuaikan dengan file koneksi kamu
+include '../koneksi.php';
 
 if (isset($_POST['tambah'])) {
-    
-            $nisn = $_POST['nisn'];
-            $nama = $_POST['nama'];
-            $kelas = $_POST['kelas'];
-            $jk = $_POST['jk'];
-            $nohp = $_POST['nohp'];
-            $alasan = $_POST['alasan'];
-        
-            mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
+
+    $nisn = $_POST['nisn'];
+    $nama = $_POST['nama'];
+    $kelas = $_POST['kelas'];
+    $jk = $_POST['jk'];
+    $nohp = $_POST['nohp'];
+    $alasan = $_POST['alasan'];
+
+    mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
                 VALUES ('$nisn', '$nama', '$kelas', '$jk', '$nohp', '$alasan')");
-            header("Location: form_futsal.php");
-        
+    header("Location: form_futsal.php");
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>
-            Formulir Pendaftaran Ekskul Futsal - SD Negeri Maccini Sombala 1
-        </title>
-        <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-        <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../style.css" />
-        <script src="../jquery/dist/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="form-card">
-                <h2>⚽Formulir Pendaftaran Ekskul Futsal⚽</h2>
-                <p class="text-center text-success mb-3">
-                    <strong>SD Negeri Maccini Sombala 1</strong>
-                </p>
 
-                <form method="POST" enctype="multipart/form-data">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        Formulir Pendaftaran Ekskul Futsal - SD Negeri Maccini Sombala 1
+    </title>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+    <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../jquery/dist/jquery.min.js"></script>
+</head>
 
-                    <div class="mb-3">
-                        <label for="nisn" class="form-label">NISN</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="nisn"
-                            name="nisn"
-                            placeholder="Masukkan NISN (10 digit)"
-                        />
-                        <div class="invalid-feedback">
-                            NISN wajib diisi dan harus berupa 10 digit angka.
-                        </div>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <h2>⚽Formulir Pendaftaran Ekskul Futsal⚽</h2>
+            <p class="text-center text-success mb-3">
+                <strong>SD Negeri Maccini Sombala 1</strong>
+            </p>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="nisn" class="form-label">NISN</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="nisn"
+                        name="nisn"
+                        placeholder="Masukkan NISN (10 digit)" />
+                    <div class="invalid-feedback">
+                        NISN wajib diisi dan harus berupa 10 digit angka.
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="nama" class="form-label"
-                            >Nama Lengkap</label
-                        >
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="nama"
-                            name="nama"
-                            placeholder="Masukkan nama lengkap"
-                        />
-                        <div class="invalid-feedback">
-                            Nama lengkap wajib diisi.
-                        </div>
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="nama"
+                        name="nama"
+                        placeholder="Masukkan nama lengkap" />
+                    <div class="invalid-feedback">
+                        Nama lengkap wajib diisi.
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="kelas" class="form-label">Kelas</label>
-                        <select id="kelas" class="form-select" name="kelas">
-                            <option value="">Pilih kelas...</option>
-                            <option value="4">Kelas 4</option>
-                            <option value="5">Kelas 5</option>
-                            <option value="6">Kelas 6</option>
-                        </select>
-                        <div class="invalid-feedback">Silakan pilih kelas.</div>
+                <div class="mb-3">
+                    <label for="kelas" class="form-label">Kelas</label>
+                    <select id="kelas" class="form-select" name="kelas">
+                        <option value="">Pilih kelas...</option>
+                        <option value="4">Kelas 4</option>
+                        <option value="5">Kelas 5</option>
+                        <option value="6">Kelas 6</option>
+                    </select>
+                    <div class="invalid-feedback">Silakan pilih kelas.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jk" class="form-label">Jenis Kelamin</label>
+                    <select id="jk" class="form-select" name="jk">
+                        <option value="">Pilih jenis kelamin...</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Silakan pilih jenis kelamin.
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="jk" class="form-label">Jenis Kelamin</label>
-                        <select id="jk" class="form-select" name="jk">
-                            <option value="">Pilih jenis kelamin...</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Silakan pilih jenis kelamin.
-                        </div>
+                <div class="mb-3">
+                    <label for="nohp" class="form-label">Nomor HP Orang Tua</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="nohp"
+                        name="nohp"
+                        placeholder="Contoh: 081234567890" />
+                    <div class="invalid-feedback">
+                        Nomor HP wajib diisi dan hanya angka.
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="nohp" class="form-label"
-                            >Nomor HP Orang Tua</label
-                        >
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="nohp"
-                            name="nohp"
-                            placeholder="Contoh: 081234567890"
-                        />
-                        <div class="invalid-feedback">
-                            Nomor HP wajib diisi dan hanya angka.
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <label for="alasan" class="form-label">Alasan Ingin Mengikuti Ekskul Futsal</label>
+                    <textarea
+                        class="form-control"
+                        id="alasan"
+                        name="alasan"
+                        rows="3"
+                        placeholder="Tulis alasan kamu di sini..."></textarea>
+                    <div class="invalid-feedback">Alasan wajib diisi.</div>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="alasan" class="form-label"
-                            >Alasan Ingin Mengikuti Ekskul Futsal</label
-                        >
-                        <textarea
-                            class="form-control"
-                            id="alasan"
-                            name="alasan"
-                            rows="3"
-                            placeholder="Tulis alasan kamu di sini..."
-                        ></textarea>
-                        <div class="invalid-feedback">Alasan wajib diisi.</div>
-                    </div>
+                <button type="submit" name="tambah" class="btn btn-submit">Daftar</button>
+            </form>
 
-                    <button type="submit" name="tambah" class="btn btn-submit">Daftar</button>
-                </form>
-
-                <div class="footer">© 2025 SD Negeri Maccini Sombala 1</div>
-            </div>
+            <div class="footer">© 2025 SD Negeri Maccini Sombala 1</div>
         </div>
+    </div>
 
-      
+    <script>
+        $(function() {
+            $("#futsalForm").on("submit", function(e) {
 
-        <script>
-            $(function () {
-                $("#futsalForm").on("submit", function (e) {
-                   
-                    let valid = true;
+                let valid = true;
 
-                    const nisn = $("#nisn").val().trim();
-                    const nama = $("#nama").val().trim();
-                    const kelas = $("#kelas").val();
-                    const jk = $("#jk").val();
-                    const nohp = $("#nohp").val().trim();
-                    const alasan = $("#alasan").val().trim();
+                const nisn = $("#nisn").val().trim();
+                const nama = $("#nama").val().trim();
+                const kelas = $("#kelas").val();
+                const jk = $("#jk").val();
+                const nohp = $("#nohp").val().trim();
+                const alasan = $("#alasan").val().trim();
 
-                    $("input, select, textarea").removeClass("is-invalid");
+                $("input, select, textarea").removeClass("is-invalid");
 
-                    if (!/^\d{10}$/.test(nisn)) {
-                        $("#nisn").addClass("is-invalid");
-                        valid = false;
-                    }
+                if (!/^\d{10}$/.test(nisn)) {
+                    $("#nisn").addClass("is-invalid");
+                    valid = false;
+                }
 
-                    if (nama === "") {
-                        $("#nama").addClass("is-invalid");
-                        valid = false;
-                    }
+                if (nama === "") {
+                    $("#nama").addClass("is-invalid");
+                    valid = false;
+                }
 
-                    if (kelas === "") {
-                        $("#kelas").addClass("is-invalid");
-                        valid = false;
-                    }
+                if (kelas === "") {
+                    $("#kelas").addClass("is-invalid");
+                    valid = false;
+                }
 
-                    if (jk === "") {
-                        $("#jk").addClass("is-invalid");
-                        valid = false;
-                    }
+                if (jk === "") {
+                    $("#jk").addClass("is-invalid");
+                    valid = false;
+                }
 
-                    if (!/^\d{10,13}$/.test(nohp)) {
-                        $("#nohp").addClass("is-invalid");
-                        valid = false;
-                    }
+                if (!/^\d{10,13}$/.test(nohp)) {
+                    $("#nohp").addClass("is-invalid");
+                    valid = false;
+                }
 
-                    if (alasan === "") {
-                        $("#alasan").addClass("is-invalid");
-                        valid = false;
-                    }
+                if (alasan === "") {
+                    $("#alasan").addClass("is-invalid");
+                    valid = false;
+                }
 
-                    if (valid) {
-                        const alertBox = `
+                if (valid) {
+                    const alertBox = `
             <div class="alert alert-success mt-3 text-center" role="alert">
               📝Pendaftaran berhasil!✅<br>
               Terima kasih, <strong>${nama}</strong> telah mendaftar Ekskul Futsal ⚽
             </div>`;
-                        $(".alert").remove();
-                        $(".form-card").append(alertBox);
+                    $(".alert").remove();
+                    $(".form-card").append(alertBox);
 
-                        $("#futsalForm")[0].reset();
-                    }
-                });
+                    $("#futsalForm")[0].reset();
+                }
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>

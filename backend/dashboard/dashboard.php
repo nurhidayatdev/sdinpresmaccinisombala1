@@ -2,14 +2,12 @@
 session_start();
 include '../../koneksi.php';
 
-// Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
   header("Location: ../../index.php");
   exit();
 }
 
-// Ambil dari session
-$nama = $_SESSION['nama']; // dari database (bukan input login)
+$nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 
 $sql_ptk = "SELECT uraian, guru, tendik, ptk FROM ptk_pd WHERE uraian IN ('Laki - Laki', 'Perempuan')";
@@ -22,10 +20,8 @@ $data_ptk = [];
 
 if ($result_ptk->num_rows > 0) {
   while ($row_ptk = $result_ptk->fetch_assoc()) {
-    // Ambil label (Laki-laki/Perempuan)
     $labels_ptk[] = $row_ptk['uraian'];
 
-    // Ambil data untuk Guru, Tendik, dan PTK
     $data_guru[] = (int)$row_ptk['guru'];
     $data_tendik[] = (int)$row_ptk['tendik'];
     $data_ptk[] = (int)$row_ptk['ptk'];
@@ -40,7 +36,6 @@ $data_jumlah = [];
 
 if ($result_sp->num_rows > 0) {
   while ($row_sp = $result_sp->fetch_assoc()) {
-    // Ambil nama sarpras dan jumlahnya
     $labels_sp[] = $row_sp['uraian'];
     $data_jumlah[] = (int)$row_sp['jumlah'];
   }
@@ -82,7 +77,6 @@ if ($result_rm->num_rows > 0) {
 
 <body>
 
-  <!-- Sidebar -->
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
     <div class="user-info">
@@ -102,7 +96,6 @@ if ($result_rm->num_rows > 0) {
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <main id="mainContent">
     <div class="topbar shadow-sm">
 
@@ -124,8 +117,6 @@ if ($result_rm->num_rows > 0) {
           </div>
         </a>
 
-
-
         <a href="dashboard_akademik.php">
           <div class="card card-custom p-3 text-center">
             <i data-lucide="book-open-text" class="mb-2" style="width: 32px; height: 32px;"></i>
@@ -141,22 +132,17 @@ if ($result_rm->num_rows > 0) {
             <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
           </div>
         </a>
-
-
-
       </div>
       <br>
       <div class="container my-4">
         <div class="row g-4 justify-content-center">
 
-          <!-- Chart 1 -->
           <div class="col-12 col-lg-8">
             <div class="chart-container card card-custom p-3 text-center mx-auto">
               <canvas id="ptkChart"></canvas>
             </div>
           </div>
 
-          <!-- Chart 2 -->
           <div class="col-12 col-lg-4">
             <div class="chart-container card card-custom p-3 text-center mx-auto">
               <canvas id="spChart"></canvas>
@@ -174,19 +160,17 @@ if ($result_rm->num_rows > 0) {
     </div>
 
     </div>
-    
+
   </main>
 
   <script>
     lucide.createIcons();
 
-    // ✅ tombol sidebar di layar kecil
     document.getElementById('toggleSidebar').addEventListener('click', function() {
       const sidebar = document.getElementById('sidebarMenu');
       sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Meneruskan data dari PHP ke variabel JavaScript
     const labels_ptk = <?php echo json_encode($labels_ptk); ?>;
     const dataGuru = <?php echo json_encode($data_guru); ?>;
     const dataTendik = <?php echo json_encode($data_tendik); ?>;
@@ -195,27 +179,27 @@ if ($result_rm->num_rows > 0) {
     const ctx_ptk = document.getElementById('ptkChart').getContext('2d');
 
     new Chart(ctx_ptk, {
-      type: 'bar', // Jenis chart: Bar Chart
+      type: 'bar',
       data: {
-        labels: labels_ptk, // Label: Laki-laki, Perempuan
+        labels: labels_ptk,
         datasets: [{
             label: 'Jumlah Guru',
             data: dataGuru,
-            backgroundColor: '#FFD93D', // Biru
+            backgroundColor: '#FFD93D',
             borderColor: '#FFD93D',
             borderWidth: 1
           },
           {
             label: 'Jumlah Tendik',
             data: dataTendik,
-            backgroundColor: '#FF6B6B', // Merah
+            backgroundColor: '#FF6B6B',
             borderColor: '#FF6B6B',
             borderWidth: 1
           },
           {
             label: 'Total PTK',
             data: dataPTK,
-            backgroundColor: '#6BCB77', // Hijau
+            backgroundColor: '#6BCB77',
             borderColor: '#6BCB77',
             borderWidth: 1
           }
@@ -255,13 +239,11 @@ if ($result_rm->num_rows > 0) {
           label: 'Jumlah Sarpras',
           data: $data_jumlah,
           backgroundColor: [
-            // Hijau tua
-            // Oranye lembut
             '#6BCB77',
             '#FF6B6B',
             '#FFD93D',
             '#F8AE84',
-            '#AEDDCD' // Kuning pastel
+            '#AEDDCD'
           ],
           borderColor: '#fff',
           borderWidth: 2
@@ -282,7 +264,6 @@ if ($result_rm->num_rows > 0) {
       }
     });
 
-    // Meneruskan data dari PHP ke JavaScript
     const labelsKelas = <?php echo json_encode($labels_kelas); ?>;
     const dataLaki = <?php echo json_encode($data_laki); ?>;
     const dataPerempuan = <?php echo json_encode($data_perempuan); ?>;

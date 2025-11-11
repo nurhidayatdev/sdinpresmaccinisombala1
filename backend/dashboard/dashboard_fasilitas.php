@@ -2,14 +2,12 @@
 session_start();
 include '../../koneksi.php';
 
-// Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
   header("Location: ../../index.php");
   exit();
 }
 
-// Ambil dari session
-$nama = $_SESSION['nama']; // dari database (bukan input login)
+$nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 $query = "SELECT * FROM fasilitas_sekolah";
 $result = mysqli_query($koneksi, $query);
@@ -30,7 +28,6 @@ $result = mysqli_query($koneksi, $query);
 
 <body>
 
-  <!-- Sidebar -->
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
     <div class="user-info">
@@ -43,15 +40,14 @@ $result = mysqli_query($koneksi, $query);
     </div>
     <ul class="nav flex-column mt-3">
       <li><a class="nav-link " href="dashboard.php"><i data-lucide="grid"></i> Dashboard</a></li>
-     <li><a class="nav-link active" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
+      <li><a class="nav-link active" href="dashboard_profil.php"><i data-lucide="school"></i> Profil</a></li>
       <li><a class="nav-link" href="dashboard_akademik.php"><i data-lucide="graduation-cap"></i> Akademik</a></li>
-      
+
       <li><a class="nav-link" href="dashboard_user.php"><i data-lucide="users"></i> User</a></li>
       <li><a class="nav-link text-danger" href="../../index.php"><i data-lucide="log-out"></i> Log Out</a></li>
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <main id="mainContent">
     <div class="topbar shadow-sm">
 
@@ -113,7 +109,6 @@ $result = mysqli_query($koneksi, $query);
   <script>
     lucide.createIcons();
 
-    // ✅ tombol sidebar di layar kecil
     document.getElementById('toggleSidebar').addEventListener('click', function() {
       const sidebar = document.getElementById('sidebarMenu');
       sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';

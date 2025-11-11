@@ -137,7 +137,7 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                     <h2 class="fw-bold mb-3" style="color: #446b42">
                         Informasi Umum Sekolah
                     </h2>
-                    <?php if ($data_profil) : // Memastikan data$data_profil profil sekolah tersedia 
+                    <?php if ($data_profil) :
                     ?>
                         <p>
                             Saat ini UPT SPF SD Inpres Maccini Sombala 1 sudah

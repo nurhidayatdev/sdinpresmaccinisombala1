@@ -2,14 +2,12 @@
 session_start();
 include '../../koneksi.php';
 
-// Cek apakah user sudah login
 if (!isset($_SESSION['email'])) {
   header("Location: ../../index.php");
   exit();
 }
 
-// Ambil dari session
-$nama = $_SESSION['nama']; // dari database (bukan input login)
+$nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 
 ?>
@@ -27,7 +25,6 @@ $email = $_SESSION['email'];
 </head>
 <body>
 
-  <!-- Sidebar -->
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
     <div class="user-info">
@@ -47,7 +44,6 @@ $email = $_SESSION['email'];
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <main id="mainContent">
     <div class="topbar shadow-sm">
       
@@ -84,8 +80,7 @@ $email = $_SESSION['email'];
 
   <script>
     lucide.createIcons();
-
-    // ✅ tombol sidebar di layar kecil
+    
     document.getElementById('toggleSidebar').addEventListener('click', function() {
       const sidebar = document.getElementById('sidebarMenu');
       sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';

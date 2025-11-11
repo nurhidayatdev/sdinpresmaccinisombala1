@@ -2,14 +2,14 @@
    THEME VARIABLES
    ========================= */
 :root {
-  --green: #446B42;
-  --orange: #F8AE84;
-  --yellow: #FFFCCF;
-  --white-rgba: rgba(255,255,255,0.15);
+    --green: #446b42;
+    --orange: #f8ae84;
+    --yellow: #fffccf;
+    --white-rgba: rgba(255, 255, 255, 0.15);
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 .navbar-custom {
     background-color: var(--green);
@@ -19,7 +19,6 @@ a {
 .navbar-custom .nav-link {
     color: var(--yellow);
     transition: color 0.3s ease;
-    
 }
 
 .navbar-custom .nav-link:hover {
@@ -34,317 +33,310 @@ a {
     filter: brightness(0) invert(1);
 }
 
-/* === Dropdown dengan tema SD Maccini Sombala 1 === */
 .custom-dropdown {
-  background-color: var(--green);
-  border: 1px solid var(--orange);
-  border-radius: 8px;
-  padding: 0.3rem 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background-color: var(--green);
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    padding: 0.3rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Item dropdown */
 .custom-dropdown .dropdown-item {
-  color: var(--yellow);
-  font-weight: 500;
-  padding: 10px 20px;
-  transition: all 0.2s ease-in-out;
+    color: var(--yellow);
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
 }
 
-/* Hover effect */
 .custom-dropdown .dropdown-item:hover {
-  background-color: var(--orange);
-  color: var(--green);
-  transform: translateX(3px);
+    background-color: var(--orange);
+    color: var(--green);
+    transform: translateX(3px);
 }
 
-/* Divider (jika ada) */
 .custom-dropdown .dropdown-divider {
-  border-color: var(--yellow);
-  opacity: 0.4;
+    border-color: var(--yellow);
+    opacity: 0.4;
 }
-
 
 h2 {
-        color: #446b42;
-        margin-bottom: 20px;
-        font-weight: 600;
-    }
-    table {
-        background-color: white;
-        border: 1px solid #f8ae84 !important;
-    }
-    th {
-        background-color: #f8ae84 !important;
-        color: black !important;
-    }
-    tr:nth-child(even) {
-        background-color: #f8ae84 !important;
-    }
-    tr:hover {
-        background-color: #ffe8d0 !important;
-    }
+    color: #446b42;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+table {
+    background-color: white;
+    border: 1px solid #f8ae84 !important;
+}
+th {
+    background-color: #f8ae84 !important;
+    color: black !important;
+}
+tr:nth-child(even) {
+    background-color: #f8ae84 !important;
+}
+tr:hover {
+    background-color: #ffe8d0 !important;
+}
 
-    .section-box {
-        background: white;
-        border-radius: 10px;
-        padding: 30px;
-        margin-bottom: 40px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
+.section-box {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
 
-     .form-card {
-      background-color: var(--orange);
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      padding: 30px;
-      max-width: 600px;
-      margin: 60px auto;
-    }
+.form-card {
+    background-color: var(--orange);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    max-width: 600px;
+    margin: 60px auto;
+}
 
-    h2 {
-      color: var(--green);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 25px;
-    }
+h2 {
+    color: var(--green);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-    label {
-      color: var(--green);
-      font-weight: 600;
-    }
+label {
+    color: var(--green);
+    font-weight: 600;
+}
 
-    .form-control, .form-select {
-      border: 2px solid var(--green);
-      background-color: var(--yellow);
-    }
+.form-control,
+.form-select {
+    border: 2px solid var(--green);
+    background-color: var(--yellow);
+}
 
-    .form-control:focus, .form-select:focus {
-      border-color: var(--orange);
-      background-color: #fff;
-      box-shadow: 0 0 5px rgba(68,107,66,0.3);
-    }
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--orange);
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(68, 107, 66, 0.3);
+}
 
-    .btn-submit {
-      background-color: var(--green);
-      color: #fff;
-      width: 100%;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 16px;
-      font-weight: 600;
-    }
+.btn-submit {
+    background-color: var(--green);
+    color: #fff;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
-    .btn-submit:hover {
-      background-color: #355633;
-    }
+.btn-submit:hover {
+    background-color: #355633;
+}
 
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: var(--green);
-      margin-top: 25px;
-    }
-     .login-card {
-      background-color: var(--orange);
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      padding: 30px;
-      max-width: 400px;
-      margin: 80px auto;
-    }
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--green);
+    margin-top: 25px;
+}
+.login-card {
+    background-color: var(--orange);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    max-width: 400px;
+    margin: 80px auto;
+}
 
-    h2 {
-      color: var(--green);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 25px;
-    }
+h2 {
+    color: var(--green);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-    label {
-      color: var(--green);
-      font-weight: 600;
-    }
+label {
+    color: var(--green);
+    font-weight: 600;
+}
 
-    .form-control {
-      border: 2px solid var(--green);
-      background-color: var(--yellow);
-    }
+.form-control {
+    border: 2px solid var(--green);
+    background-color: var(--yellow);
+}
 
-    .form-control:focus {
-      border-color: var(--orange);
-      background-color: #fff;
-      box-shadow: 0 0 5px rgba(68,107,66,0.3);
-    }
+.form-control:focus {
+    border-color: var(--orange);
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(68, 107, 66, 0.3);
+}
 
-    .btn-login {
-      background-color: var(--green);
-      color: #fff;
-      width: 100%;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 16px;
-      font-weight: 600;
-    }
+.btn-login {
+    background-color: var(--green);
+    color: #fff;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
-    .btn-login:hover {
-      background-color: #355633;
-    }
+.btn-login:hover {
+    background-color: #355633;
+}
 
-    .toggle-password {
-      position: absolute;
-      right: 10px;
-      top: 38px;
-      background: none;
-      border: none;
-      color: var(--green);
-      cursor: pointer;
-    }
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    background: none;
+    border: none;
+    color: var(--green);
+    cursor: pointer;
+}
 
-    .hint {
-      font-size: 13px;
-      color: var(--green);
-      text-align: center;
-      margin-top: 10px;
-    }
+.hint {
+    font-size: 13px;
+    color: var(--green);
+    text-align: center;
+    margin-top: 10px;
+}
 
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: var(--green);
-      margin-top: 20px;
-    }
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--green);
+    margin-top: 20px;
+}
 
- /* Sidebar */
- .text-log {
-  color: var(--yellow);
- }
+.text-log {
+    color: var(--yellow);
+}
+.sidebar {
+    height: 100vh;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--orange);
+    color: black;
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+.sidebar .brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+}
+
+.sidebar .user-info {
+    text-align: center;
+    padding: 0.5rem 0 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .user-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 2px solid #fff;
+}
+
+.sidebar .nav-link {
+    color: black;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: white;
+}
+.sidebar .nav-link.active {
+    border-left: 4px solid white;
+}
+
+#mainContent {
+    margin-left: 260px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--orange);
+}
+
+.welcome-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.card-custom {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 992px) {
     .sidebar {
-      height: 100vh;
-      width: 260px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: var(--orange);
-      color: black;
-      transition: all 0.3s ease;
-      z-index: 2000;
-    }
-
-    .sidebar .brand {
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-align: center;
-      padding: 1.5rem 1rem 0.5rem;
-    }
-
-    .sidebar .user-info {
-      text-align: center;
-      padding: 0.5rem 0 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .sidebar .user-info img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin-bottom: 8px;
-      border: 2px solid #fff;
-    }
-
-    .sidebar .nav-link {
-      color: black;
-      font-size: 0.95rem;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.2s;
-    }
-
-    .sidebar .nav-link:hover {
-background-color: white;
-    }
-    .sidebar .nav-link.active {
-      border-left: 4px solid white;
+        display: none;
     }
 
     #mainContent {
-      margin-left: 260px;
-      padding: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      padding: 10px 20px;
-      border-bottom: 1px solid #dee2e6;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--orange);
-    }
-
-    .welcome-text {
-      font-weight: 500;
-      font-size: 1.1rem;
-    }
-
-    .dashboard-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 20px;
-    }
-
-    .card-custom {
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    .card-custom:hover {
-      transform: translateY(-5px);
-    }
-
-    /* 📱 Saat layar kecil */
-    @media (max-width: 992px) {
-      .sidebar {
-        display: none;
-      }
-
-      #mainContent {
         margin-left: 0;
-      }
+    }
 
-      .toggle-sidebar-btn {
+    .toggle-sidebar-btn {
         display: inline-block;
         background: none;
         border: none;
         color: white;
-      }
     }
-
-    .chart-container {
-  position: relative;
-  width: 100%;
-  max-width: 900px; /* batas maksimum agar tetap proporsional di layar besar */
-  margin: 0 auto;
 }
 
-/* Pastikan canvas menyesuaikan ukuran parent */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 .chart-container canvas {
-  width: 100% !important;
-  height: auto !important;
+    width: 100% !important;
+    height: auto !important;
 }
 
-/* Saat di layar kecil (HP), tambahkan sedikit padding */
 @media (max-width: 768px) {
-  .chart-container {
-    padding: 1rem;
-  }
+    .chart-container {
+        padding: 1rem;
+    }
 }

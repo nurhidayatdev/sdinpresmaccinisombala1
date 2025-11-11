@@ -290,7 +290,7 @@ if (isset($_POST['tambah'])) {
             <div class="mb-3"><label>NIM</label>
               <input type="number" name="nim" class="form-control" required>
             </div>
-           <div class="mb-3"><label>Link Artikel</label>
+            <div class="mb-3"><label>Link Artikel</label>
               <input type="text" name="link_artikel" class="form-control" required>
             </div>
             <div class="mb-3">

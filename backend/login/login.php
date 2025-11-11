@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 
-  
+
   <script>
     $("#togglePassword").on("click", function() {
       const pass = $("#password");
@@ -80,4 +80,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </script>
 
 </body>
+
 </html>

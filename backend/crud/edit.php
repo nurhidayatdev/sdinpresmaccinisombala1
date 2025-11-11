@@ -7,7 +7,7 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-$nama = $_SESSION['nama']; 
+$nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 
 $file = $_GET['file'] ?? '';
@@ -596,7 +596,6 @@ if (isset($_POST['update'])) {
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         lucide.createIcons();
 

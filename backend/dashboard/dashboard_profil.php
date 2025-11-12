@@ -61,7 +61,7 @@ $email = $_SESSION['email'];
 <div class="card card-custom p-3 text-center">
           <i data-lucide="school" class="mb-2" style="width: 32px; height: 32px;"></i>
           <h5>Profil Sekolah</h5>
-          <p class="text-muted mb-0">Lihat dan kelola informasi sekolah</p>
+          <p class="text-muted mb-0">Kelola data identitas, alamat, dan informasi umum sekolah</p>
         </div>
         </a>
 
@@ -69,7 +69,7 @@ $email = $_SESSION['email'];
  <div class="card card-custom p-3 text-center">
           <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
           <h5>Fasilitas</h5>
-          <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+          <p class="text-muted mb-0">Kelola data sarana, prasarana, dan pemeliharaan aset sekolah</p>
         </div>
         </a>
 

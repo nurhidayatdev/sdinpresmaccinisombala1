@@ -65,7 +65,7 @@ $email = $_SESSION['email'];
           <div class="card card-custom p-3 text-center">
             <i data-lucide="book-open-text" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Kegiatan Akademik</h5>
-            <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+            <p class="text-muted mb-0">Kelola kurikulum, jadwal pelajaran, dan kegiatan belajar mengajar</p>
           </div>
         </a>
 
@@ -73,31 +73,31 @@ $email = $_SESSION['email'];
           <div class="card card-custom p-3 text-center">
             <i data-lucide="graduation-cap" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Info Akademik</h5>
-            <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+            <p class="text-muted mb-0">Lihat rekap nilai, rapor, statistik siswa, dan informasi pencapaian akademik</p>
           </div>
         </a>
 
         <a href="dashboard_berita.php">
           <div class="card card-custom p-3 text-center">
-            <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <i data-lucide="newspaper" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Berita & Pengumuman</h5>
-            <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+            <p class="text-muted mb-0">Buat, kelola, dan publikasikan berita serta pengumuman penting sekolah</p>
           </div>
         </a>
 
         <a href="dashboard_futsal.php">
           <div class="card card-custom p-3 text-center">
-            <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5>Form Futsal</h5>
-            <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
+            <i data-lucide="soccer-ball" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <h5>Formulir Futsal</h5>
+            <p class="text-muted mb-0">Kelola pendaftaran dan informasi tim/pertandingan Futsal</p>
           </div>
         </a>
 
         <a href="dashboard_guru.php">
           <div class="card card-custom p-3 text-center">
-            <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <i data-lucide="users-round" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Data Guru</h5>
-            <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
+            <p class="text-muted mb-0">Lihat dan kelola profil dan data kepegawaian guru</p>
           </div>
         </a>
       </div>

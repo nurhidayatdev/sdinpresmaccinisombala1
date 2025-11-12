@@ -58,7 +58,7 @@ $result = mysqli_query($koneksi, $query);
 
     <div class="container-fluid mt-4">
       <div class="container mb-5">
-        <h2 class="fw-bold mb-3 text-success">Data Fasilitas Sekolah</h2>
+        <h2 class="fw-bold mb-3 text-success">Anggota Kelompok</h2>
 
         <?php mysqli_data_seek($result, 0); ?>
         <div class="fasilitas-sekolah">

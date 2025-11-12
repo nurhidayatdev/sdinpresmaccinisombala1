@@ -71,8 +71,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
 
         <div class="container-fluid mt-4">
             <div class="container mb-5">
-                <h2 class="fw-bold mb-3 text-success">Data Info Akademik</h2>
-
+                <h2 class="fw-bold mb-3 text-success">Data Kegiatan Akademik</h2>
                 <div class="pembagian-tugas-mengajar mb-3">
 
                     <h4 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Mengajar</h4>
@@ -117,7 +116,6 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                 </div>
 
                 <div class="pembagian-tugas-pembina-kegiatan mb-3">
-
                     <h4 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Pembina Kegiatan</h4>
                     <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=pembina_kegiatan" class="btn btn-success mb-3">+ Tambah Data</a>
                     <div class="table-responsive">

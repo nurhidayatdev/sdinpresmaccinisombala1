@@ -59,7 +59,7 @@ $result = mysqli_query($koneksi, $query);
 
     <div class="container-fluid mt-4">
       <div class="container mb-5">
-        <h2 class="fw-bold mb-3 text-success">Data Login Siswa</h2>
+        <h2 class="fw-bold mb-3 text-success">Data Login</h2>
 
 
         <a href="../crud/tambah.php?tabel=login" class="btn btn-success mb-3">+ Tambah Data</a>

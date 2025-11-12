@@ -64,17 +64,17 @@ $email = $_SESSION['email'];
       <div class="dashboard-cards">
         <a href="dashboard_kelompok.php">
           <div class="card card-custom p-3 text-center">
-            <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <i data-lucide="user-plus" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Anggota Kelompok</h5>
-            <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+            <p class="text-muted mb-0">Kelola daftar dan data anggota kelompok/tim yang terlibat dalam kegiatan</p>
           </div>
         </a>
 
         <a href="dashboard_login.php">
           <div class="card card-custom p-3 text-center">
-            <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <i data-lucide="shield-check" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Data Login</h5>
-            <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
+            <p class="text-muted mb-0">Kelola akun, hak akses, dan detail login untuk seluruh pengguna sistem</p>
           </div>
         </a>
       </div>

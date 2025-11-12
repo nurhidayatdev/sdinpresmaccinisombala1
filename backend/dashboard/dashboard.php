@@ -121,7 +121,7 @@ if ($result_rm->num_rows > 0) {
           <div class="card card-custom p-3 text-center">
             <i data-lucide="book-open-text" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Akademik</h5>
-            <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+            <p class="text-muted mb-0">Lihat dan kelola data guru dan siswa</p>
           </div>
         </a>
 
@@ -129,7 +129,7 @@ if ($result_rm->num_rows > 0) {
           <div class="card card-custom p-3 text-center">
             <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>User</h5>
-            <p class="text-muted mb-0">Data sarana dan prasarana sekolah</p>
+            <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
           </div>
         </a>
       </div>

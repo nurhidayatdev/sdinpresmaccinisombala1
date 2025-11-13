@@ -18,27 +18,13 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Info Akademik - SD Inpres Maccini Sombala 1</title>
     <link rel="icon" href="../backend/img/main/icon.png" />
-    <meta name="title" content="SD Inpres Maccini Sombala 1" />
-    <meta name="description" content="© 2025 Kelompok 5" />
-    <meta property="og:type" content="website" />
-    <meta
-        property="og:url"
-        content="https://sdinpresmaccinisombala1.vercel.app/" />
-    <meta property="og:title" content="SD Inpres Maccini Sombala 1" />
-    <meta property="og:description" content="© 2025 Kelompok 5" />
-    <meta property="og:image" content="https://iili.io/Kcm85Ov.md.png" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-        property="twitter:url"
-        content="https://sdinpresmaccinisombala1.vercel.app/" />
-    <meta property="twitter:title" content="SD Inpres Maccini Sombala 1" />
-    <meta property="twitter:description" content="© 2025 Kelompok 5" />
-    <meta
-        property="twitter:image"
-        content="https://iili.io/Kcm85Ov.md.png" />
     <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
     <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../frontend/style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -60,7 +46,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link " href="../index.php">Beranda</a>
+                            <a class="nav-link " href="../index.php"><i data-lucide="home"></i> Beranda</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a
@@ -70,24 +56,28 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Akademik
+                                <i data-lucide="graduation-cap"></i> Akademik
                             </a>
                             <ul class="dropdown-menu custom-dropdown" aria-labelledby="infoAkademikDropdown">
-                                <li><a class="dropdown-item" href="kegiatan_akademik.php">Kegiatan Akademik</a></li>
-                                <li><a class="dropdown-item" href="#">Info Akademik</a></li>
+                                <li><a class="dropdown-item " href="kegiatan_akademik.php"><i data-lucide="calendar-check"></i> Kegiatan Akademik</a></li>
+                                <li><a class="dropdown-item active" href="#"><i data-lucide="clipboard-check"></i> Info Akademik</a></li>
                             </ul>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="fasilitas.php"><i data-lucide="building"></i> Fasilitas Sekolah</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fasilitas.php">Fasilitas Sekolah</a>
+                            <a class="nav-link" href="berita.php"><i data-lucide="megaphone"></i> Berita & Pengumuman</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="berita.php">Berita & Pengumuman</a>
+                            <a
+                                class="nav-link "
+                                href="tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="tentang-kami.php">Tentang Kami</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../backend/login/login.php">Login</a>
+                            <a class="nav-link" href="../backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -240,6 +230,9 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
             </p>
         </div>
     </footer>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

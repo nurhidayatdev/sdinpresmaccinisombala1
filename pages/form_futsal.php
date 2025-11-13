@@ -1,18 +1,34 @@
 <?php
 include '../koneksi.php';
 
+$alert_status = ''; // success / error
+$alert_message = '';
+
 if (isset($_POST['tambah'])) {
+    $nisn = trim($_POST['nisn']);
+    $nama = trim($_POST['nama']);
+    $kelas = trim($_POST['kelas']);
+    $jk = trim($_POST['jk']);
+    $nohp = trim($_POST['nohp']);
+    $alasan = trim($_POST['alasan']);
 
-    $nisn = $_POST['nisn'];
-    $nama = $_POST['nama'];
-    $kelas = $_POST['kelas'];
-    $jk = $_POST['jk'];
-    $nohp = $_POST['nohp'];
-    $alasan = $_POST['alasan'];
-
-    mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
-                VALUES ('$nisn', '$nama', '$kelas', '$jk', '$nohp', '$alasan')");
-    header("Location: form_futsal.php");
+    // validasi sederhana
+    if (
+        !preg_match('/^\d{10}$/', $nisn) ||
+        empty($nama) ||
+        empty($kelas) ||
+        empty($jk) ||
+        !preg_match('/^\d{10,13}$/', $nohp) ||
+        empty($alasan)
+    ) {
+        $alert_status = 'error';
+        $alert_message = 'Input tidak valid! Mohon isi semua kolom dengan benar.';
+    } else {
+        mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
+                    VALUES ('$nisn', '$nama', '$kelas', '$jk', '$nohp', '$alasan')");
+        $alert_status = 'success';
+        $alert_message = 'Pendaftaran berhasil! Data kamu sudah disimpan.';
+    }
 }
 ?>
 
@@ -22,49 +38,42 @@ if (isset($_POST['tambah'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-        Formulir Pendaftaran Ekskul Futsal - SD Negeri Maccini Sombala 1
-    </title>
+    <title>Formulir Pendaftaran Ekskul Futsal - SD Negeri Maccini Sombala 1</title>
+
+    <link rel="icon" href="../backend/img/main/icon.png" />
     <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
-    <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../style.css" />
+    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../frontend/style.css" />
     <script src="../jquery/dist/jquery.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <div class="form-card">
-            <h2>⚽Formulir Pendaftaran Ekskul Futsal⚽</h2>
-            <p class="text-center text-success mb-3">
-                <strong>SD Negeri Maccini Sombala 1</strong>
-            </p>
+            <h2>⚽ Formulir Pendaftaran Ekskul Futsal ⚽</h2>
+            <p class="text-center text-success mb-3"><strong>SD Negeri Maccini Sombala 1</strong></p>
 
-            <form method="POST" enctype="multipart/form-data">
-
+            <form method="POST" enctype="multipart/form-data" id="futsalForm">
                 <div class="mb-3">
                     <label for="nisn" class="form-label">NISN</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="nisn"
-                        name="nisn"
-                        placeholder="Masukkan NISN (10 digit)" />
-                    <div class="invalid-feedback">
-                        NISN wajib diisi dan harus berupa 10 digit angka.
-                    </div>
+                    <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Masukkan NISN (10 digit)" />
+                    <div class="invalid-feedback">NISN wajib diisi dan harus berupa 10 digit angka.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Lengkap</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="nama"
-                        name="nama"
-                        placeholder="Masukkan nama lengkap" />
-                    <div class="invalid-feedback">
-                        Nama lengkap wajib diisi.
-                    </div>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama lengkap" />
+                    <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
                 </div>
 
                 <div class="mb-3">
@@ -85,32 +94,18 @@ if (isset($_POST['tambah'])) {
                         <option value="Laki-laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Silakan pilih jenis kelamin.
-                    </div>
+                    <div class="invalid-feedback">Silakan pilih jenis kelamin.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="nohp" class="form-label">Nomor HP Orang Tua</label>
-                    <input
-                        type="number"
-                        class="form-control"
-                        id="nohp"
-                        name="nohp"
-                        placeholder="Contoh: 081234567890" />
-                    <div class="invalid-feedback">
-                        Nomor HP wajib diisi dan hanya angka.
-                    </div>
+                    <input type="number" class="form-control" id="nohp" name="nohp" placeholder="Contoh: 081234567890" />
+                    <div class="invalid-feedback">Nomor HP wajib diisi dan hanya angka.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="alasan" class="form-label">Alasan Ingin Mengikuti Ekskul Futsal</label>
-                    <textarea
-                        class="form-control"
-                        id="alasan"
-                        name="alasan"
-                        rows="3"
-                        placeholder="Tulis alasan kamu di sini..."></textarea>
+                    <textarea class="form-control" id="alasan" name="alasan" rows="3" placeholder="Tulis alasan kamu di sini..."></textarea>
                     <div class="invalid-feedback">Alasan wajib diisi.</div>
                 </div>
 
@@ -122,63 +117,78 @@ if (isset($_POST['tambah'])) {
     </div>
 
     <script>
-        $(function() {
-            $("#futsalForm").on("submit", function(e) {
+        // Validasi client-side
+        $("#futsalForm").on("submit", function(e) {
+            let valid = true;
 
-                let valid = true;
+            const nisn = $("#nisn").val().trim();
+            const nama = $("#nama").val().trim();
+            const kelas = $("#kelas").val();
+            const jk = $("#jk").val();
+            const nohp = $("#nohp").val().trim();
+            const alasan = $("#alasan").val().trim();
 
-                const nisn = $("#nisn").val().trim();
-                const nama = $("#nama").val().trim();
-                const kelas = $("#kelas").val();
-                const jk = $("#jk").val();
-                const nohp = $("#nohp").val().trim();
-                const alasan = $("#alasan").val().trim();
+            $("input, select, textarea").removeClass("is-invalid");
 
-                $("input, select, textarea").removeClass("is-invalid");
+            if (!/^\d{10}$/.test(nisn)) {
+                $("#nisn").addClass("is-invalid");
+                valid = false;
+            }
 
-                if (!/^\d{10}$/.test(nisn)) {
-                    $("#nisn").addClass("is-invalid");
-                    valid = false;
-                }
+            if (nama === "") {
+                $("#nama").addClass("is-invalid");
+                valid = false;
+            }
 
-                if (nama === "") {
-                    $("#nama").addClass("is-invalid");
-                    valid = false;
-                }
+            if (kelas === "") {
+                $("#kelas").addClass("is-invalid");
+                valid = false;
+            }
 
-                if (kelas === "") {
-                    $("#kelas").addClass("is-invalid");
-                    valid = false;
-                }
+            if (jk === "") {
+                $("#jk").addClass("is-invalid");
+                valid = false;
+            }
 
-                if (jk === "") {
-                    $("#jk").addClass("is-invalid");
-                    valid = false;
-                }
+            if (!/^\d{10,13}$/.test(nohp)) {
+                $("#nohp").addClass("is-invalid");
+                valid = false;
+            }
 
-                if (!/^\d{10,13}$/.test(nohp)) {
-                    $("#nohp").addClass("is-invalid");
-                    valid = false;
-                }
+            if (alasan === "") {
+                $("#alasan").addClass("is-invalid");
+                valid = false;
+            }
 
-                if (alasan === "") {
-                    $("#alasan").addClass("is-invalid");
-                    valid = false;
-                }
-
-                if (valid) {
-                    const alertBox = `
-            <div class="alert alert-success mt-3 text-center" role="alert">
-              📝Pendaftaran berhasil!✅<br>
-              Terima kasih, <strong>${nama}</strong> telah mendaftar Ekskul Futsal ⚽
-            </div>`;
-                    $(".alert").remove();
-                    $(".form-card").append(alertBox);
-
-                    $("#futsalForm")[0].reset();
-                }
-            });
+            if (!valid) {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Harap isi semua kolom dengan benar sebelum mendaftar.',
+                    confirmButtonColor: '#dc3545'
+                });
+            }
         });
+
+        // Menampilkan alert dari PHP (server-side)
+        <?php if ($alert_status === 'success'): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= $alert_message ?>',
+                confirmButtonColor: '#198754'
+            }).then(() => {
+                window.location.href = "berita.php";
+            });
+        <?php elseif ($alert_status === 'error'): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Input Tidak Valid!',
+                text: '<?= $alert_message ?>',
+                confirmButtonColor: '#dc3545'
+            });
+        <?php endif; ?>
     </script>
 </body>
 

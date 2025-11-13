@@ -1,20 +1,21 @@
-/* =========================
-   THEME VARIABLES
-   ========================= */
 :root {
     --green: #446b42;
     --orange: #f8ae84;
     --yellow: #fffccf;
     --white-rgba: rgba(255, 255, 255, 0.15);
 }
-
+* {
+    font-family: "Poppins", sans-serif;
+}
 a {
     text-decoration: none;
 }
 .navbar-custom {
     background-color: var(--green);
 }
-
+.nav-item {
+    font-size: 13px;
+}
 .navbar-custom .navbar-brand,
 .navbar-custom .nav-link {
     color: var(--yellow);

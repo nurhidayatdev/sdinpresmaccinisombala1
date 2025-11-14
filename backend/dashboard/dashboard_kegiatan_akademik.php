@@ -107,7 +107,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                             <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                             <a href="../crud/hapus.php?tabel=mengajar&id=<?= $data_mengajar['id']; ?>"
-                                                onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
+                                               
                                                 class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
                                     </tr>
@@ -145,7 +145,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                             <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
                                             <a href="../crud/hapus.php?tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>"
-                                                onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
+                                               
                                                 class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
                                     </tr>

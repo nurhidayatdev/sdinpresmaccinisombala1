@@ -22,6 +22,7 @@ if (!in_array($tabel, $tabel_diizinkan)) {
 }
 
 if (isset($_POST['tambah'])) {
+  $redirect = ""; 
   switch ($tabel) {
     case 'guru':
       $nama = $_POST['nama'];
@@ -29,7 +30,8 @@ if (isset($_POST['tambah'])) {
       $pangkat_gol = $_POST['pangkat_gol'];
       mysqli_query($koneksi, "INSERT INTO guru (nama, nip, pangkat_gol)
                 VALUES ('$nama','$nip','$pangkat_gol')");
-      header("Location: ../dashboard/dashboard_guru.php");
+                $redirect = "../dashboard/dashboard_guru.php";
+     
       break;
 
     case 'mengajar':
@@ -39,7 +41,8 @@ if (isset($_POST['tambah'])) {
       $jtm_per_minggu = $_POST['jtm_per_minggu'];
       mysqli_query($koneksi, "INSERT INTO mengajar (guru_id, jenis_ptk, kelas_mapel, jtm_per_minggu)
                 VALUES ('$guru_id','$jenis_ptk', '$kelas_mapel', '$jtm_per_minggu')");
-      header("Location: ../dashboard/dashboard_kegiatan_akademik.php");
+                 $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
+    
       break;
 
     case 'pembina_kegiatan':
@@ -47,7 +50,8 @@ if (isset($_POST['tambah'])) {
       $tugas_pembinaan = $_POST['tugas_pembinaan'];
       mysqli_query($koneksi, "INSERT INTO pembina_kegiatan (guru_id, tugas_pembinaan)
                 VALUES ('$guru_id', '$tugas_pembinaan')");
-      header("Location: ../dashboard/dashboard_kegiatan_akademik.php");
+                 $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
+   
       break;
 
     case 'fasilitas_sekolah':
@@ -62,7 +66,8 @@ if (isset($_POST['tambah'])) {
       }
       mysqli_query($koneksi, "INSERT INTO fasilitas_sekolah (fasilitas, deskripsi, gambar)
                 VALUES ('$fasilitas', '$deskripsi', '$gambar')");
-      header("Location: ../dashboard/dashboard_fasilitas.php");
+                 $redirect = "../dashboard/dashboard_fasilitas.php";
+     
       break;
 
     case 'berita':
@@ -72,7 +77,8 @@ if (isset($_POST['tambah'])) {
       $tugas_pembinaan = $_POST['tugas_pembinaan'];
       mysqli_query($koneksi, "INSERT INTO berita (judul, link_youtube, deskripsi)
                 VALUES ('$judul','$link_youtube','$deskripsi')");
-      header("Location: ../dashboard/dashboard_berita.php");
+                 $redirect = "../dashboard/dashboard_berita.php";
+      
       break;
 
     case 'form_futsal':
@@ -84,7 +90,8 @@ if (isset($_POST['tambah'])) {
       $alasan = $_POST['alasan'];
       mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
                 VALUES ('$nisn','$nama','$kelas', '$jk', '$nohp', '$alasan')");
-      header("Location: ../dashboard/dashboard_futsal.php");
+                 $redirect = "../dashboard/dashboard_futsal.php";
+     
       break;
 
     case 'kelompok':
@@ -100,7 +107,8 @@ if (isset($_POST['tambah'])) {
       }
       mysqli_query($koneksi, "INSERT INTO kelompok (gambar, nama, nim, link_artikel)
                 VALUES ('$gambar','$nama','$nim', '$link_artikel')");
-      header("Location: ../dashboard/dashboard_kelompok.php");
+                 $redirect = "../dashboard/dashboard_kelompok.php";
+      
       break;
 
     case 'login':
@@ -109,9 +117,38 @@ if (isset($_POST['tambah'])) {
       $password = $_POST['password'];
       mysqli_query($koneksi, "INSERT INTO login (nama, email, password)
                 VALUES ('$nama','$email','$password')");
-      header("Location: ../dashboard/dashboard_login.php");
+                 $redirect = "../dashboard/dashboard_login.php";
+    
       break;
   }
+  echo "
+    <!DOCTYPE html>
+    <html>
+    <head>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+    <style>
+        body { font-family: 'Poppins', sans-serif !important; }
+    </style>
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    </head>
+    <body>
+        <script>
+   Swal.fire({
+    title: 'Berhasil!',
+    text: 'Data berhasil ditambahkan.',
+    icon: 'success',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    confirmButtonText: 'OK'
+}).then(() => {
+    window.location.href = '$redirect';
+});
+</script>
+
+    </body>
+    </html>";
   exit;
 }
 ?>
@@ -265,9 +302,9 @@ if (isset($_POST['tambah'])) {
               <label>Kelas</label>
               <select name="kelas" class="form-control" required>
                 <option value="">-- Pilih Kelas --</option>
-                <option value="Kelas 4">Kelas 4</option>
-                <option value="Kelas 5">Kelas 5</option>
-                <option value="Kelas 6">Kelas 6</option>
+                <option value="4">Kelas 4</option>
+                <option value="5">Kelas 5</option>
+                <option value="6">Kelas 6</option>
               </select>
             </div>
             <div class="mb-3">

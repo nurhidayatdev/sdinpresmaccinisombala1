@@ -1,49 +1,122 @@
 <?php
 include '../../koneksi.php';
 
-if (isset($_GET['tabel']) && isset($_GET['id'])) {
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (isset($_GET['tabel']) && isset($_GET['id']) && !isset($_GET['confirm'])) {
+    $tabel = $_GET['tabel'];
+    $id = intval($_GET['id']);
+
+    echo <<<HTML
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link rel='preconnect' href='https://fonts.googleapis.com'>
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+        <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+        <style>
+            body { font-family: 'Poppins', sans-serif !important; }
+        </style>
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    </head>
+    <body>
+        <script>
+            Swal.fire({
+                title: 'Anda yakin?',
+                text: 'Data yang dihapus tidak dapat dikembalikan.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'hapus.php?tabel={$tabel}&id={$id}&confirm=yes';
+                } else {
+                    window.history.back();
+                }
+            });
+        </script>
+    </body>
+    </html>
+    HTML;
+    exit();
+}
+
+
+if (isset($_GET['tabel']) && isset($_GET['id']) && isset($_GET['confirm'])) {
+
     $tabel = $_GET['tabel'];
     $id = intval($_GET['id']);
 
     $tabel_diizinkan = ['guru', 'mengajar', 'pembina_kegiatan', 'fasilitas_sekolah', 'berita', 'form_futsal', 'kelompok', 'login'];
 
-    if (in_array($tabel, $tabel_diizinkan)) {
-        $hapus = mysqli_query($koneksi, "DELETE FROM $tabel WHERE id='$id'");
-
-        if ($hapus) {
-            switch ($tabel) {
-                case 'guru':
-                    header("Location: ../dashboard/dashboard_guru.php?status=deleted");
-                    break;
-                case 'mengajar':
-                    header("Location: ../dashboard/dashboard_kegiatan_akademik.php?status=deleted");
-                    break;
-                case 'pembina_kegiatan':
-                    header("Location: ../dashboard/dashboard_kegiatan_akademik.php?status=deleted");
-                    break;
-                case 'fasilitas_sekolah':
-                    header("Location: ../dashboard/dashboard_fasilitas.php?status=deleted");
-                    break;
-                case 'berita':
-                    header("Location: ../dashboard/dashboard_berita.php?status=deleted");
-                    break;
-                case 'form_futsal':
-                    header("Location: ../dashboard/dashboard_futsal.php?status=deleted");
-                    break;
-                case 'kelompok':
-                    header("Location: ../dashboard/dashboard_kelompok.php?status=deleted");
-                    break;
-                case 'login':
-                    header("Location: ../dashboard/dashboard_login.php?status=deleted");
-                    break;
-            }
-        } else {
-            echo "Gagal menghapus data dari tabel $tabel";
-        }
-    } else {
+    if (!in_array($tabel, $tabel_diizinkan)) {
         echo "Tabel tidak diizinkan!";
+        exit();
     }
-} else {
-    echo "Parameter tidak lengkap!";
+
+    $hapus = mysqli_query($koneksi, "DELETE FROM $tabel WHERE id='$id'");
+
+
+    switch ($tabel) {
+        case 'guru':
+            $redirect = '../dashboard/dashboard_guru.php';
+            break;
+        case 'mengajar':
+            $redirect = '../dashboard/dashboard_kegiatan_akademik.php';
+            break;
+        case 'pembina_kegiatan':
+            $redirect = '../dashboard/dashboard_kegiatan_akademik.php';
+            break;
+        case 'fasilitas_sekolah':
+            $redirect = '../dashboard/dashboard_fasilitas.php';
+            break;
+        case 'berita':
+            $redirect = '../dashboard/dashboard_berita.php';
+            break;
+        case 'form_futsal':
+            $redirect = '../dashboard/dashboard_futsal.php';
+            break;
+        case 'kelompok':
+            $redirect = '../dashboard/dashboard_kelompok.php';
+            break;
+        case 'login':
+            $redirect = '../dashboard/dashboard_login.php';
+            break;
+    }
+
+    // Tampilkan alert sukses
+    if ($hapus) {
+        echo <<<HTML
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <link rel='preconnect' href='https://fonts.googleapis.com'>
+            <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+            <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+            <style>
+                body { font-family: 'Poppins', sans-serif !important; }
+            </style>
+            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: 'Data berhasil dihapus.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = '$redirect';
+                });
+            </script>
+        </body>
+        </html>
+        HTML;
+    } else {
+        echo "Gagal menghapus data.";
+    }
+
+    exit();
 }
-exit;

@@ -86,7 +86,7 @@ $result = mysqli_query($koneksi, $query);
                     <a href="../crud/edit.php?file=login&tabel=login&id=<?= $row['id']; ?>"
                       class="btn btn-warning btn-sm">Edit</a>
                     <a href="../crud/hapus.php?tabel=login&id=<?= $row['id']; ?>"
-                      onclick="return confirm('Yakin ingin menghapus data siswa ini?')"
+                     
                       class="btn btn-danger btn-sm">Hapus</a>
                   </td>
                 </tr>

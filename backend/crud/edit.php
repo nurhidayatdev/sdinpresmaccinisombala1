@@ -31,234 +31,205 @@ if (!$data) {
 }
 
 if (isset($_POST['update'])) {
+
+    $redirect = ""; 
+
     switch ($tabel) {
+
         case 'profil_sekolah':
             if ($bagian === 'identitas') {
-                $nama_sekolah = $_POST['nama_sekolah'];
-                $npsn = $_POST['npsn'];
-                $jenjang = $_POST['jenjang'];
-                $status_sekolah = $_POST['status_sekolah'];
-                $alamat = $_POST['alamat'];
-                $kecamatan = $_POST['kecamatan'];
-                $kabupaten = $_POST['kabupaten'];
-                $provinsi = $_POST['provinsi'];
-                $negara = $_POST['negara'];
                 mysqli_query($koneksi, "UPDATE profil_sekolah SET 
-                    nama_sekolah='$nama_sekolah',
-                    npsn='$npsn',
-                    jenjang='$jenjang',
-                    status_sekolah='$status_sekolah',
-                    alamat='$alamat',
-                    kecamatan='$kecamatan',
-                    kabupaten='$kabupaten',
-                    provinsi='$provinsi',
-                    negara='$negara'
+                    nama_sekolah='{$_POST['nama_sekolah']}',
+                    npsn='{$_POST['npsn']}',
+                    jenjang='{$_POST['jenjang']}',
+                    status_sekolah='{$_POST['status_sekolah']}',
+                    alamat='{$_POST['alamat']}',
+                    kecamatan='{$_POST['kecamatan']}',
+                    kabupaten='{$_POST['kabupaten']}',
+                    provinsi='{$_POST['provinsi']}',
+                    negara='{$_POST['negara']}'
                     WHERE id='$id'");
             } elseif ($bagian === 'pelengkap') {
-                $sk_pendirian = $_POST['sk_pendirian'];
-                $tanggal_sk = $_POST['tanggal_sk'];
-                $status_kepemilikan = $_POST['status_kepemilikan'];
-                $kebutuhan_khusus = $_POST['kebutuhan_khusus'];
-                $nama_bank = $_POST['nama_bank'];
-                $cabang_bank = $_POST['cabang_bank'];
-                $rekening_atas_nama = $_POST['rekening_atas_nama'];
-                $npwp = $_POST['npwp'];
                 mysqli_query($koneksi, "UPDATE profil_sekolah SET 
-                    sk_pendirian='$sk_pendirian',
-                    tanggal_sk='$tanggal_sk',
-                    status_kepemilikan='$status_kepemilikan',
-                    kebutuhan_khusus='$kebutuhan_khusus',
-                    nama_bank='$nama_bank',
-                    cabang_bank='$cabang_bank',
-                    rekening_atas_nama='$rekening_atas_nama',
-                    npwp='$npwp'
+                    sk_pendirian='{$_POST['sk_pendirian']}',
+                    tanggal_sk='{$_POST['tanggal_sk']}',
+                    status_kepemilikan='{$_POST['status_kepemilikan']}',
+                    kebutuhan_khusus='{$_POST['kebutuhan_khusus']}',
+                    nama_bank='{$_POST['nama_bank']}',
+                    cabang_bank='{$_POST['cabang_bank']}',
+                    rekening_atas_nama='{$_POST['rekening_atas_nama']}',
+                    npwp='{$_POST['npwp']}'
                     WHERE id='$id'");
             } elseif ($bagian === 'lainnya') {
-                $kepala_sekolah = $_POST['kepala_sekolah'];
-                $operator = $_POST['operator'];
-                $akreditasi = $_POST['akreditasi'];
-                $kurikulum = $_POST['kurikulum'];
                 mysqli_query($koneksi, "UPDATE profil_sekolah SET 
-                    kepala_sekolah='$kepala_sekolah',
-                    operator='$operator',
-                    akreditasi='$akreditasi',
-                    kurikulum='$kurikulum'
+                    kepala_sekolah='{$_POST['kepala_sekolah']}',
+                    operator='{$_POST['operator']}',
+                    akreditasi='{$_POST['akreditasi']}',
+                    kurikulum='{$_POST['kurikulum']}'
                     WHERE id='$id'");
-            }
-            header("Location: ../dashboard/dashboard_profil_sekolah.php");
+            };
+
+            $redirect = "../dashboard/dashboard_profil_sekolah.php";
             break;
 
         case 'visi':
-            $pernyataan_visi = $_POST['pernyataan_visi'];
             mysqli_query($koneksi, "UPDATE visi SET 
-                pernyataan_visi='$pernyataan_visi'
+                pernyataan_visi='{$_POST['pernyataan_visi']}'
                 WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_profil_sekolah.php");
+            $redirect = "../dashboard/dashboard_profil_sekolah.php";
             break;
 
         case 'misi':
-            $pernyataan_misi = $_POST['pernyataan_misi'];
             mysqli_query($koneksi, "UPDATE misi SET 
-                pernyataan_misi='$pernyataan_misi'
+                pernyataan_misi='{$_POST['pernyataan_misi']}'
                 WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_profil_sekolah.php");
+            $redirect = "../dashboard/dashboard_profil_sekolah.php";
             break;
 
         case 'tujuan':
-            $pernyataan_tujuan = $_POST['pernyataan_tujuan'];
             mysqli_query($koneksi, "UPDATE tujuan SET 
-                pernyataan_tujuan='$pernyataan_tujuan'
+                pernyataan_tujuan='{$_POST['pernyataan_tujuan']}'
                 WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_profil_sekolah.php");
+            $redirect = "../dashboard/dashboard_profil_sekolah.php";
             break;
 
         case 'fasilitas_sekolah':
-            $fasilitas = $_POST['fasilitas'];
-            $deskripsi = $_POST['deskripsi'];
-            $gambar = $_POST['gambar'];
             mysqli_query($koneksi, "UPDATE fasilitas_sekolah SET 
-                fasilitas='$fasilitas',
-                deskripsi='$deskripsi',
-                gambar='$gambar'
+                fasilitas='{$_POST['fasilitas']}',
+                deskripsi='{$_POST['deskripsi']}',
+                gambar='{$_POST['gambar']}'
                 WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_fasilitas.php");
+            $redirect = "../dashboard/dashboard_fasilitas.php";
             break;
 
         case 'guru':
-            $nama = $_POST['nama'];
-            $nip = $_POST['nip'];
-            $pangkat_gol = $_POST['pangkat_gol'];
             mysqli_query($koneksi, "UPDATE guru SET 
-        nama='$nama',
-        nip='$nip',
-        pangkat_gol='$pangkat_gol'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_guru.php");
+                nama='{$_POST['nama']}',
+                nip='{$_POST['nip']}',
+                pangkat_gol='{$_POST['pangkat_gol']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_guru.php";
             break;
 
         case 'mengajar':
-            $guru_id = $_POST['guru_id'];
-            $jenis_ptk = $_POST['jenis_ptk'];
-            $kelas_mapel = $_POST['kelas_mapel'];
-            $jtm_per_minggu = $_POST['jtm_per_minggu'];
             mysqli_query($koneksi, "UPDATE mengajar SET 
-        guru_id='$guru_id',
-        jenis_ptk='$jenis_ptk',
-        kelas_mapel='$kelas_mapel',
-        jtm_per_minggu='$jtm_per_minggu'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_kegiatan_akademik.php");
+                guru_id='{$_POST['guru_id']}',
+                jenis_ptk='{$_POST['jenis_ptk']}',
+                kelas_mapel='{$_POST['kelas_mapel']}',
+                jtm_per_minggu='{$_POST['jtm_per_minggu']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
             break;
 
         case 'pembina_kegiatan':
-            $guru_id = $_POST['guru_id'];
-            $tugas_pembinaan = $_POST['tugas_pembinaan'];
             mysqli_query($koneksi, "UPDATE pembina_kegiatan SET 
-        guru_id='$guru_id',
-        tugas_pembinaan='$tugas_pembinaan'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_kegiatan_akademik.php");
+                guru_id='{$_POST['guru_id']}',
+                tugas_pembinaan='{$_POST['tugas_pembinaan']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
             break;
 
         case 'ptk_pd':
-            $uraian = $_POST['uraian'];
-            $guru = $_POST['guru'];
-            $tendik = $_POST['tendik'];
-            $ptk = $_POST['ptk'];
-            $pd = $_POST['pd'];
             mysqli_query($koneksi, "UPDATE ptk_pd SET 
-        uraian='$uraian',
-        guru='$guru',
-        tendik='$tendik',
-        ptk='$ptk',
-        pd='$pd'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_info_akademik.php");
+                uraian='{$_POST['uraian']}',
+                guru='{$_POST['guru']}',
+                tendik='{$_POST['tendik']}',
+                ptk='{$_POST['ptk']}',
+                pd='{$_POST['pd']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_info_akademik.php";
             break;
 
         case 'sarpras':
-            $uraian = $_POST['uraian'];
-            $jumlah = $_POST['jumlah'];
             mysqli_query($koneksi, "UPDATE sarpras SET 
-        uraian='$uraian',
-        jumlah='$jumlah'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_info_akademik.php");
+                uraian='{$_POST['uraian']}',
+                jumlah='{$_POST['jumlah']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_info_akademik.php";
             break;
 
         case 'rombongan_mengajar':
-            $kelas = $_POST['kelas'];
-            $detail = $_POST['detail'];
-            $jumlah = $_POST['jumlah'];
-            $total = $_POST['total'];
             mysqli_query($koneksi, "UPDATE rombongan_mengajar SET 
-        kelas='$kelas',
-        detail='$detail',
-        jumlah='$jumlah',
-        total='$total'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_info_akademik.php");
+                kelas='{$_POST['kelas']}',
+                detail='{$_POST['detail']}',
+                jumlah='{$_POST['jumlah']}',
+                total='{$_POST['total']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_info_akademik.php";
             break;
 
-
         case 'berita':
-            $judul = $_POST['judul'];
-            $link_youtube = $_POST['link_youtube'];
-            $deskripsi = $_POST['deskripsi'];
             mysqli_query($koneksi, "UPDATE berita SET 
-        judul='$judul',
-        link_youtube='$link_youtube',
-        deskripsi='$deskripsi'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_berita.php");
+                judul='{$_POST['judul']}',
+                link_youtube='{$_POST['link_youtube']}',
+                deskripsi='{$_POST['deskripsi']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_berita.php";
             break;
 
         case 'form_futsal':
-            $nisn = $_POST['nisn'];
-            $nama = $_POST['nama'];
-            $kelas = $_POST['kelas'];
-            $jk = $_POST['jk'];
-            $nohp = $_POST['nohp'];
-            $alasan = $_POST['alasan'];
             mysqli_query($koneksi, "UPDATE form_futsal SET 
-        nisn='$nisn',
-        nama='$nama',
-        kelas='$kelas',
-        jk='$jk',
-        nohp='$nohp',
-        alasan='$alasan'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_futsal.php");
+                nisn='{$_POST['nisn']}',
+                nama='{$_POST['nama']}',
+                kelas='{$_POST['kelas']}',
+                jk='{$_POST['jk']}',
+                nohp='{$_POST['nohp']}',
+                alasan='{$_POST['alasan']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_futsal.php";
             break;
 
         case 'kelompok':
-            $nama = $_POST['nama'];
-            $nim = $_POST['nim'];
-            $link_artikel = $_POST['link_artikel'];
-            $gambar = $_POST['gambar'];
             mysqli_query($koneksi, "UPDATE kelompok SET 
-        gambar='$gambar',
-        nama='$nama',
-        nim='$nim',
-        link_artikel='$link_artikel'
-        WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_kelompok.php");
+                gambar='{$_POST['gambar']}',
+                nama='{$_POST['nama']}',
+                nim='{$_POST['nim']}',
+                link_artikel='{$_POST['link_artikel']}'
+                WHERE id='$id'");
+            $redirect = "../dashboard/dashboard_kelompok.php";
             break;
 
         case 'login':
-            $nama = $_POST['nama'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
             mysqli_query($koneksi, "UPDATE login SET 
-                nama='$nama',
-                email='$email',
-                password='$password'
+                nama='{$_POST['nama']}',
+                email='{$_POST['email']}',
+                password='{$_POST['password']}'
                 WHERE id='$id'");
-            header("Location: ../dashboard/dashboard_login.php");
+            $redirect = "../dashboard/dashboard_login.php";
             break;
     }
+    
+    echo "
+    <!DOCTYPE html>
+    <html>
+    <head>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+    <style>
+        body { font-family: 'Poppins', sans-serif !important; }
+    </style>
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    </head>
+    <body>
+        <script>
+   Swal.fire({
+    title: 'Berhasil!',
+    text: 'Data berhasil diperbarui.',
+    icon: 'success',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    confirmButtonText: 'OK'
+}).then(() => {
+    window.location.href = '$redirect';
+});
+</script>
+
+    </body>
+    </html>";
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -275,6 +246,8 @@ if (isset($_POST['update'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Tambahkan ini di bagian <head> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -542,7 +515,13 @@ if (isset($_POST['update'])) {
                             <input type="text" name="nama" class="form-control" value="<?= $data['nama']; ?>">
                         </div>
                         <div class="mb-3"><label>Kelas</label>
-                            <input type="text" name="kelas" class="form-control" value="<?= $data['kelas']; ?>">
+                            
+                            <select name="kelas" class="form-control">
+                                <option value="4" <?= $data['kelas'] == '4' ? 'selected' : ''; ?>>Kelas 4</option>
+                                <option value="5" <?= $data['kelas'] == '5' ? 'selected' : ''; ?>>Kelas 5</option>
+                                <option value="6" <?= $data['kelas'] == '6' ? 'selected' : ''; ?>>Kelas 6</option>
+                                
+                            </select>
                         </div>
                         <div class="mb-3"><label>Jenis Kelamin</label>
                             <select name="jk" class="form-control">
@@ -592,7 +571,7 @@ if (isset($_POST['update'])) {
                         </div>
                     <?php endif; ?>
 
-                    <button type="submit" name="update" class="btn btn-warning">Simpan Perubahan</button>
+                    <button type="submit" name="update" class="btn btn-warning" id="saveBtn">Simpan Perubahan</button>
                     <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn btn-secondary">Kembali</a>
                 </form>
             </div>
@@ -605,6 +584,10 @@ if (isset($_POST['update'])) {
             const sidebar = document.getElementById('sidebarMenu');
             sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
         });
+
+   
+
+   
     </script>
 
 </body>

@@ -99,7 +99,7 @@ $result = mysqli_query($koneksi, $query);
                     <td class="text-center">
                       <a href="../crud/edit.php?file=kelompok&tabel=kelompok&id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                       <a href="../crud/hapus.php?tabel=kelompok&id=<?= $row['id']; ?>"
-                        onclick="return confirm('Yakin ingin menghapus fasilitas ini?')"
+                      
                         class="btn btn-danger btn-sm">Hapus</a>
                     </td>
                   </tr>

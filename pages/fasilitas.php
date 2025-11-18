@@ -107,49 +107,63 @@ $result = mysqli_query($koneksi, $query);
     </main>
 
     <br />
-    <footer
-        class="text-center py-4 mt-5"
-        style="background-color: #446b42; color: #fffccf">
+     <footer class="footer-custom mt-5 pt-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-6">
-                    <h3 class="fw-bold mb-3" style="color: #f8ae84">
-                        Kontak Sekolah
-                    </h3>
-                    <p class="mb-1">
-                        <strong>Email:</strong>
-                        <a
-                            href="mailto:sdimacsombala1@gmail.com"
-                            class="text-decoration-none"
-                            style="color: #fffccf">
+
+            <div class="row g-4 justify-content-between">
+
+
+                <div class="col-12 col-md-4">
+                    <h5 class="footer-title">Menu</h5>
+                    <ul class="footer-menu">
+                        <li><a href="../index.php"><i data-lucide="home"></i> Beranda</a></li>
+                        <li><a href="kegiatan_akademik.php"><i data-lucide="calendar-check"></i> Kegiatan Akademik</a></li>
+                        <li><a href="info_akademik.php"><i data-lucide="clipboard-check"></i> Info Akademik</a></li>
+                        <li><a href="#"><i data-lucide="building"></i> Fasilitas Sekolah</a></li>
+                        <li><a href="berita.php"><i data-lucide="megaphone"></i> Berita</a></li>
+                        <li><a href="tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <h5 class="footer-title">Kontak Sekolah</h5>
+
+                    <p class="footer-text mb-1">
+                        <strong>Email:</strong><br>
+                        <a href="mailto:sdimacsombala1@gmail.com" class="footer-link">
                             sdimacsombala1@gmail.com
                         </a>
                     </p>
-                    <p class="mb-3">Alamat: Jl. Abdul Kadir No. 47</p>
+
+                    <p class="footer-text mb-1">
+                        <strong>Alamat:</strong><br>
+                        Jl. Abdul Kadir No. 47
+                    </p>
+
+                    <p class="footer-text mb-0">
+                        <strong>Telepon:</strong><br>
+                        0821-XXXX-XXXX
+                    </p>
                 </div>
-                <div
-                    class="col-12 col-md-6 d-flex justify-content-center mb-3">
+
+                <div class="col-12 col-md-4">
+                    <h5 class="footer-title">Lokasi Sekolah</h5>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.680277990639!2d119.4138257105302!3d-5.185698546535013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf1d883543ba69%3A0x421ca8de98e55d1a!2sSD%20Inpres%20Maccini%20Sombala!5e1!3m2!1sid!2sid!4v1758704755958!5m2!1sid!2sid"
-                        width="300"
-                        height="150"
-                        style="
-                                border: 2px solid #f8ae84;
-                                border-radius: 10px;
-                            "
-                        allowfullscreen=""
+                        width="100%"
+                        height="170"
+                        style="border:2px solid #f8ae84; border-radius:12px;"
                         loading="lazy"
+                        allowfullscreen=""
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
 
-            <hr
-                style="border-color: #f8ae84; width: 60%; margin: 15px auto" />
-            <p class="mb-0">
-                <a
-                    href="../index.html"
-                    class="text-white text-decoration-none">&copy; 2025 SD Inpres Maccini Sombala 1</a>
+            <hr class="footer-divider">
+
+            <p class="footer-copy text-center mb-0">
+                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
         </div>
     </footer>

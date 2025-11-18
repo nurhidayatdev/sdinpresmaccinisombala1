@@ -150,12 +150,63 @@ label {
     background-color: #355633;
 }
 
-.footer {
-    text-align: center;
-    font-size: 13px;
-    color: var(--green);
-    margin-top: 25px;
+.footer-custom {
+    background: #446b42;
+    color: #fffccf;
+    padding-bottom: 20px;
 }
+
+.footer-title {
+    color: #f8ae84;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.footer-text {
+    font-size: 0.95rem;
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 6px;
+}
+
+.footer-menu a {
+    color: #fffccf;
+    text-decoration: none;
+    font-size: 0.96rem;
+}
+
+.footer-menu a:hover {
+    color: #f8ae84;
+}
+
+.footer-link {
+    color: #fffccf;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #f8ae84;
+}
+
+.footer-divider {
+    border-color: #f8ae84;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.footer-copy {
+    color: #fffccf;
+    font-size: 0.9rem;
+}
+
 .login-card {
     background-color: var(--orange);
     border-radius: 15px;

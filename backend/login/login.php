@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     rel="stylesheet">
 </head>
 
-<body style="background-image: url('../img/main/Hexagon.svg');
+<body style="background-image: url('../img/main/bg-login.svg');
 
  min-height: 100vh;">
   <div class="container">

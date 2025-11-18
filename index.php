@@ -314,14 +314,14 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                     </h2>
 
                     <div class="mb-3">
-                        <h4 style="color: #f8ae84">Visi</h4>
+                        <h5 style="color: #f8ae84">Visi</h5>
                         <p><?= htmlspecialchars($data_visi['pernyataan_visi']); ?>
 
                         </p>
                     </div>
 
                     <div class="mb-3">
-                        <h4 style="color: #f8ae84">Misi</h4>
+                        <h5 style="color: #f8ae84">Misi</h5>
                         <ol>
                             <?php while ($data_misi = mysqli_fetch_assoc($result_misi)) { ?>
                                 <li><?= htmlspecialchars($data_misi['pernyataan_misi']); ?></li>
@@ -331,7 +331,7 @@ $data_tujuan = mysqli_fetch_assoc($result_tujuan);
                     </div>
 
                     <div>
-                        <h4 style="color: #f8ae84">Tujuan</h4>
+                        <h5 style="color: #f8ae84">Tujuan</h5>
                         <ul>
                             <?php while ($data_tujuan = mysqli_fetch_assoc($result_tujuan)) { ?>
                                 <li><?= htmlspecialchars($data_tujuan['pernyataan_tujuan']); ?></li>

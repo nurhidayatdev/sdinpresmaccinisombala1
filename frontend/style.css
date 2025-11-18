@@ -7,6 +7,9 @@
 * {
     font-family: "Poppins", sans-serif;
 }
+.db {
+    font-size: 10px;
+}
 a {
     text-decoration: none;
 }
@@ -23,9 +26,16 @@ a {
 }
 
 .navbar-custom .nav-link:hover {
-    color: var(--orange);
+    background-color: var(--orange);
+    color: var(--green);
+    border-radius: 8px;
 }
-
+.navbar-custom .nav-link.active {
+    font-weight: 500;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 .navbar-custom .navbar-toggler {
     border-color: var(--yellow);
 }
@@ -35,6 +45,7 @@ a {
 }
 
 .custom-dropdown {
+    
     background-color: var(--green);
     border: 1px solid var(--orange);
     border-radius: 8px;
@@ -43,6 +54,7 @@ a {
 }
 
 .custom-dropdown .dropdown-item {
+    font-size: 10px;
     color: var(--yellow);
     font-weight: 500;
     padding: 10px 20px;
@@ -51,8 +63,10 @@ a {
 
 .custom-dropdown .dropdown-item:hover {
     background-color: var(--orange);
+   
     color: var(--green);
-    transform: translateX(3px);
+   
+   
 }
 
 .custom-dropdown .dropdown-divider {
@@ -97,7 +111,7 @@ tr:hover {
     margin: 60px auto;
 }
 
-h2 {
+h2, h4 {
     color: var(--green);
     font-weight: 700;
     text-align: center;
@@ -217,7 +231,7 @@ label {
 }
 .sidebar {
     height: 100vh;
-    width: 260px;
+    width: 230px;
     position: fixed;
     top: 0;
     left: 0;
@@ -229,7 +243,7 @@ label {
 
 .sidebar .brand {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: center;
     padding: 1.5rem 1rem 0.5rem;
 }
@@ -238,8 +252,11 @@ label {
     text-align: center;
     padding: 0.5rem 0 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 12px;
 }
-
+.sidebar .user-info div {
+    font-size: 12px;
+}
 .sidebar .user-info img {
     width: 60px;
     height: 60px;
@@ -250,7 +267,7 @@ label {
 
 .sidebar .nav-link {
     color: black;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -266,7 +283,7 @@ label {
 }
 
 #mainContent {
-    margin-left: 260px;
+    margin-left: 230px;
     padding: 20px;
     transition: all 0.3s ease;
 }
@@ -286,7 +303,7 @@ label {
 
 .welcome-text {
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .dashboard-cards {
@@ -306,6 +323,56 @@ label {
 .card-custom:hover {
     transform: translateY(-5px);
 }
+.lucide {
+    width: 15px !important;
+    height: 15px !important;
+    
+}
+.card .lucide {
+    width: 25px !important;
+    height: 25px !important;
+    
+}
+
+.btn-db {
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: .2s;
+    color: white;
+}
+
+.btn-edit {
+background: #FFD93D;
+
+    padding: 4px;
+    
+}
+.btn-edit:hover {
+    background-color: #FFD93D;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+.btn-del {
+background: #FF6B6B;
+    padding: 4px;
+}
+.btn-del:hover {
+    background-color: rgb(216, 0, 0);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+.btn-add {
+    background-color: #6BCB77;
+    padding: 8px 16px;
+}
+
+.btn-add:hover {
+    background-color: #15803d;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
 
 @media (max-width: 992px) {
     .sidebar {

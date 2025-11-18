@@ -54,7 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     rel="stylesheet">
 </head>
 
-<body>
+<body style="background-image: url('../img/main/Hexagon.svg');
+
+ min-height: 100vh;">
   <div class="container">
     <div class="login-card">
       <h2>Login Admin</h2>

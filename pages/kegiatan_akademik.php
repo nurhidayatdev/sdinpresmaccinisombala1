@@ -110,9 +110,11 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($data_mengajar = mysqli_fetch_assoc($result_mengajar)) : ?>
+                                <?php 
+                                 $no = 1;
+                                while ($data_mengajar = mysqli_fetch_assoc($result_mengajar)) : ?>
                                     <tr>
-                                        <td><?= $data_mengajar['id']; ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $data_mengajar['nama']; ?></td>
                                         <td><?= $data_mengajar['nip']; ?></td>
                                         <td><?= $data_mengajar['pangkat_gol']; ?></td>
@@ -144,10 +146,12 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($data_pembina = mysqli_fetch_assoc($result_pembina)) : ?>
+                                <?php 
+                                 $no = 1;
+                                while ($data_pembina = mysqli_fetch_assoc($result_pembina)) : ?>
                                     <tr>
 
-                                        <td><?= $data_pembina['id']; ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $data_pembina['nama']; ?></td>
                                         <td><?= $data_pembina['nip']; ?></td>
                                         <td><?= $data_pembina['pangkat_gol']; ?></td>

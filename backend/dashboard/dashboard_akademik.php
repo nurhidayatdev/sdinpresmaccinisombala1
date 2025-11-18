@@ -24,12 +24,12 @@ $email = $_SESSION['email'];
   <link rel="stylesheet" href="../../frontend/style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 </head>
 
-<body>
+<body class="db">
 
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
@@ -59,8 +59,8 @@ $email = $_SESSION['email'];
       </button>
     </div>
 
-    <div class="container-fluid mt-4">
-      <h3 class="fw-bold mb-3">Dashboard Utama</h3>
+    <div class="mt-4">
+      <h5 class="fw-bold mb-3">Dashboard Akademik</h5>
 
       <div class="dashboard-cards">
 
@@ -90,9 +90,9 @@ $email = $_SESSION['email'];
 
         <a href="dashboard_futsal.php">
           <div class="card card-custom p-3 text-center">
-            <i data-lucide="soccer-ball" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <i data-lucide="card-sim" class="mb-2" style="width: 32px; height: 32px;"></i>
             <h5>Formulir Futsal</h5>
-            <p class="text-muted mb-0">Kelola pendaftaran dan informasi tim/pertandingan Futsal</p>
+            <p class="text-muted mb-0">Kelola pendaftaran dan informasi pertandingan Futsal</p>
           </div>
         </a>
 

@@ -35,14 +35,14 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
     <title>Dashboard - SD Inpres Maccini Sombala 1</title>
     <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
     <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <link rel="stylesheet" href="../../frontend/style.css" />
+    <link rel="stylesheet" href="../../frontend/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="db">
 
     <nav class="sidebar" id="sidebarMenu">
         <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
@@ -72,31 +72,39 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
             </button>
         </div>
 
-        <div class="container-fluid mt-4">
-            <div class="container mb-5">
-                <h2 class="fw-bold mb-3 text-success">Data Kegiatan Akademik</h2>
-                <div class="pembagian-tugas-mengajar mb-3">
+        <div class="mt-4">
+            <div class="mb-5">
+                <h4 class="fw-bold mb-3 text-success">Data Kegiatan Akademik</h4>
+                <div class="pembagian-tugas-mengajar">
 
-                    <h4 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Mengajar</h4>
-                    <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=mengajar" class="btn btn-success mb-3">+ Tambah Data</a>
+                    <h6 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Mengajar</h6>
+                    <div style="display: flex; justify-content: flex-start; margin-bottom: 12px;">
+                        <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=mengajar" class="btn-db btn-add">
+                            <i data-lucide="plus"></i> Tambah Data
+                        </a>
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
                             <thead class="table-success text-center">
                                 <tr>
-                                    <th>No</th>
+                                    <th width="30px">No</th>
                                     <th>Nama</th>
                                     <th>NIP</th>
                                     <th>Pangkat/Gol.</th>
                                     <th>Jenis PTK</th>
                                     <th>Kelas/Mapel yang Diajar</th>
                                     <th>Jumlah JTM/Minggu</th>
-                                    <th width="150px">Aksi</th>
+                                    <th width="100px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($data_mengajar = mysqli_fetch_assoc($result_mengajar)) : ?>
+
+                                <?php
+                                $no = 1;
+                                while ($data_mengajar = mysqli_fetch_assoc($result_mengajar)) : ?>
                                     <tr>
-                                        <td><?= $data_mengajar['id']; ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $data_mengajar['nama']; ?></td>
                                         <td><?= $data_mengajar['nip']; ?></td>
                                         <td><?= $data_mengajar['pangkat_gol']; ?></td>
@@ -104,11 +112,11 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_mengajar['kelas_mapel']; ?></td>
                                         <td><?= $data_mengajar['jtm_per_minggu']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
 
                                             <a href="../crud/hapus.php?tabel=mengajar&id=<?= $data_mengajar['id']; ?>"
-                                               
-                                                class="btn btn-danger btn-sm">Hapus</a>
+
+                                                class="btn-db btn-del"><i data-lucide="trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
@@ -117,36 +125,44 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                     </div>
 
                 </div>
+                <br>
+                <div class="pembagian-tugas-pembina-kegiatan">
+                    <h6 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Pembina Kegiatan</h6>
+                    <div style="display: flex; justify-content: flex-start; margin-bottom: 12px;">
+                        <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=pembina_kegiatan" class="btn-db btn-add">
+                            <i data-lucide="plus"></i> Tambah Data
+                        </a>
+                    </div>
 
-                <div class="pembagian-tugas-pembina-kegiatan mb-3">
-                    <h4 class="fw-bold mb-3 text-success text-warning">Pembagian Tugas Pembina Kegiatan</h4>
-                    <a href="../crud/tambah.php?file=kegiatan_akademik&tabel=pembina_kegiatan" class="btn btn-success mb-3">+ Tambah Data</a>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
                             <thead class="table-success text-center">
                                 <tr>
-                                    <th>No</th>
+                                    <th width="30px">No</th>
                                     <th>Nama</th>
                                     <th>NIP</th>
                                     <th>Pangkat/Gol.</th>
                                     <th>Tugas Pembinaan</th>
-                                    <th width="150px">Aksi</th>
+                                    <th width="100px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($data_pembina = mysqli_fetch_assoc($result_pembina)) : ?>
+
+                                <?php
+                                $no = 1;
+                                while ($data_pembina = mysqli_fetch_assoc($result_pembina)) : ?>
                                     <tr>
-                                        <td><?= $data_pembina['id']; ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $data_pembina['nama']; ?></td>
                                         <td><?= $data_pembina['nip']; ?></td>
                                         <td><?= $data_pembina['pangkat_gol']; ?></td>
                                         <td><?= $data_pembina['tugas_pembinaan']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
 
                                             <a href="../crud/hapus.php?tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>"
-                                               
-                                                class="btn btn-danger btn-sm">Hapus</a>
+
+                                                class="btn-db btn-del"><i data-lucide="trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>

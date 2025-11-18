@@ -30,14 +30,14 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <title>Dashboard - SD Inpres Maccini Sombala 1</title>
     <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
     <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <link rel="stylesheet" href="../../frontend/style.css" />
+    <link rel="stylesheet" href="../../frontend/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="db">
 
     <nav class="sidebar" id="sidebarMenu">
         <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
@@ -67,13 +67,13 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
             </button>
         </div>
 
-        <div class="container-fluid mt-4">
-            <div class="container mb-5">
-                <h2 class="fw-bold mb-3 text-success">Data Info Akademik</h2>
+        <div class="mt-4">
+            <div class="mb-5">
+                <h4 class="fw-bold mb-3 text-success">Data Info Akademik</h4>
 
                 <div class="ptk-pd mb-3">
 
-                    <h4 class="fw-bold mb-3 text-success text-warning">Data PTK PD</h4>
+                    <h6 class="fw-bold text-success text-warning">Data PTK PD</h6>
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
@@ -85,7 +85,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                     <th>Tendik</th>
                                     <th>PTK</th>
                                     <th>PD</th>
-                                    <th width="150px">Aksi</th>
+                                    <th width="50px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,7 +97,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_ptk['ptk']; ?></td>
                                         <td><?= $data_ptk['pd']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=info_akademik&tabel=ptk_pd&id=<?= $data_ptk['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=ptk_pd&id=<?= $data_ptk['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
@@ -109,7 +109,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
 
                 <div class="sarpras mb-3">
 
-                    <h4 class="fw-bold mb-3 text-success text-warning">Data Sarana dan Prasarana</h4>
+                    <h6 class="fw-bold text-success text-warning">Data Sarana dan Prasarana</h6>
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
@@ -118,7 +118,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
 
                                     <th>Uraian</th>
                                     <th>Jumlah</th>
-                                    <th width="150px">Aksi</th>
+                                    <th width="50px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -129,7 +129,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_sarpras['jumlah']; ?></td>
 
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=info_akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
 
 
                                         </td>
@@ -143,7 +143,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
 
                 <div class="rombongan mb-3">
 
-                    <h4 class="fw-bold mb-3 text-success text-warning">Data Rombongan Mengajar</h4>
+                    <h6 class="fw-bold text-success text-warning">Data Rombongan Mengajar</h6>
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped align-middle">
@@ -154,7 +154,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                     <th>Detail</th>
                                     <th>Jumlah</th>
                                     <th>Total</th>
-                                    <th width="150px">Aksi</th>
+                                    <th width="50px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -167,7 +167,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_rombongan['total']; ?></td>
 
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=info_akademik&tabel=rombongan_mengajar&id=<?= $data_rombongan['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=rombongan_mengajar&id=<?= $data_rombongan['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
 
 
                                         </td>

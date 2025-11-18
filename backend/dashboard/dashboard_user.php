@@ -22,15 +22,15 @@ $email = $_SESSION['email'];
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
- <link rel="stylesheet" href="../../frontend/style.css" />
+  <link rel="stylesheet" href="../../frontend/style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 </head>
 
-<body>
+<body class="db">
 
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
@@ -60,8 +60,8 @@ $email = $_SESSION['email'];
       </button>
     </div>
 
-    <div class="container-fluid mt-4">
-      <h3 class="fw-bold mb-3">Dashboard Utama</h3>
+    <div class="mt-4">
+      <h5 class="fw-bold mb-3">Dashboard Login</h5>
 
 
       <div class="dashboard-cards">

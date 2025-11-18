@@ -27,11 +27,11 @@ $result = mysqli_query($koneksi, $query);
     <link rel="stylesheet" href="../../frontend/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="db">
 
     <nav class="sidebar" id="sidebarMenu">
         <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
@@ -61,45 +61,52 @@ $result = mysqli_query($koneksi, $query);
             </button>
         </div>
 
-        <div class="container-fluid mt-4">
-            <div class="container mb-5">
-                <h2 class="fw-bold mb-3 text-success">Data Guru</h2>
+        <div class="mt-4">
+            <div class="mb-5">
+                <h4 class="fw-bold mb-3 text-success">Data Guru</h4>
 
-                <div class="pembagian-tugas-mengajar mb-3">
-                    <a href="../crud/tambah.php?file=guru&tabel=guru" class="btn btn-success mb-3">+ Tambah Data</a>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped align-middle">
-                            <thead class="table-success text-center">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>NIP</th>
-                                    <th>Pangkat/Gol.</th>
-                                    <th width="150px">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($data = mysqli_fetch_assoc($result)) : ?>
-                                    <tr>
-                                        <td><?= $data['id']; ?></td>
-                                        <td><?= $data['nama']; ?></td>
-                                        <td><?= $data['nip']; ?></td>
-                                        <td><?= $data['pangkat_gol']; ?></td>
-                                        <td class="text-center">
-                                            <a href="../crud/edit.php?file=guru&tabel=guru&id=<?= $data['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
-                                            <a href="../crud/hapus.php?tabel=guru&id=<?= $data['id']; ?>"
-                                                
-                                                class="btn btn-danger btn-sm">Hapus</a>
-                                        </td>
-                                    </tr>
-                                <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
+                <div style="display: flex; justify-content: flex-start; margin-bottom: 12px;">
+                    <a href="../crud/tambah.php?file=guru&tabel=guru" class="btn-db btn-add">
+                        <i data-lucide="plus"></i> Tambah Data
+                    </a>
                 </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-success text-center">
+                            <tr>
+                                <th width="30px">No</th>
+                                <th>Nama</th>
+                                <th>NIP</th>
+                                <th>Pangkat/Gol.</th>
+                                <th width="80px">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            while ($data = mysqli_fetch_assoc($result)) : ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $data['nama']; ?></td>
+                                    <td><?= $data['nip']; ?></td>
+                                    <td><?= $data['pangkat_gol']; ?></td>
+                                    <td class="text-center">
+                                        <a href="../crud/edit.php?file=guru&tabel=guru&id=<?= $data['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+
+                                        <a href="../crud/hapus.php?tabel=guru&id=<?= $data['id']; ?>"
+
+                                            class="btn-db btn-del"><i data-lucide="trash"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
+        </div>
         </div>
     </main>
 

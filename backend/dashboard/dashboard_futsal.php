@@ -23,14 +23,14 @@ $result = mysqli_query($koneksi, $query);
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
- <link rel="stylesheet" href="../../frontend/style.css" />
+  <link rel="stylesheet" href="../../frontend/style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="db">
 
   <nav class="sidebar" id="sidebarMenu">
     <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
@@ -60,17 +60,21 @@ $result = mysqli_query($koneksi, $query);
       </button>
     </div>
 
-    <div class="container-fluid mt-4">
-      <div class="container mb-5">
-        <h2 class="fw-bold mb-3 text-success">Formulir Futsal</h2>
+    <div class="mt-4">
+      <div class="mb-5">
+        <h4 class="fw-bold mb-3 text-success">Formulir Futsal</h4>
+        <div style="display: flex; justify-content: flex-start; margin-bottom: 12px;">
+          <a href="../crud/tambah.php?file=form_futsal&tabel=form_futsal" class="btn-db btn-add">
+            <i data-lucide="plus"></i> Tambah Data
+          </a>
+        </div>
 
 
-        <a href="../crud/tambah.php?file=form_futsal&tabel=form_futsal" class="btn btn-success mb-3">+ Tambah Data</a>
         <div class="table-responsive">
           <table class="table table-bordered table-striped align-middle">
             <thead class="table-success text-center">
               <tr>
-                <th>ID</th>
+                <th width="30px">No</th>
                 <th>NISN</th>
                 <th>Nama</th>
                 <th>Kelas</th>
@@ -78,13 +82,15 @@ $result = mysqli_query($koneksi, $query);
                 <th>NO HP</th>
                 <th>Alasan Daftar</th>
                 <th>Tanggal Daftar</th>
-                <th width="150px">Aksi</th>
+                <th width="80px">Aksi</th>
               </tr>
             </thead>
             <tbody>
-              <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+              <?php
+              $no = 1;
+              while ($row = mysqli_fetch_assoc($result)) : ?>
                 <tr>
-                  <td><?= $row['id']; ?></td>
+                  <td><?= $no++; ?></td>
                   <td><?= $row['nisn']; ?></td>
                   <td><?= $row['nama']; ?></td>
                   <td><?= $row['kelas']; ?></td>
@@ -94,10 +100,10 @@ $result = mysqli_query($koneksi, $query);
                   <td><?= $row['tanggal_daftar']; ?></td>
                   <td class="text-center">
                     <a href="../crud/edit.php?file=form_futsal&tabel=form_futsal&id=<?= $row['id']; ?>"
-                      class="btn btn-warning btn-sm">Edit</a>
+                      class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
                     <a href="../crud/hapus.php?tabel=form_futsal&id=<?= $row['id']; ?>"
-                      
-                      class="btn btn-danger btn-sm">Hapus</a>
+
+                      class="btn-db btn-del"><i data-lucide="trash"></i></a>
                   </td>
                 </tr>
               <?php endwhile; ?>

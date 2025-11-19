@@ -96,7 +96,6 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             class="table table-bordered table-striped align-middle">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>Uraian</th>
                                     <th>Guru</th>
                                     <th>Tendik</th>
@@ -107,7 +106,6 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             <tbody>
                                 <?php while ($data_ptk = mysqli_fetch_assoc($result_ptk)) : ?>
                                     <tr>
-                                        <td><?= $data_ptk['id']; ?></td>
                                         <td><?= $data_ptk['uraian']; ?></td>
                                         <td><?= $data_ptk['guru']; ?></td>
                                         <td><?= $data_ptk['tendik']; ?></td>
@@ -130,7 +128,6 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             class="table table-bordered table-striped align-middle">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>Uraian</th>
                                     <th>Jumlah</th>
                                 </tr>
@@ -138,7 +135,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             <tbody>
                                 <?php while ($data_sarpras = mysqli_fetch_assoc($result_sarpras)) : ?>
                                     <tr>
-                                        <td><?= $data_sarpras['id']; ?></td>
+
                                         <td><?= $data_sarpras['uraian']; ?></td>
                                         <td><?= $data_sarpras['jumlah']; ?></td>
                                     </tr>
@@ -158,7 +155,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             class="table table-bordered table-striped align-middle">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                   
                                     <th>Uraian</th>
                                     <th>Detail</th>
                                     <th>Jumlah</th>
@@ -168,7 +165,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                             <tbody>
                                 <?php while ($data_rombongan = mysqli_fetch_assoc($result_rombongan)) : ?>
                                     <tr>
-                                        <td><?= $data_rombongan['id']; ?></td>
+                                       
                                         <td><?= $data_rombongan['kelas']; ?></td>
                                         <td><?= $data_rombongan['detail']; ?></td>
                                         <td><?= $data_rombongan['jumlah']; ?></td>

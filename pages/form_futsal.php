@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
 
-$alert_status = ''; // success / error
+$alert_status = ''; 
 $alert_message = '';
 
 if (isset($_POST['tambah'])) {
@@ -12,7 +12,6 @@ if (isset($_POST['tambah'])) {
     $nohp = trim($_POST['nohp']);
     $alasan = trim($_POST['alasan']);
 
-    // validasi sederhana
     if (
         !preg_match('/^\d{10}$/', $nisn) ||
         empty($nama) ||
@@ -46,7 +45,6 @@ if (isset($_POST['tambah'])) {
     <link rel="stylesheet" href="../frontend/style.css" />
     <script src="../jquery/dist/jquery.min.js"></script>
 
-    <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -57,7 +55,9 @@ if (isset($_POST['tambah'])) {
         rel="stylesheet">
 </head>
 
-<body>
+<body style="background-image: url('../backend/img/main/bg-login.svg');
+
+ min-height: 100vh;">
     <div class="container">
         <div class="form-card">
             <h2>⚽ Formulir Pendaftaran Ekskul Futsal ⚽</h2>

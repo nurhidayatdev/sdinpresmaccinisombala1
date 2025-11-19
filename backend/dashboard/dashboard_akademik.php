@@ -19,6 +19,7 @@ $email = $_SESSION['email'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+  <link rel="icon" href="../img/main/icon.png" />
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../../frontend/style.css" />

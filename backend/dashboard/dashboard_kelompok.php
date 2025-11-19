@@ -20,6 +20,7 @@ $result = mysqli_query($koneksi, $query);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+  <link rel="icon" href="../img/main/icon.png" />
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../../frontend/style.css" />
@@ -105,7 +106,7 @@ $result = mysqli_query($koneksi, $query);
                       <?php endif; ?>
                     </td>
                     <td class="text-center">
-                      <a href="../crud/edit.php?file=kelompok&tabel=kelompok&id=<?= $row['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+                      <a href="../crud/edit.php?file=kelompok&tabel=kelompok&id=<?= $row['id']; ?>" class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
                       <a href="../crud/hapus.php?tabel=kelompok&id=<?= $row['id']; ?>"
 
                         class="btn-db btn-del"><i data-lucide="trash"></i></a>

@@ -21,6 +21,7 @@ $result = mysqli_query($koneksi, $query);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+  <link rel="icon" href="../img/main/icon.png" />
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../../frontend/style.css" />
@@ -65,7 +66,7 @@ $result = mysqli_query($koneksi, $query);
       <div class="mb-4">
         <h4 class="fw-bold mb-3 text-success">Formulir Futsal</h4>
         <div style="display: flex; justify-content: flex-start; margin-bottom: 12px;">
-          <a href="../crud/tambah.php?file=form_futsal&tabel=form_futsal" class="btn-db btn-add">
+          <a href="../crud/tambah.php?file=futsal&tabel=form_futsal" class="btn-db btn-add">
             <i data-lucide="plus"></i> Tambah Data
           </a>
         </div>
@@ -100,8 +101,8 @@ $result = mysqli_query($koneksi, $query);
                   <td><?= $row['alasan']; ?></td>
                   <td><?= $row['tanggal_daftar']; ?></td>
                   <td class="text-center">
-                    <a href="../crud/edit.php?file=form_futsal&tabel=form_futsal&id=<?= $row['id']; ?>"
-                      class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+                    <a href="../crud/edit.php?file=futsal&tabel=form_futsal&id=<?= $row['id']; ?>"
+                      class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
                     <a href="../crud/hapus.php?tabel=form_futsal&id=<?= $row['id']; ?>"
 
                       class="btn-db btn-del"><i data-lucide="trash"></i></a>

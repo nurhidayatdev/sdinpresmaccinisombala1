@@ -203,6 +203,10 @@ if (isset($_POST['update'])) {
     <!DOCTYPE html>
     <html>
     <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel='icon' href='../img/main/icon.png' />
   <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
     <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
@@ -215,7 +219,7 @@ if (isset($_POST['update'])) {
         <script>
    Swal.fire({
     title: 'Berhasil!',
-    text: 'Data berhasil diperbarui.',
+    text: 'Data berhasil diperbarui!',
     icon: 'success',
     allowOutsideClick: false,
     allowEscapeKey: false,
@@ -239,6 +243,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel="icon" href="../img/main/icon.png" />
     <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
     <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../frontend/style.css" />
@@ -246,11 +251,10 @@ if (isset($_POST['update'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!-- Tambahkan ini di bagian <head> -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+<body class="db">
     <nav class="sidebar" id="sidebarMenu">
         <div class="brand">🏫 SD Inpres Maccini<br>Sombala 1</div>
         <div class="user-info">
@@ -281,11 +285,11 @@ if (isset($_POST['update'])) {
 
         <div class="container-fluid mt-4">
             <div class="container">
-                <h2 class="fw-bold mb-3 text-warning">Edit</h2>
+                <h4 class="fw-bold mb-3 text-warning">Edit</h4>
 
                 <form method="POST">
                     <?php if ($tabel === 'profil_sekolah' && $bagian === 'identitas'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Identitas Sekolah</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Identitas Sekolah</h5>
                         <div class="mb-3"><label>Nama Sekolah</label>
                             <input type="text" name="nama_sekolah" class="form-control" value="<?= $data['nama_sekolah']; ?>" required>
                         </div>
@@ -315,7 +319,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'profil_sekolah' && $bagian === 'pelengkap'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Pelengkap</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Pelengkap</h5>
                         <div class="mb-3"><label>SK Pendirian</label>
                             <input type="text" name="sk_pendirian" class="form-control" value="<?= $data['sk_pendirian']; ?>" required>
                         </div>
@@ -342,7 +346,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'profil_sekolah' && $bagian === 'lainnya'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Lainnya</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Lainnya</h5>
                         <div class="mb-3"><label>Kepala Sekolah</label>
                             <input type="text" name="kepala_sekolah" class="form-control" value="<?= $data['kepala_sekolah']; ?>" required>
                         </div>
@@ -357,25 +361,25 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'visi'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Visi Sekolah</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Visi Sekolah</h5>
                         <div class="mb-3"><label>Visi</label>
                             <input type="text" name="pernyataan_visi" class="form-control" value="<?= $data['pernyataan_visi']; ?>">
                         </div>
 
                     <?php elseif ($tabel === 'misi'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Misi Sekolah</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Misi Sekolah</h5>
                         <div class="mb-3"><label>Misi</label>
                             <input type="text" name="pernyataan_misi" class="form-control" value="<?= $data['pernyataan_misi']; ?>">
                         </div>
 
                     <?php elseif ($tabel === 'tujuan'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Tujuan Sekolah</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Tujuan Sekolah</h5>
                         <div class="mb-3"><label>Tujuan</label>
                             <input type="text" name="pernyataan_tujuan" class="form-control" value="<?= $data['pernyataan_tujuan']; ?>">
                         </div>
 
                     <?php elseif ($tabel === 'fasilitas_sekolah'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Fasilitas Sekolah</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Fasilitas Sekolah</h5>
                         <div class="mb-3"><label>Nama Fasilitas</label>
                             <input type="text" name="fasilitas" class="form-control" value="<?= $data['fasilitas']; ?>">
                         </div>
@@ -393,7 +397,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'guru'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Guru</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Guru</h5>
                         <div class="mb-3"><label>Nama Guru</label>
                             <input type="text" name="nama" class="form-control" value="<?= $data['nama']; ?>">
                         </div>
@@ -405,7 +409,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'mengajar'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Mengajar</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Mengajar</h5>
                         <div class="mb-3">
                             <label>Guru</label>
                             <select name="guru_id" class="form-select" required>
@@ -430,7 +434,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'pembina_kegiatan'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Pembina Kegiatan</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Pembina Kegiatan</h5>
                         <div class="mb-3">
                             <label>Guru</label>
                             <select name="guru_id" class="form-select" required>
@@ -449,7 +453,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'ptk_pd'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data PTK dan PD</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data PTK dan PD</h5>
                         <div class="mb-3"><label>Uraian</label>
                             <input type="text" name="uraian" class="form-control" value="<?= $data['uraian']; ?>">
                         </div>
@@ -467,7 +471,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'sarpras'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Sarana dan Prasarana</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Sarana dan Prasarana</h5>
                         <div class="mb-3">
                             <label>Uraian</label>
                             <input type="text" name="uraian" class="form-control"
@@ -480,7 +484,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'rombongan_mengajar'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Rombongan Belajar</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Rombongan Belajar</h5>
                         <div class="mb-3"><label>Kelas</label>
                             <input type="text" name="kelas" class="form-control" value="<?= $data['kelas']; ?>">
                         </div>
@@ -495,7 +499,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'berita'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Berita</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Berita</h5>
                         <div class="mb-3"><label>Judul Berita</label>
                             <input type="text" name="judul" class="form-control" value="<?= $data['judul']; ?>">
                         </div>
@@ -507,7 +511,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'form_futsal'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Formulir Futsal</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Formulir Futsal</h5>
                         <div class="mb-3"><label>NISN</label>
                             <input type="text" name="nisn" class="form-control" value="<?= $data['nisn']; ?>">
                         </div>
@@ -537,7 +541,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'kelompok'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Kelompok</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Kelompok</h5>
                         <div class="mb-3"><label>Nama</label>
                             <input type="text" name="nama" class="form-control" value="<?= $data['nama']; ?>">
                         </div>
@@ -559,7 +563,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                     <?php elseif ($tabel === 'login'): ?>
-                        <h4 class="fw-bold mb-3 text-warning">Data Login</h4>
+                        <h5 class="fw-bold mb-3 text-warning">Data Login</h5>
                         <div class="mb-3"><label>Nama</label>
                             <input type="text" name="nama" class="form-control" value="<?= $data['nama']; ?>">
                         </div>
@@ -570,12 +574,14 @@ if (isset($_POST['update'])) {
                             <input type="text" name="password" class="form-control" value="<?= $data['password']; ?>">
                         </div>
                     <?php endif; ?>
-
-                    <button type="submit" name="update" class="btn btn-warning" id="saveBtn">Simpan Perubahan</button>
-                    <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" name="update" class="btn-db btn-cl me-2 mt-2" id="saveBtn">Simpan</button>
+                    <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn-db btn-add">Kembali</a>
                 </form>
             </div>
         </div>
+        <p class="text-center mb-0 mt-4">
+                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+            </p>
     </main>
     <script>
         lucide.createIcons();

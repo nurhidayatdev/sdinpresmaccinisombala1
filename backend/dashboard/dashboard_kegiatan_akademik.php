@@ -33,6 +33,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel="icon" href="../img/main/icon.png" />
     <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
     <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../frontend/style.css" />
@@ -113,7 +114,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_mengajar['kelas_mapel']; ?></td>
                                         <td><?= $data_mengajar['jtm_per_minggu']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
 
                                             <a href="../crud/hapus.php?tabel=mengajar&id=<?= $data_mengajar['id']; ?>"
 
@@ -159,7 +160,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_pembina['pangkat_gol']; ?></td>
                                         <td><?= $data_pembina['tugas_pembinaan']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
 
                                             <a href="../crud/hapus.php?tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>"
 

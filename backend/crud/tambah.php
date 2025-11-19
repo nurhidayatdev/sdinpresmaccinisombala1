@@ -125,6 +125,10 @@ if (isset($_POST['tambah'])) {
     <!DOCTYPE html>
     <html>
     <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel='icon' href='../img/main/icon.png' />
   <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
     <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
@@ -137,7 +141,7 @@ if (isset($_POST['tambah'])) {
         <script>
    Swal.fire({
     title: 'Berhasil!',
-    text: 'Data berhasil ditambahkan.',
+    text: 'Data berhasil ditambahkan!',
     icon: 'success',
     allowOutsideClick: false,
     allowEscapeKey: false,
@@ -160,6 +164,7 @@ if (isset($_POST['tambah'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+  <link rel="icon" href="../img/main/icon.png" />
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../../frontend/style.css" />
@@ -169,7 +174,7 @@ if (isset($_POST['tambah'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="db">
 
   <!-- Sidebar -->
   <nav class="sidebar" id="sidebarMenu">
@@ -349,12 +354,15 @@ if (isset($_POST['tambah'])) {
               <input type="text" name="password" class="form-control" required>
             </div>
           <?php endif; ?>
-
-          <button type="submit" name="tambah" class="btn btn-success">Simpan</button>
-          <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn btn-secondary">Kembali</a>
+<button type="submit" name="tambah" class="btn-db btn-cl me-2 mt-2" id="saveBtn">Simpan</button>
+                    <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn-db btn-add">Kembali</a>
+         
         </form>
       </div>
     </div>
+    <p class="text-center mb-0 mt-4">
+                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+            </p>
   </main>
 
   <script>

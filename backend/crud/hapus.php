@@ -12,6 +12,10 @@ if (isset($_GET['tabel']) && isset($_GET['id']) && !isset($_GET['confirm'])) {
     <!DOCTYPE html>
     <html>
     <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+        <link rel='icon' href='../img/main/icon.png' />
         <link rel='preconnect' href='https://fonts.googleapis.com'>
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
         <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
@@ -24,7 +28,7 @@ if (isset($_GET['tabel']) && isset($_GET['id']) && !isset($_GET['confirm'])) {
         <script>
             Swal.fire({
                 title: 'Anda yakin?',
-                text: 'Data yang dihapus tidak dapat dikembalikan.',
+                text: 'Data yang dihapus tidak dapat dikembalikan!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Ya, hapus',
@@ -86,12 +90,15 @@ if (isset($_GET['tabel']) && isset($_GET['id']) && isset($_GET['confirm'])) {
             break;
     }
 
-    // Tampilkan alert sukses
     if ($hapus) {
         echo <<<HTML
         <!DOCTYPE html>
         <html>
         <head>
+            <meta charset='UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+            <link rel='icon' href='../img/main/icon.png' />
             <link rel='preconnect' href='https://fonts.googleapis.com'>
             <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
             <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
@@ -104,7 +111,7 @@ if (isset($_GET['tabel']) && isset($_GET['id']) && isset($_GET['confirm'])) {
             <script>
                 Swal.fire({
                     title: 'Berhasil!',
-                    text: 'Data berhasil dihapus.',
+                    text: 'Data berhasil dihapus!',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {

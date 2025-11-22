@@ -148,8 +148,8 @@ $result = mysqli_query($koneksi, $query);
         </div>
         </div>
         <p class="fdb text-center mb-0">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+            © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+        </p>
     </main>
 
     <script>
@@ -161,24 +161,24 @@ $result = mysqli_query($koneksi, $query);
         });
 
         document.querySelector('.btn-logout').addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const href = this.getAttribute('href');
+            e.preventDefault();
+            const href = this.getAttribute('href');
 
-    Swal.fire({
-        title: 'Yakin ingin keluar?',
-        text: "Anda akan logout dari sistem.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6BCB77',
-        confirmButtonText: 'Log Out',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = href;
-        }
-    });
-});
+            Swal.fire({
+                title: 'Yakin ingin keluar?',
+                text: "Anda akan logout dari sistem.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6BCB77',
+                confirmButtonText: 'Log Out',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href;
+                }
+            });
+        });
     </script>
 
 </body>

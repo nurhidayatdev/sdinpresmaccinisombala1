@@ -9,6 +9,43 @@ if (!isset($_SESSION['email'])) {
 
 $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
+$role = $_SESSION['role'];
+
+$role_diizinkan = ['Administrator Utama'];
+if (!in_array($role, $role_diizinkan)) {
+    echo "
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel='icon' href='../img/main/icon.png' />
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+    <style>
+        body { font-family: 'Poppins', sans-serif !important; }
+    </style>
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    </head>
+    <body>
+        <script>
+   Swal.fire({
+    title: 'Akses Ditolak',
+    text: 'Anda tidak memiliki izin untuk mengakses halaman ini!',
+    icon: 'error',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    confirmButtonText: 'Kembali'
+}).then(() => {
+    window.location.href = 'dashboard_user.php';
+});
+</script>
+    </body>
+    </html>";
+    exit;
+}
 
 $query_profil = "SELECT * FROM profil_sekolah";
 $result_profil = mysqli_query($koneksi, $query_profil);
@@ -262,8 +299,8 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
             </div>
         </div>
         <p class="fdb text-center mb-0">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+            © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+        </p>
     </main>
 
     <script>
@@ -275,24 +312,24 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
         });
 
         document.querySelector('.btn-logout').addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const href = this.getAttribute('href');
+            e.preventDefault();
+            const href = this.getAttribute('href');
 
-    Swal.fire({
-        title: 'Yakin ingin keluar?',
-        text: "Anda akan logout dari sistem.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6BCB77',
-        confirmButtonText: 'Log Out',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = href;
-        }
-    });
-});
+            Swal.fire({
+                title: 'Yakin ingin keluar?',
+                text: "Anda akan logout dari sistem.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6BCB77',
+                confirmButtonText: 'Log Out',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href;
+                }
+            });
+        });
     </script>
 
 </body>

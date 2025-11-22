@@ -22,7 +22,7 @@ if (!in_array($tabel, $tabel_diizinkan)) {
 }
 
 if (isset($_POST['tambah'])) {
-  $redirect = ""; 
+  $redirect = "";
   switch ($tabel) {
     case 'guru':
       $nama = $_POST['nama'];
@@ -30,8 +30,8 @@ if (isset($_POST['tambah'])) {
       $pangkat_gol = $_POST['pangkat_gol'];
       mysqli_query($koneksi, "INSERT INTO guru (nama, nip, pangkat_gol)
                 VALUES ('$nama','$nip','$pangkat_gol')");
-                $redirect = "../dashboard/dashboard_guru.php";
-     
+      $redirect = "../dashboard/dashboard_guru.php";
+
       break;
 
     case 'mengajar':
@@ -41,8 +41,8 @@ if (isset($_POST['tambah'])) {
       $jtm_per_minggu = $_POST['jtm_per_minggu'];
       mysqli_query($koneksi, "INSERT INTO mengajar (guru_id, jenis_ptk, kelas_mapel, jtm_per_minggu)
                 VALUES ('$guru_id','$jenis_ptk', '$kelas_mapel', '$jtm_per_minggu')");
-                 $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
-    
+      $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
+
       break;
 
     case 'pembina_kegiatan':
@@ -50,8 +50,8 @@ if (isset($_POST['tambah'])) {
       $tugas_pembinaan = $_POST['tugas_pembinaan'];
       mysqli_query($koneksi, "INSERT INTO pembina_kegiatan (guru_id, tugas_pembinaan)
                 VALUES ('$guru_id', '$tugas_pembinaan')");
-                 $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
-   
+      $redirect = "../dashboard/dashboard_kegiatan_akademik.php";
+
       break;
 
     case 'fasilitas_sekolah':
@@ -66,8 +66,8 @@ if (isset($_POST['tambah'])) {
       }
       mysqli_query($koneksi, "INSERT INTO fasilitas_sekolah (fasilitas, deskripsi, gambar)
                 VALUES ('$fasilitas', '$deskripsi', '$gambar')");
-                 $redirect = "../dashboard/dashboard_fasilitas.php";
-     
+      $redirect = "../dashboard/dashboard_fasilitas.php";
+
       break;
 
     case 'berita':
@@ -77,8 +77,8 @@ if (isset($_POST['tambah'])) {
       $tugas_pembinaan = $_POST['tugas_pembinaan'];
       mysqli_query($koneksi, "INSERT INTO berita (judul, link_youtube, deskripsi)
                 VALUES ('$judul','$link_youtube','$deskripsi')");
-                 $redirect = "../dashboard/dashboard_berita.php";
-      
+      $redirect = "../dashboard/dashboard_berita.php";
+
       break;
 
     case 'form_futsal':
@@ -90,8 +90,8 @@ if (isset($_POST['tambah'])) {
       $alasan = $_POST['alasan'];
       mysqli_query($koneksi, "INSERT INTO form_futsal (nisn, nama, kelas, jk, nohp, alasan)
                 VALUES ('$nisn','$nama','$kelas', '$jk', '$nohp', '$alasan')");
-                 $redirect = "../dashboard/dashboard_futsal.php";
-     
+      $redirect = "../dashboard/dashboard_futsal.php";
+
       break;
 
     case 'kelompok':
@@ -107,8 +107,8 @@ if (isset($_POST['tambah'])) {
       }
       mysqli_query($koneksi, "INSERT INTO kelompok (gambar, nama, nim, link_artikel)
                 VALUES ('$gambar','$nama','$nim', '$link_artikel')");
-                 $redirect = "../dashboard/dashboard_kelompok.php";
-      
+      $redirect = "../dashboard/dashboard_kelompok.php";
+
       break;
 
     case 'login':
@@ -118,8 +118,8 @@ if (isset($_POST['tambah'])) {
       $password = $_POST['password'];
       mysqli_query($koneksi, "INSERT INTO login (nama, email, role, password)
                 VALUES ('$nama','$email','$role', '$password')");
-                 $redirect = "../dashboard/dashboard_login.php";
-    
+      $redirect = "../dashboard/dashboard_login.php";
+
       break;
   }
   echo "
@@ -171,8 +171,8 @@ if (isset($_POST['tambah'])) {
   <link rel="stylesheet" href="../../frontend/style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body class="db">
@@ -367,15 +367,15 @@ if (isset($_POST['tambah'])) {
               <input type="text" name="password" class="form-control" required>
             </div>
           <?php endif; ?>
-<button type="submit" name="tambah" class="btn-db btn-cl me-2 mt-2" id="saveBtn">Simpan</button>
-                    <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn-db btn-add">Kembali</a>
-         
+          <button type="submit" name="tambah" class="btn-db btn-cl me-2 mt-2" id="saveBtn">Simpan</button>
+          <a href="../dashboard/dashboard_<?= $file; ?>.php" class="btn-db btn-add">Kembali</a>
+
         </form>
       </div>
     </div>
     <p class="fdb text-center mb-0 mt-4">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+      © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+    </p>
   </main>
 
   <script>

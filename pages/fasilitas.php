@@ -17,8 +17,8 @@ $result = mysqli_query($koneksi, $query);
     <link rel="stylesheet" href="../frontend/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -38,7 +38,7 @@ $result = mysqli_query($koneksi, $query);
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                     <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link " href="../index.php"><i data-lucide="home"></i> Beranda</a>
                         </li>
@@ -71,7 +71,7 @@ $result = mysqli_query($koneksi, $query);
                                 href="tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
+                            <a class="nav-link" href="../backend/login/login.php" target="_blank"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -107,7 +107,7 @@ $result = mysqli_query($koneksi, $query);
     </main>
 
     <br />
-     <footer class="footer-custom mt-5 pt-5">
+    <footer class="footer-custom mt-5 pt-5">
         <div class="container">
 
             <div class="row g-4 justify-content-between">

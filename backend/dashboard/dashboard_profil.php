@@ -85,8 +85,8 @@ $email = $_SESSION['email'];
     </div>
     </div>
     <p class="fdb text-center mb-0 mt-4">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+      © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+    </p>
   </main>
 
   <script>
@@ -98,10 +98,10 @@ $email = $_SESSION['email'];
     });
 
     document.querySelector('.btn-logout').addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const href = this.getAttribute('href');
+      e.preventDefault();
+      const href = this.getAttribute('href');
 
-    Swal.fire({
+      Swal.fire({
         title: 'Yakin ingin keluar?',
         text: "Anda akan logout dari sistem.",
         icon: 'warning',
@@ -110,12 +110,12 @@ $email = $_SESSION['email'];
         cancelButtonColor: '#6BCB77',
         confirmButtonText: 'Log Out',
         cancelButtonText: 'Batal'
-    }).then((result) => {
+      }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = href;
+          window.location.href = href;
         }
+      });
     });
-});
   </script>
 
 </body>

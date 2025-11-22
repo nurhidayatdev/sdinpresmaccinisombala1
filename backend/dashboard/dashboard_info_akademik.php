@@ -166,7 +166,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
 
                 </div>
 
-                
+
 
                 <div class="sarpras mb-3">
 
@@ -249,7 +249,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
 
                 </div>
 
-                
+
 
 
             </div>

@@ -55,28 +55,22 @@ $total_sarpras = mysqli_query($koneksi, "
 ");
 $total_sarpras = mysqli_fetch_assoc($total_sarpras);
 
-$sql_rm = "
-    SELECT 
-        kelas,
-        laki_laki AS laki,
-        perempuan
-    FROM rombongan_mengajar
-    ORDER BY 
-        CAST(REPLACE(kelas, 'Kelas ', '') AS UNSIGNED)
-";
 
+$sql_rm = "SELECT kelas, laki_laki, perempuan FROM rombongan_mengajar ORDER BY kelas ASC";
 $result_rm = $koneksi->query($sql_rm);
 
 $labels_kelas = [];
 $data_laki = [];
 $data_perempuan = [];
+$data_total = [];
 
-if ($result_rm && $result_rm->num_rows > 0) {
-    while ($row_rm = $result_rm->fetch_assoc()) {
-        $labels_kelas[] = $row_rm['kelas'];
-        $data_laki[] = (int)$row_rm['laki'];
-        $data_perempuan[] = (int)$row_rm['perempuan'];
-    }
+if ($result_rm->num_rows > 0) {
+  while ($row = $result_rm->fetch_assoc()) {
+    $labels_kelas[] = $row['kelas'];
+    $data_laki[] = (int)$row['laki_laki'];
+    $data_perempuan[] = (int)$row['perempuan'];
+    $data_total[] = (int)$row['laki_laki'] + (int)$row['perempuan'];
+  }
 }
 
 ?>
@@ -134,23 +128,23 @@ if ($result_rm && $result_rm->num_rows > 0) {
       <h5 class="fw-bold mb-3">Dashboard Utama</h5>
 
       <div class="dashboard-cards">
-          <div class="card card-custom p-3 text-center">
-            <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5><?= $total_ptk['total_ptk']; ?></h5>
-            <p class="text-muted mb-0">Pendidik dan Tenaga Kependidikan</p>
-          </div>
+        <div class="card card-custom p-3 text-center">
+          <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
+          <h5><?= $total_ptk['total_ptk']; ?></h5>
+          <p class="text-muted mb-0">Pendidik dan Tenaga Kependidikan</p>
+        </div>
 
-          <div class="card card-custom p-3 text-center">
-            <i data-lucide="graduation-cap" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5><?= $total_ptk['total_pd']; ?></h5>
-            <p class="text-muted mb-0">Peserta Didik</p>
-          </div>
+        <div class="card card-custom p-3 text-center">
+          <i data-lucide="graduation-cap" class="mb-2" style="width: 32px; height: 32px;"></i>
+          <h5><?= $total_ptk['total_pd']; ?></h5>
+          <p class="text-muted mb-0">Peserta Didik</p>
+        </div>
 
-          <div class="card card-custom p-3 text-center">
-            <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5><?= $total_sarpras['total_sarpras']; ?></h5>
-            <p class="text-muted mb-0">Sarana dan Prasarana</p>
-          </div>
+        <div class="card card-custom p-3 text-center">
+          <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
+          <h5><?= $total_sarpras['total_sarpras']; ?></h5>
+          <p class="text-muted mb-0">Sarana dan Prasarana</p>
+        </div>
       </div>
       <br>
       <div class="my-4">
@@ -172,6 +166,11 @@ if ($result_rm && $result_rm->num_rows > 0) {
               <canvas id="rombonganChart"></canvas>
             </div>
           </div>
+          <div class="col-12 col-lg-12">
+            <div class="chart-container card card-custom p-3 text-center mx-auto">
+              <canvas id="kelasChart"></canvas>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -179,9 +178,9 @@ if ($result_rm && $result_rm->num_rows > 0) {
     </div>
 
     </div>
-<p class="fdb text-center mb-0">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+    <p class="fdb text-center mb-0">
+      © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+    </p>
   </main>
 
   <script>
@@ -191,6 +190,9 @@ if ($result_rm && $result_rm->num_rows > 0) {
       const sidebar = document.getElementById('sidebarMenu');
       sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
     });
+
+    Chart.defaults.color = "#000";
+    Chart.defaults.font.family = "Poppins";
 
     const labels_ptk = <?php echo json_encode($labels_ptk); ?>;
     const dataGuru = <?php echo json_encode($data_guru); ?>;
@@ -206,6 +208,7 @@ if ($result_rm && $result_rm->num_rows > 0) {
             label: 'Jumlah Guru',
             data: dataGuru,
             backgroundColor: '#FFD93D',
+            hoverBackgroundColor: 'rgba(255, 217, 61, 0.3)',
             borderColor: '#FFD93D',
             borderWidth: 1
           },
@@ -213,8 +216,9 @@ if ($result_rm && $result_rm->num_rows > 0) {
             label: 'Jumlah Tendik',
             data: dataTendik,
             backgroundColor: '#FF6B6B',
+            hoverBackgroundColor: 'rgba(255, 107, 107, 0.3)',
             borderColor: '#FF6B6B',
-            borderWidth: 1
+            borderWidth: 2
           }
         ]
       },
@@ -258,6 +262,13 @@ if ($result_rm && $result_rm->num_rows > 0) {
             '#F8AE84',
             '#AEDDCD'
           ],
+          hoverBackgroundColor: [
+            'rgba(107, 203, 119, 0.3)',
+            'rgba(255, 107, 107, 0.3)',
+            'rgba(255, 217, 61, 0.3)',
+            'rgba(248, 174, 132, 0.3)',
+            'rgba(174, 221, 205, 0.3)'
+          ],
           borderColor: '#fff',
           borderWidth: 2
         }]
@@ -280,6 +291,7 @@ if ($result_rm && $result_rm->num_rows > 0) {
     const labelsKelas = <?php echo json_encode($labels_kelas); ?>;
     const dataLaki = <?php echo json_encode($data_laki); ?>;
     const dataPerempuan = <?php echo json_encode($data_perempuan); ?>;
+    const dataTotal = <?php echo json_encode($data_total); ?>;
 
     const ctxRombongan = document.getElementById('rombonganChart').getContext('2d');
 
@@ -291,6 +303,7 @@ if ($result_rm && $result_rm->num_rows > 0) {
             label: 'Laki-laki',
             data: dataLaki,
             backgroundColor: '#6BCB77',
+            hoverBackgroundColor: 'rgba(107, 203, 119, 0.3)',
             borderColor: '#6BCB77',
             borderWidth: 1
           },
@@ -298,8 +311,9 @@ if ($result_rm && $result_rm->num_rows > 0) {
             label: 'Perempuan',
             data: dataPerempuan,
             backgroundColor: '#FFD93D',
+            hoverBackgroundColor: 'rgba(255, 217, 61, 0.3)',
             borderColor: '#FFD93D',
-            borderWidth: 1
+            borderWidth: 2
           }
         ]
       },
@@ -333,12 +347,61 @@ if ($result_rm && $result_rm->num_rows > 0) {
       }
     });
 
-   
-document.querySelector('.btn-logout').addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const href = this.getAttribute('href');
+    const ctxKelas = document.getElementById('kelasChart');
 
-    Swal.fire({
+    new Chart(ctxKelas, {
+      type: 'line',
+      data: {
+        labels: labelsKelas,
+        datasets: [{
+          label: 'Total',
+          data: dataTotal,
+          borderColor: '#FFD93D',
+          backgroundColor: 'rgba(255, 217, 61, 0.3)',
+          tension: 0.3,
+          fill: true,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Jumlah Siswa'
+            },
+            min: 45,
+            max: 75
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Kelas'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Perkembangan Jumlah Siswa per Kelas'
+          },
+          legend: {
+            position: 'top'
+          }
+        }
+      }
+    });
+
+
+
+    document.querySelector('.btn-logout').addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      Swal.fire({
         title: 'Yakin ingin keluar?',
         text: "Anda akan logout dari sistem.",
         icon: 'warning',
@@ -347,13 +410,12 @@ document.querySelector('.btn-logout').addEventListener('click', function(e) {
         cancelButtonColor: '#6BCB77',
         confirmButtonText: 'Log Out',
         cancelButtonText: 'Batal'
-    }).then((result) => {
+      }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = href;
+          window.location.href = href;
         }
+      });
     });
-});
-
   </script>
 
 </body>

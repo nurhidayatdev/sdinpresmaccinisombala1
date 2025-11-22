@@ -71,7 +71,7 @@ $result = mysqli_query($koneksi, $query);
                                 href="#"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
+                            <a class="nav-link" href="../backend/login/login.php" target="_blank"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -107,7 +107,8 @@ $result = mysqli_query($koneksi, $query);
                             <a
                                 href="<?= $data['link_artikel']; ?>"
                                 class="text-decoration-none fw-semibold"
-                                style="color: #f8ae84">
+                                style="color: #f8ae84"
+                                target="_blank">
                                 <?= $data['nama']; ?> </a><br />
                             <?= $data['nim']; ?>
                         </p>

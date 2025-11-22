@@ -94,7 +94,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                 href="tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
+                            <a class="nav-link" href="../backend/login/login.php" target="_blank"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -105,7 +105,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <main class="container text-center my-5">
         <div class="row justify-content-center g-4">
 
-        <div class="col-12 col-lg-12">
+            <div class="col-12 col-lg-12">
                 <section id="dataRombongan" class="section-box">
                     <h2>Data Rombongan Mengajar</h2>
                     <div class="table-responsive">
@@ -137,7 +137,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                 </section>
             </div>
 
-            
+
 
             <div class="col-12 col-md-6">
                 <section id="dataSarpras" class="section-box">
@@ -207,7 +207,7 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                 </section>
             </div>
 
-            
+
         </div>
     </main>
 

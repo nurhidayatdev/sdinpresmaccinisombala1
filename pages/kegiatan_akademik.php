@@ -28,8 +28,8 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
     <link rel="stylesheet" href="../frontend/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -82,7 +82,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                 href="tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
+                            <a class="nav-link" href="../backend/login/login.php" target="_blank"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -110,8 +110,8 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                 $no = 1;
+                                <?php
+                                $no = 1;
                                 while ($data_mengajar = mysqli_fetch_assoc($result_mengajar)) : ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
@@ -146,8 +146,8 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                 $no = 1;
+                                <?php
+                                $no = 1;
                                 while ($data_pembina = mysqli_fetch_assoc($result_pembina)) : ?>
                                     <tr>
 
@@ -166,7 +166,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
         </div>
     </main>
 
-     <footer class="footer-custom mt-5 pt-5">
+    <footer class="footer-custom mt-5 pt-5">
         <div class="container">
 
             <div class="row g-4 justify-content-between">

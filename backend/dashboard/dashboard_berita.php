@@ -13,7 +13,7 @@ $role = $_SESSION['role'];
 
 $role_diizinkan = ['Administrator Utama', 'Admin Publikasi'];
 if (!in_array($role, $role_diizinkan)) {
-    echo "
+  echo "
     <!DOCTYPE html>
     <html>
     <head>
@@ -44,7 +44,7 @@ if (!in_array($role, $role_diizinkan)) {
 </script>
     </body>
     </html>";
-    exit;
+  exit;
 }
 
 $query = "SELECT * FROM berita";
@@ -142,8 +142,8 @@ $result = mysqli_query($koneksi, $query);
       </div>
     </div>
     <p class="text-center mb-0">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+      © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+    </p>
   </main>
 
   <script>
@@ -155,10 +155,10 @@ $result = mysqli_query($koneksi, $query);
     });
 
     document.querySelector('.btn-logout').addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const href = this.getAttribute('href');
+      e.preventDefault();
+      const href = this.getAttribute('href');
 
-    Swal.fire({
+      Swal.fire({
         title: 'Yakin ingin keluar?',
         text: "Anda akan logout dari sistem.",
         icon: 'warning',
@@ -167,12 +167,12 @@ $result = mysqli_query($koneksi, $query);
         cancelButtonColor: '#6BCB77',
         confirmButtonText: 'Log Out',
         cancelButtonText: 'Batal'
-    }).then((result) => {
+      }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = href;
+          window.location.href = href;
         }
+      });
     });
-});
   </script>
 
 </body>

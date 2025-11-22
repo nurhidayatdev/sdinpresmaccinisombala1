@@ -71,7 +71,7 @@ $result = mysqli_query($koneksi, $query);
                                 href="tentang-kami.php"><i data-lucide="users"></i> Tentang Kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../backend/login/login.php"><i data-lucide="log-in"></i> Log In</a>
+                            <a class="nav-link" href="../backend/login/login.php" target="_blank"><i data-lucide="log-in"></i> Log In</a>
                         </li>
                     </ul>
                 </div>
@@ -85,38 +85,38 @@ $result = mysqli_query($koneksi, $query);
                 Berita & Pengumuman
             </h2>
             <div class="row g-4">
-<?php while ($data = mysqli_fetch_assoc($result)) { ?>
-                <div class="col-12 col-lg-6">
-                    <article
-                        class=" p-4 rounded shadow-sm"
-                        style="background-color: #fffccf">
-                        <h4 class="fw-bold" style="color: #f8ae84">
-                            <i><?= $data['judul']; ?></i>
-                        </h4>
+                <?php while ($data = mysqli_fetch_assoc($result)) { ?>
+                    <div class="col-12 col-lg-6">
+                        <article
+                            class=" p-4 rounded shadow-sm"
+                            style="background-color: #fffccf">
+                            <h4 class="fw-bold" style="color: #f8ae84">
+                                <i><?= $data['judul']; ?></i>
+                            </h4>
 
-                        <div class="ratio ratio-16x9 mb-3">
-                            <iframe
-                                src="<?= $data['link_youtube']; ?>"
-                                title="YouTube video player"
-                                allowfullscreen></iframe>
-                        </div>
+                            <div class="ratio ratio-16x9 mb-3">
+                                <iframe
+                                    src="<?= $data['link_youtube']; ?>"
+                                    title="YouTube video player"
+                                    allowfullscreen></iframe>
+                            </div>
 
-                        <p class="text-justify">
-                            <?= $data['deskripsi']; ?>
-                        </p>
+                            <p class="text-justify">
+                                <?= $data['deskripsi']; ?>
+                            </p>
 
-                    </article>
-                </div>
+                        </article>
+                    </div>
 
-            <?php } ?>
+                <?php } ?>
             </div>
-            
+
 
         </section>
     </main>
 
     <br />
-     <footer class="footer-custom mt-5 pt-5">
+    <footer class="footer-custom mt-5 pt-5">
         <div class="container">
 
             <div class="row g-4 justify-content-between">

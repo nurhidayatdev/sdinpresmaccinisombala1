@@ -102,6 +102,7 @@ table {
 th {
     background-color: #f8ae84 !important;
     color: black !important;
+    vertical-align: middle !important;
 }
 tr:nth-child(even) {
     background-color: #f8ae84 !important;

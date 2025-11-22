@@ -129,10 +129,10 @@ $result = mysqli_query($koneksi, $query);
                   <td><?= $row['deskripsi']; ?></td>
                   <td class="text-center">
                     <a href="../crud/edit.php?file=berita&tabel=berita&id=<?= $row['id']; ?>"
-                      class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
+                      class="btn-db btn-edit mx-2 my-2"><i data-lucide="square-pen"></i></a>
                     <a href="../crud/hapus.php?tabel=berita&id=<?= $row['id']; ?>"
 
-                      class="btn-db btn-del"><i data-lucide="trash"></i></a>
+                      class="btn-db btn-del mx-2 my-2"><i data-lucide="trash"></i></a>
                   </td>
                 </tr>
               <?php endwhile; ?>

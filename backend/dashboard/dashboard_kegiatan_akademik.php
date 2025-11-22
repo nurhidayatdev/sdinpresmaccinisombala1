@@ -151,11 +151,9 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_mengajar['kelas_mapel']; ?></td>
                                         <td><?= $data_mengajar['jtm_per_minggu']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
-
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=mengajar&id=<?= $data_mengajar['id']; ?>" class="btn-db btn-edit mx-2 my-2"><i data-lucide="square-pen"></i></a>
                                             <a href="../crud/hapus.php?tabel=mengajar&id=<?= $data_mengajar['id']; ?>"
-
-                                                class="btn-db btn-del"><i data-lucide="trash"></i></a>
+                                                class="btn-db btn-del mx-2 my-2"><i data-lucide="trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
@@ -197,11 +195,9 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                                         <td><?= $data_pembina['pangkat_gol']; ?></td>
                                         <td><?= $data_pembina['tugas_pembinaan']; ?></td>
                                         <td class="text-center">
-                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
-
+                                            <a href="../crud/edit.php?file=kegiatan_akademik&tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>" class="btn-db btn-edit mx-2 my-2"><i data-lucide="square-pen"></i></a>
                                             <a href="../crud/hapus.php?tabel=pembina_kegiatan&id=<?= $data_pembina['id']; ?>"
-
-                                                class="btn-db btn-del"><i data-lucide="trash"></i></a>
+                                                class="btn-db btn-del mx-2 my-2"><i data-lucide="trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>

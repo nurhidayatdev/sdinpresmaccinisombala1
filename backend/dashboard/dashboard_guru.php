@@ -132,11 +132,9 @@ $result = mysqli_query($koneksi, $query);
                                     <td><?= $data['nip']; ?></td>
                                     <td><?= $data['pangkat_gol']; ?></td>
                                     <td class="text-center">
-                                        <a href="../crud/edit.php?file=guru&tabel=guru&id=<?= $data['id']; ?>" class="btn-db btn-edit me-2"><i data-lucide="square-pen"></i></a>
-
+                                        <a href="../crud/edit.php?file=guru&tabel=guru&id=<?= $data['id']; ?>" class="btn-db btn-edit mx-2 my-2"><i data-lucide="square-pen"></i></a>
                                         <a href="../crud/hapus.php?tabel=guru&id=<?= $data['id']; ?>"
-
-                                            class="btn-db btn-del"><i data-lucide="trash"></i></a>
+                                            class="btn-db btn-del mx-2 my-2"><i data-lucide="trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endwhile; ?>

@@ -4,8 +4,25 @@ include '../koneksi.php';
 $query_ptk = "SELECT * FROM ptk_pd";
 $result_ptk = mysqli_query($koneksi, $query_ptk);
 
+$total_ptk = mysqli_query($koneksi, "
+    SELECT 
+        SUM(guru) AS total_guru,
+        SUM(tendik) AS total_tendik,
+        SUM(ptk) AS total_ptk,
+        SUM(pd) AS total_pd
+    FROM ptk_pd
+");
+$total_ptk = mysqli_fetch_assoc($total_ptk);
+
 $query_sarpras = "SELECT * FROM sarpras";
 $result_sarpras = mysqli_query($koneksi, $query_sarpras);
+
+$total_sarpras = mysqli_query($koneksi, "
+    SELECT 
+        SUM(jumlah) AS total_sarpras
+    FROM sarpras
+");
+$total_sarpras = mysqli_fetch_assoc($total_sarpras);
 
 $query_rombongan = "SELECT * FROM rombongan_mengajar";
 $result_rombongan = mysqli_query($koneksi, $query_rombongan);
@@ -23,8 +40,8 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <link rel="stylesheet" href="../frontend/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -88,6 +105,70 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
     <main class="container text-center my-5">
         <div class="row justify-content-center g-4">
 
+        <div class="col-12 col-lg-12">
+                <section id="dataRombongan" class="section-box">
+                    <h2>Data Rombongan Mengajar</h2>
+                    <div class="table-responsive">
+                        <table
+                            class="table table-bordered table-striped align-middle">
+                            <thead>
+                                <tr>
+
+                                    <th>Kelas</th>
+                                    <th>Laki-Laki</th>
+                                    <th>Perempuan</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_rombongan = mysqli_fetch_assoc($result_rombongan)) : ?>
+                                    <tr>
+
+                                        <td><?= $data_rombongan['kelas']; ?></td>
+                                        <td><?= $data_rombongan['laki_laki']; ?></td>
+                                        <td><?= $data_rombongan['perempuan']; ?></td>
+                                        <td><?= $data_rombongan['total']; ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            
+
+            <div class="col-12 col-md-6">
+                <section id="dataSarpras" class="section-box">
+                    <h2>Data Sarpras</h2>
+                    <div class="table-responsive">
+                        <table
+                            class="table table-bordered table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Uraian</th>
+                                    <th>Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_sarpras = mysqli_fetch_assoc($result_sarpras)) : ?>
+                                    <tr>
+
+                                        <td><?= $data_sarpras['uraian']; ?></td>
+                                        <td><?= $data_sarpras['jumlah']; ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+                                <tr class="fw-bold">
+                                    <td>Total</td>
+                                    <td><?= $total_sarpras['total_sarpras']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
             <div class="col-12 col-md-6">
                 <section id="dataPTKPD" class="section-box">
                     <h2>Data PTK dan PD</h2>
@@ -113,75 +194,24 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         <td><?= $data_ptk['pd']; ?></td>
                                     </tr>
                                 <?php endwhile; ?>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-
-            <div class="col-12 col-md-6">
-                <section id="dataSarpras" class="section-box">
-                    <h2>Data Sarpras</h2>
-                    <div class="table-responsive">
-                        <table
-                            class="table table-bordered table-striped align-middle">
-                            <thead>
-                                <tr>
-                                    <th>Uraian</th>
-                                    <th>Jumlah</th>
+                                <tr class="fw-bold">
+                                    <td>Total</td>
+                                    <td><?= $total_ptk['total_guru']; ?></td>
+                                    <td><?= $total_ptk['total_tendik']; ?></td>
+                                    <td><?= $total_ptk['total_ptk']; ?></td>
+                                    <td><?= $total_ptk['total_pd']; ?></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($data_sarpras = mysqli_fetch_assoc($result_sarpras)) : ?>
-                                    <tr>
-
-                                        <td><?= $data_sarpras['uraian']; ?></td>
-                                        <td><?= $data_sarpras['jumlah']; ?></td>
-                                    </tr>
-                                <?php endwhile; ?>
-
                             </tbody>
                         </table>
                     </div>
                 </section>
             </div>
 
-            <div class="col-12 col-lg-10">
-                <section id="dataRombongan" class="section-box">
-                    <h2>Data Rombongan Mengajar</h2>
-                    <div class="table-responsive">
-                        <table
-                            class="table table-bordered table-striped align-middle">
-                            <thead>
-                                <tr>
-                                   
-                                    <th>Uraian</th>
-                                    <th>Detail</th>
-                                    <th>Jumlah</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($data_rombongan = mysqli_fetch_assoc($result_rombongan)) : ?>
-                                    <tr>
-                                       
-                                        <td><?= $data_rombongan['kelas']; ?></td>
-                                        <td><?= $data_rombongan['detail']; ?></td>
-                                        <td><?= $data_rombongan['jumlah']; ?></td>
-                                        <td><?= $data_rombongan['total']; ?></td>
-                                    </tr>
-                                <?php endwhile; ?>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
+            
         </div>
     </main>
 
-     <footer class="footer-custom mt-5 pt-5">
+    <footer class="footer-custom mt-5 pt-5">
         <div class="container">
 
             <div class="row g-4 justify-content-between">

@@ -114,9 +114,10 @@ if (isset($_POST['tambah'])) {
     case 'login':
       $nama = $_POST['nama'];
       $email = $_POST['email'];
+      $role = $_POST['role'];
       $password = $_POST['password'];
-      mysqli_query($koneksi, "INSERT INTO login (nama, email, password)
-                VALUES ('$nama','$email','$password')");
+      mysqli_query($koneksi, "INSERT INTO login (nama, email, role, password)
+                VALUES ('$nama','$email','$role', '$password')");
                  $redirect = "../dashboard/dashboard_login.php";
     
       break;
@@ -205,11 +206,11 @@ if (isset($_POST['tambah'])) {
       </button>
     </div>
 
-    <div class="container-fluid mt-4">
+    <div class="content container-fluid mt-4">
       <div class="container">
-        <h2 class="fw-bold mb-3 text-success">
+        <h4 class="fw-bold mb-3 text-success">
           Tambah Data <?= ucwords(str_replace('_', ' ', $tabel)); ?>
-        </h2>
+        </h4>
         <form method="POST" enctype="multipart/form-data">
 
           <?php if ($tabel === 'guru'): ?>
@@ -350,6 +351,18 @@ if (isset($_POST['tambah'])) {
             <div class="mb-3"><label>Email</label>
               <input type="email" name="email" class="form-control" required>
             </div>
+            <div class="mb-3">
+              <label>Role/Peran</label>
+              <select name="role" class="form-control" required>
+                <option value="">-- Pilih Role/Peran --</option>
+                <option value="Administrator Utama">Administrator Utama</option>
+                <option value="Admin Akademik">Admin Akademik</option>
+                <option value="Admin Data Sekolah">Admin Data Sekolah</option>
+                <option value="Admin Publikasi">Admin Publikasi</option>
+                <option value="Admin Ekstrakulikuler">Admin Ekstrakulikuler</option>
+                <option value="Admin Profil">Admin Profil</option>
+              </select>
+            </div>
             <div class="mb-3"><label>Password</label>
               <input type="text" name="password" class="form-control" required>
             </div>
@@ -360,7 +373,7 @@ if (isset($_POST['tambah'])) {
         </form>
       </div>
     </div>
-    <p class="text-center mb-0 mt-4">
+    <p class="fdb text-center mb-0 mt-4">
                 © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
   </main>

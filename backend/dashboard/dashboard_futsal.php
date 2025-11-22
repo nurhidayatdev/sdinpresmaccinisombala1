@@ -9,6 +9,43 @@ if (!isset($_SESSION['email'])) {
 
 $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
+$role = $_SESSION['role'];
+
+$role_diizinkan = ['Administrator Utama', 'Admin Ekstrakulikuler'];
+if (!in_array($role, $role_diizinkan)) {
+    echo "
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel='icon' href='../img/main/icon.png' />
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+    <style>
+        body { font-family: 'Poppins', sans-serif !important; }
+    </style>
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    </head>
+    <body>
+        <script>
+   Swal.fire({
+    title: 'Akses Ditolak',
+    text: 'Anda tidak memiliki izin untuk mengakses halaman ini!',
+    icon: 'error',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    confirmButtonText: 'Kembali'
+}).then(() => {
+    window.location.href = 'dashboard_akademik.php';
+});
+</script>
+    </body>
+    </html>";
+    exit;
+}
 
 $query = "SELECT * FROM form_futsal";
 $result = mysqli_query($koneksi, $query);
@@ -62,7 +99,7 @@ $result = mysqli_query($koneksi, $query);
       </button>
     </div>
 
-    <div class="mt-4">
+    <div class="content mt-4">
       <div class="mb-4">
         <h4 class="fw-bold mb-3 text-success">Formulir Futsal</h4>
         <div style="display: flex; justify-content: flex-start; margin-bottom: 12px;">
@@ -114,7 +151,7 @@ $result = mysqli_query($koneksi, $query);
         </div>
       </div>
     </div>
-    <p class="text-center mb-0">
+    <p class="fdb text-center mb-0">
                 © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
   </main>

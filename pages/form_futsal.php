@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
 
-$alert_status = ''; 
+$alert_status = '';
 $alert_message = '';
 
 if (isset($_POST['tambah'])) {

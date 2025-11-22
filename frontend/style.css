@@ -10,6 +10,18 @@
 .db {
     font-size: 10px;
 }
+.content {
+      flex: 1;
+    }
+#mainContent {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f8f9fa;
+}
+.fdb {
+    color: #555;
+}
 a {
     text-decoration: none;
 }
@@ -437,6 +449,11 @@ form[method="POST"] select.form-control {
     padding: 6px 10px;
     font-size: 14px;
 }
+form[id="loginForm"] input.form-control {
+    height: 40px;
+    padding: 6px 10px;
+    font-size: 16px;
+}
 form[method="POST"] textarea.form-control {
     height: 90px; 
     padding: 8px 12px;
@@ -468,13 +485,12 @@ form[method="POST"] textarea.form-control {
 .chart-container {
     position: relative;
     width: 100%;
-    max-width: 900px;
     margin: 0 auto;
 }
 
 .chart-container canvas {
     width: 100% !important;
-    height: auto !important;
+    height: 300px !important;
 }
 
 @media (max-width: 768px) {

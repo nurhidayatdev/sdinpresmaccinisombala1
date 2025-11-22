@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($data = mysqli_fetch_assoc($result)) {
       $_SESSION['email'] = $data['email'];
       $_SESSION['nama'] = $data['nama'];
+      $_SESSION['role'] = $data['role'];
       $login_status = 'success';
       $login_message = "Selamat datang, " . htmlspecialchars($data['nama']) . "!";
     } else {
@@ -57,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body style="background-image: url('../img/main/bg-login.svg');
 
- min-height: 100vh;">
+ min-height: calc(100vh - 80px); 
+">
   <div class="container">
     <div class="login-card">
       <h2>Login Admin</h2>

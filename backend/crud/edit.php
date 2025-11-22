@@ -9,6 +9,7 @@ if (!isset($_SESSION['email'])) {
 
 $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
+$role = $_SESSION['role'];
 
 $file = $_GET['file'] ?? '';
 $tabel = $_GET['tabel'] ?? '';
@@ -32,7 +33,7 @@ if (!$data) {
 
 if (isset($_POST['update'])) {
 
-    $redirect = ""; 
+    $redirect = "";
 
     switch ($tabel) {
 
@@ -151,9 +152,8 @@ if (isset($_POST['update'])) {
         case 'rombongan_mengajar':
             mysqli_query($koneksi, "UPDATE rombongan_mengajar SET 
                 kelas='{$_POST['kelas']}',
-                detail='{$_POST['detail']}',
-                jumlah='{$_POST['jumlah']}',
-                total='{$_POST['total']}'
+                laki_laki='{$_POST['laki_laki']}',
+                perempuan='{$_POST['perempuan']}'
                 WHERE id='$id'");
             $redirect = "../dashboard/dashboard_info_akademik.php";
             break;
@@ -193,12 +193,13 @@ if (isset($_POST['update'])) {
             mysqli_query($koneksi, "UPDATE login SET 
                 nama='{$_POST['nama']}',
                 email='{$_POST['email']}',
+                role='{$_POST['role']}',
                 password='{$_POST['password']}'
                 WHERE id='$id'");
             $redirect = "../dashboard/dashboard_login.php";
             break;
     }
-    
+
     echo "
     <!DOCTYPE html>
     <html>
@@ -251,7 +252,7 @@ if (isset($_POST['update'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="db">
@@ -283,7 +284,7 @@ if (isset($_POST['update'])) {
             </button>
         </div>
 
-        <div class="container-fluid mt-4">
+        <div class="content container-fluid mt-4">
             <div class="container">
                 <h4 class="fw-bold mb-3 text-warning">Edit</h4>
 
@@ -389,6 +390,7 @@ if (isset($_POST['update'])) {
                         <div class="mb-3">
                             <label>Upload Gambar</label>
                             <input type="file" name="gambar" class="form-control">
+                            <input type="hidden" name="gambar" value="<?= $data['gambar']; ?>">
                             <br>
                             <img src="../img/fasilitas/<?php echo htmlspecialchars($data['gambar']); ?>"
                                 alt="<?php echo htmlspecialchars($data['fasilitas']); ?>"
@@ -488,14 +490,11 @@ if (isset($_POST['update'])) {
                         <div class="mb-3"><label>Kelas</label>
                             <input type="text" name="kelas" class="form-control" value="<?= $data['kelas']; ?>">
                         </div>
-                        <div class="mb-3"><label>Detail</label>
-                            <input type="text" name="detail" class="form-control" value="<?= $data['detail']; ?>">
+                        <div class="mb-3"><label>Laki-Laki</label>
+                            <input type="text" name="laki_laki" class="form-control" value="<?= $data['laki_laki']; ?>">
                         </div>
-                        <div class="mb-3"><label>Jumlah</label>
-                            <input type="number" name="jumlah" class="form-control" value="<?= $data['jumlah']; ?>">
-                        </div>
-                        <div class="mb-3"><label>Total</label>
-                            <input type="number" name="total" class="form-control" value="<?= $data['total']; ?>">
+                        <div class="mb-3"><label>Perempuan</label>
+                            <input type="number" name="perempuan" class="form-control" value="<?= $data['perempuan']; ?>">
                         </div>
 
                     <?php elseif ($tabel === 'berita'): ?>
@@ -519,12 +518,12 @@ if (isset($_POST['update'])) {
                             <input type="text" name="nama" class="form-control" value="<?= $data['nama']; ?>">
                         </div>
                         <div class="mb-3"><label>Kelas</label>
-                            
+
                             <select name="kelas" class="form-control">
                                 <option value="4" <?= $data['kelas'] == '4' ? 'selected' : ''; ?>>Kelas 4</option>
                                 <option value="5" <?= $data['kelas'] == '5' ? 'selected' : ''; ?>>Kelas 5</option>
                                 <option value="6" <?= $data['kelas'] == '6' ? 'selected' : ''; ?>>Kelas 6</option>
-                                
+
                             </select>
                         </div>
                         <div class="mb-3"><label>Jenis Kelamin</label>
@@ -554,7 +553,7 @@ if (isset($_POST['update'])) {
                         <div class="mb-3">
                             <label>Upload Gambar</label>
                             <input type="file" name="gambar" class="form-control">
-                            <input type="hidden" name="gambar_lama" value="<?= $data['gambar']; ?>">
+                            <input type="hidden" name="gambar" value="<?= $data['gambar']; ?>">
                             <br>
                             <img src="../img/kelompok/<?php echo htmlspecialchars($data['gambar']); ?>"
                                 alt="<?php echo htmlspecialchars($data['nama']); ?>"
@@ -570,6 +569,43 @@ if (isset($_POST['update'])) {
                         <div class="mb-3"><label>Email</label>
                             <input type="text" name="email" class="form-control" value="<?= $data['email']; ?>">
                         </div>
+                        <div class="mb-3">
+                            <label>Role/Peran</label>
+                            <select name="role" class="form-control" required>
+                                <option value="">-- Pilih Role/Peran --</option>
+
+                                <option value="Administrator Utama"
+                                    <?= $data['role'] == 'Administrator Utama' ? 'selected' : ''; ?>>
+                                    Administrator Utama
+                                </option>
+
+                                <option value="Admin Akademik"
+                                    <?= $data['role'] == 'Admin Akademik' ? 'selected' : ''; ?>>
+                                    Admin Akademik
+                                </option>
+
+                                <option value="Admin Data Sekolah"
+                                    <?= $data['role'] == 'Admin Data Sekolah' ? 'selected' : ''; ?>>
+                                    Admin Data Sekolah
+                                </option>
+
+                                <option value="Admin Publikasi"
+                                    <?= $data['role'] == 'Admin Publikasi' ? 'selected' : ''; ?>>
+                                    Admin Publikasi
+                                </option>
+
+                                <option value="Admin Ekstrakulikuler"
+                                    <?= $data['role'] == 'Admin Ekstrakulikuler' ? 'selected' : ''; ?>>
+                                    Admin Ekstrakulikuler
+                                </option>
+
+                                <option value="Admin Profil"
+                                    <?= $data['role'] == 'Admin Profil' ? 'selected' : ''; ?>>
+                                    Admin Profil
+                                </option>
+                            </select>
+                        </div>
+
                         <div class="mb-3"><label>Password</label>
                             <input type="text" name="password" class="form-control" value="<?= $data['password']; ?>">
                         </div>
@@ -579,9 +615,9 @@ if (isset($_POST['update'])) {
                 </form>
             </div>
         </div>
-        <p class="text-center mb-0 mt-4">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+        <p class="fdb text-center mb-0 mt-4">
+            © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+        </p>
     </main>
     <script>
         lucide.createIcons();
@@ -590,10 +626,6 @@ if (isset($_POST['update'])) {
             const sidebar = document.getElementById('sidebarMenu');
             sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
         });
-
-   
-
-   
     </script>
 
 </body>

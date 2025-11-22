@@ -10,7 +10,6 @@ if (!isset($_SESSION['email'])) {
 $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 
-
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +60,7 @@ $email = $_SESSION['email'];
       </button>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4 content">
       <h5 class="fw-bold mb-3">Dashboard Login</h5>
 
 
@@ -85,7 +84,7 @@ $email = $_SESSION['email'];
 
     </div>
     </div>
-<p class="text-center mb-0 mt-4">
+<p class="fdb text-center mb-0 mt-4">
                 © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
   </main>

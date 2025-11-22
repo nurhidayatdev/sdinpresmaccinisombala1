@@ -92,7 +92,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
 
     <main class="container text-center my-5">
         <div class="row justify-content-center g-4">
-            <div class="col-12 col-lg-10">
+            <div class="col-12 col-lg-12">
                 <section id="pembagian-mengajar" class="section-box">
                     <h2>Pembagian Tugas Mengajar</h2>
                     <div class="table-responsive">
@@ -129,7 +129,7 @@ $result_pembina = mysqli_query($koneksi, $query_pembina);
                 </section>
             </div>
 
-            <div class="col-12 col-lg-10">
+            <div class="col-12 col-lg-12">
                 <section id="pembagian-mengajar" class="section-box">
                     <h2>Pembagian Tugas Mengajar</h2>
                     <div class="table-responsive">

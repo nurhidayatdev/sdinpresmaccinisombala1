@@ -9,15 +9,70 @@ if (!isset($_SESSION['email'])) {
 
 $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
+$role = $_SESSION['role'];
+
+$role_diizinkan = ['Administrator Utama', 'Admin Data Sekolah'];
+if (!in_array($role, $role_diizinkan)) {
+    echo "
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dashboard - SD Inpres Maccini Sombala 1</title>
+    <link rel='icon' href='../img/main/icon.png' />
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+    <style>
+        body { font-family: 'Poppins', sans-serif !important; }
+    </style>
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    </head>
+    <body>
+        <script>
+   Swal.fire({
+    title: 'Akses Ditolak',
+    text: 'Anda tidak memiliki izin untuk mengakses halaman ini!',
+    icon: 'error',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    confirmButtonText: 'Kembali'
+}).then(() => {
+    window.location.href = 'dashboard_akademik.php';
+});
+</script>
+    </body>
+    </html>";
+    exit;
+}
 
 $query_ptk = "SELECT * FROM ptk_pd";
 $result_ptk = mysqli_query($koneksi, $query_ptk);
 
+$total_ptk = mysqli_query($koneksi, "
+    SELECT 
+        SUM(guru) AS total_guru,
+        SUM(tendik) AS total_tendik,
+        SUM(ptk) AS total_ptk,
+        SUM(pd) AS total_pd
+    FROM ptk_pd
+");
+$total_ptk = mysqli_fetch_assoc($total_ptk);
+
 $query_sarpras = "SELECT * FROM sarpras";
 $result_sarpras = mysqli_query($koneksi, $query_sarpras);
 
+$total_sarpras = mysqli_query($koneksi, "
+    SELECT 
+        SUM(jumlah) AS total_sarpras
+    FROM sarpras
+");
+$total_sarpras = mysqli_fetch_assoc($total_sarpras);
+
 $query_rombongan = "SELECT * FROM rombongan_mengajar";
 $result_rombongan = mysqli_query($koneksi, $query_rombongan);
+
 
 ?>
 
@@ -69,9 +124,87 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
             </button>
         </div>
 
-        <div class="mt-4">
+        <div class="content mt-4">
             <div class="mb-4">
                 <h4 class="fw-bold mb-3 text-success">Data Info Akademik</h4>
+
+                <div class="rombongan mb-3">
+
+                    <h6 class="fw-bold text-success text-warning">Data Rombongan Mengajar</h6>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped align-middle">
+                            <thead class="table-success text-center">
+                                <tr>
+
+                                    <th>Kelas</th>
+                                    <th>Laki-Laki</th>
+                                    <th>Perempuan</th>
+                                    <th>Total</th>
+                                    <th width="50px">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_rombongan = mysqli_fetch_assoc($result_rombongan)) : ?>
+                                    <tr>
+
+                                        <td><?= $data_rombongan['kelas']; ?></td>
+                                        <td><?= $data_rombongan['laki_laki']; ?></td>
+                                        <td><?= $data_rombongan['perempuan']; ?></td>
+                                        <td><?= $data_rombongan['total']; ?></td>
+
+                                        <td class="text-center">
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=rombongan_mengajar&id=<?= $data_rombongan['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+
+
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                
+
+                <div class="sarpras mb-3">
+
+                    <h6 class="fw-bold text-success text-warning">Data Sarana dan Prasarana</h6>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped align-middle">
+                            <thead class="table-success text-center">
+                                <tr>
+
+                                    <th>Uraian</th>
+                                    <th>Jumlah</th>
+                                    <th width="50px">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($data_sarpras = mysqli_fetch_assoc($result_sarpras)) : ?>
+                                    <tr>
+
+                                        <td><?= $data_sarpras['uraian']; ?></td>
+                                        <td><?= $data_sarpras['jumlah']; ?></td>
+
+                                        <td class="text-center">
+                                            <a href="../crud/edit.php?file=info_akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
+
+
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                                <tr class="fw-bold">
+                                    <td>Total</td>
+                                    <td><?= $total_sarpras['total_sarpras']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
 
                 <div class="ptk-pd mb-3">
 
@@ -103,90 +236,27 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-
-                <div class="sarpras mb-3">
-
-                    <h6 class="fw-bold text-success text-warning">Data Sarana dan Prasarana</h6>
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped align-middle">
-                            <thead class="table-success text-center">
-                                <tr>
-
-                                    <th>Uraian</th>
-                                    <th>Jumlah</th>
-                                    <th width="50px">Aksi</th>
+                                <tr class="fw-bold">
+                                    <td>Total</td>
+                                    <td><?= $total_ptk['total_guru']; ?></td>
+                                    <td><?= $total_ptk['total_tendik']; ?></td>
+                                    <td><?= $total_ptk['total_ptk']; ?></td>
+                                    <td><?= $total_ptk['total_pd']; ?></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($data_sarpras = mysqli_fetch_assoc($result_sarpras)) : ?>
-                                    <tr>
-
-                                        <td><?= $data_sarpras['uraian']; ?></td>
-                                        <td><?= $data_sarpras['jumlah']; ?></td>
-
-                                        <td class="text-center">
-                                            <a href="../crud/edit.php?file=info_akademik&tabel=sarpras&id=<?= $data_sarpras['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
-
-
-                                        </td>
-                                    </tr>
-                                <?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>
 
                 </div>
 
-                <div class="rombongan mb-3">
-
-                    <h6 class="fw-bold text-success text-warning">Data Rombongan Mengajar</h6>
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped align-middle">
-                            <thead class="table-success text-center">
-                                <tr>
-
-                                    <th>Kelas</th>
-                                    <th>Detail</th>
-                                    <th>Jumlah</th>
-                                    <th>Total</th>
-                                    <th width="50px">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($data_rombongan = mysqli_fetch_assoc($result_rombongan)) : ?>
-                                    <tr>
-
-                                        <td><?= $data_rombongan['kelas']; ?></td>
-                                        <td><?= $data_rombongan['detail']; ?></td>
-                                        <td><?= $data_rombongan['jumlah']; ?></td>
-                                        <td><?= $data_rombongan['total']; ?></td>
-
-                                        <td class="text-center">
-                                            <a href="../crud/edit.php?file=info_akademik&tabel=rombongan_mengajar&id=<?= $data_rombongan['id']; ?>" class="btn-db btn-edit"><i data-lucide="square-pen"></i></a>
-
-
-                                        </td>
-                                    </tr>
-                                <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
+                
 
 
             </div>
         </div>
-        <p class="text-center mb-0">
-                © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
-            </p>
+        <p class="fdb text-center mb-0">
+            © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
+        </p>
     </main>
 
     <script>
@@ -198,24 +268,24 @@ $result_rombongan = mysqli_query($koneksi, $query_rombongan);
         });
 
         document.querySelector('.btn-logout').addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const href = this.getAttribute('href');
+            e.preventDefault();
+            const href = this.getAttribute('href');
 
-    Swal.fire({
-        title: 'Yakin ingin keluar?',
-        text: "Anda akan logout dari sistem.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6BCB77',
-        confirmButtonText: 'Log Out',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = href;
-        }
-    });
-});
+            Swal.fire({
+                title: 'Yakin ingin keluar?',
+                text: "Anda akan logout dari sistem.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6BCB77',
+                confirmButtonText: 'Log Out',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href;
+                }
+            });
+        });
     </script>
 
 </body>

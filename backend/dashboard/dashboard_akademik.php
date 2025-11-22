@@ -20,6 +20,7 @@ $email = $_SESSION['email'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SD Inpres Maccini Sombala 1</title>
   <link rel="icon" href="../img/main/icon.png" />
+  
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css" />
   <script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../../frontend/style.css" />
@@ -60,7 +61,7 @@ $email = $_SESSION['email'];
       </button>
     </div>
 
-    <div class="mt-4">
+    <div class="content mt-4">
       <h5 class="fw-bold mb-3">Dashboard Akademik</h5>
 
       <div class="dashboard-cards">
@@ -108,7 +109,7 @@ $email = $_SESSION['email'];
 
     </div>
     </div>
-    <p class="text-center mb-0 mt-4">
+    <p class="fdb text-center mb-0 mt-4">
                 © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
   </main>

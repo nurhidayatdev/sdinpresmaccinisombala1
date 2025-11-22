@@ -73,7 +73,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
             </button>
         </div>
 
-        <div class="mt-4">
+        <div class="content mt-4">
             <div class="mb-4">
                 <h4 class="fw-bold mb-3 text-success">Data Profil Sekolah</h4>
 
@@ -261,7 +261,7 @@ $result_tujuan = mysqli_query($koneksi, $query_tujuan);
                 </div>
             </div>
         </div>
-        <p class="text-center mb-0">
+        <p class="fdb text-center mb-0">
                 © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
     </main>

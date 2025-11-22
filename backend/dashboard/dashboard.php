@@ -9,14 +9,14 @@ if (!isset($_SESSION['email'])) {
 
 $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
+$role = $_SESSION['role'];
 
-$sql_ptk = "SELECT uraian, guru, tendik, ptk FROM ptk_pd WHERE uraian IN ('Laki - Laki', 'Perempuan')";
+$sql_ptk = "SELECT uraian, guru, tendik FROM ptk_pd WHERE uraian IN ('Laki - Laki', 'Perempuan')";
 $result_ptk = $koneksi->query($sql_ptk);
 
 $labels_ptk = [];
 $data_guru = [];
 $data_tendik = [];
-$data_ptk = [];
 
 if ($result_ptk->num_rows > 0) {
   while ($row_ptk = $result_ptk->fetch_assoc()) {
@@ -24,9 +24,16 @@ if ($result_ptk->num_rows > 0) {
 
     $data_guru[] = (int)$row_ptk['guru'];
     $data_tendik[] = (int)$row_ptk['tendik'];
-    $data_ptk[] = (int)$row_ptk['ptk'];
   }
 }
+
+$total_ptk = mysqli_query($koneksi, "
+    SELECT 
+        SUM(ptk) AS total_ptk,
+        SUM(pd) AS total_pd
+    FROM ptk_pd
+");
+$total_ptk = mysqli_fetch_assoc($total_ptk);
 
 $sql_sp = "SELECT uraian, jumlah FROM sarpras WHERE uraian != 'TOTAL'";
 $result_sp = $koneksi->query($sql_sp);
@@ -41,24 +48,37 @@ if ($result_sp->num_rows > 0) {
   }
 }
 
-$sql_rm = "SELECT kelas, 
-        SUM(CASE WHEN detail = 'L' THEN jumlah ELSE 0 END) AS laki,
-        SUM(CASE WHEN detail = 'P' THEN jumlah ELSE 0 END) AS perempuan
-        FROM rombongan_mengajar
-        GROUP BY kelas";
+$total_sarpras = mysqli_query($koneksi, "
+    SELECT 
+        SUM(jumlah) AS total_sarpras
+    FROM sarpras
+");
+$total_sarpras = mysqli_fetch_assoc($total_sarpras);
+
+$sql_rm = "
+    SELECT 
+        kelas,
+        laki_laki AS laki,
+        perempuan
+    FROM rombongan_mengajar
+    ORDER BY 
+        CAST(REPLACE(kelas, 'Kelas ', '') AS UNSIGNED)
+";
+
 $result_rm = $koneksi->query($sql_rm);
 
 $labels_kelas = [];
 $data_laki = [];
 $data_perempuan = [];
 
-if ($result_rm->num_rows > 0) {
-  while ($row_rm = $result_rm->fetch_assoc()) {
-    $labels_kelas[] = $row_rm['kelas'];
-    $data_laki[] = (int)$row_rm['laki'];
-    $data_perempuan[] = (int)$row_rm['perempuan'];
-  }
+if ($result_rm && $result_rm->num_rows > 0) {
+    while ($row_rm = $result_rm->fetch_assoc()) {
+        $labels_kelas[] = $row_rm['kelas'];
+        $data_laki[] = (int)$row_rm['laki'];
+        $data_perempuan[] = (int)$row_rm['perempuan'];
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +98,6 @@ if ($result_rm->num_rows > 0) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
 <body class="db">
@@ -111,33 +130,27 @@ if ($result_rm->num_rows > 0) {
       </button>
     </div>
 
-    <div class="mt-4">
+    <div class="content mt-4">
       <h5 class="fw-bold mb-3">Dashboard Utama</h5>
 
       <div class="dashboard-cards">
-        <a href="dashboard_profil.php">
-          <div class="card card-custom p-3 text-center">
-            <i data-lucide="school" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5>Profil</h5>
-            <p class="text-muted mb-0">Lihat dan kelola informasi sekolah</p>
-          </div>
-        </a>
-
-        <a href="dashboard_akademik.php">
-          <div class="card card-custom p-3 text-center">
-            <i data-lucide="book-open-text" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5>Akademik</h5>
-            <p class="text-muted mb-0">Kelola data guru dan siswa</p>
-          </div>
-        </a>
-
-        <a href="dashboard_user.php">
           <div class="card card-custom p-3 text-center">
             <i data-lucide="users" class="mb-2" style="width: 32px; height: 32px;"></i>
-            <h5>User</h5>
-            <p class="text-muted mb-0">Kelola akun pengguna sistem</p>
+            <h5><?= $total_ptk['total_ptk']; ?></h5>
+            <p class="text-muted mb-0">Pendidik dan Tenaga Kependidikan</p>
           </div>
-        </a>
+
+          <div class="card card-custom p-3 text-center">
+            <i data-lucide="graduation-cap" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <h5><?= $total_ptk['total_pd']; ?></h5>
+            <p class="text-muted mb-0">Peserta Didik</p>
+          </div>
+
+          <div class="card card-custom p-3 text-center">
+            <i data-lucide="building-2" class="mb-2" style="width: 32px; height: 32px;"></i>
+            <h5><?= $total_sarpras['total_sarpras']; ?></h5>
+            <p class="text-muted mb-0">Sarana dan Prasarana</p>
+          </div>
       </div>
       <br>
       <div class="my-4">
@@ -154,7 +167,7 @@ if ($result_rm->num_rows > 0) {
               <canvas id="spChart"></canvas>
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-12 col-lg-12">
             <div class="chart-container card card-custom p-3 text-center mx-auto">
               <canvas id="rombonganChart"></canvas>
             </div>
@@ -166,7 +179,7 @@ if ($result_rm->num_rows > 0) {
     </div>
 
     </div>
-<p class="text-center mb-0">
+<p class="fdb text-center mb-0">
                 © 2025 SD Inpres Maccini Sombala 1 — All Rights Reserved
             </p>
   </main>
@@ -182,7 +195,6 @@ if ($result_rm->num_rows > 0) {
     const labels_ptk = <?php echo json_encode($labels_ptk); ?>;
     const dataGuru = <?php echo json_encode($data_guru); ?>;
     const dataTendik = <?php echo json_encode($data_tendik); ?>;
-    const dataPTK = <?php echo json_encode($data_ptk); ?>;
 
     const ctx_ptk = document.getElementById('ptkChart').getContext('2d');
 
@@ -202,13 +214,6 @@ if ($result_rm->num_rows > 0) {
             data: dataTendik,
             backgroundColor: '#FF6B6B',
             borderColor: '#FF6B6B',
-            borderWidth: 1
-          },
-          {
-            label: 'Total PTK',
-            data: dataPTK,
-            backgroundColor: '#6BCB77',
-            borderColor: '#6BCB77',
             borderWidth: 1
           }
         ]

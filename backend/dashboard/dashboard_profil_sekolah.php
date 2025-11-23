@@ -39,7 +39,7 @@ if (!in_array($role, $role_diizinkan)) {
     allowEscapeKey: false,
     confirmButtonText: 'Kembali'
 }).then(() => {
-    window.location.href = 'dashboard_user.php';
+    window.location.href = 'dashboard_profil.php';
 });
 </script>
     </body>
